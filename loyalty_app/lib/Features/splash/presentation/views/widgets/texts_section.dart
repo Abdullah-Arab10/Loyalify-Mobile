@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/Features/splash/data/models/loyalty_page_model.dart';
+import 'package:loyalty_app/core/utils/app_styles.dart';
 
 class TextsSection extends StatelessWidget {
   const TextsSection({
@@ -20,41 +21,26 @@ class TextsSection extends StatelessWidget {
             children: [
               Text(
                 item.title1,
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
+                style: AppStyles.styleBold29(context),
                 textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                height: 10,
               ),
               Text(
                 item.title2,
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
+                style: AppStyles.styleBold29(context),
                 textAlign: TextAlign.center,
               ),
             ],
           ),
         ),
-        const SizedBox(height: 32),
+        const SizedBox(height: 24),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
             item.subTitle,
-            style: const TextStyle(
-              fontSize: 16,
-              color: Colors.black54,
-            ),
+            style: AppStyles.styleMedium18(context),
             textAlign: TextAlign.center,
           ),
         ),
-        const SizedBox(height: 20),
       ],
     );
   }

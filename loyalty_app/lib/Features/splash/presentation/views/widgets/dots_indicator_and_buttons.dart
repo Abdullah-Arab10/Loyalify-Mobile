@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/widgets/dots_indicator.dart';
 import 'package:loyalty_app/constants.dart';
+import 'package:loyalty_app/core/utils/app_colors.dart';
+import 'package:loyalty_app/core/utils/strings_manager.dart';
 import 'package:loyalty_app/core/widget/custom_button.dart';
 
 class DotsIndicatorAndButtons extends StatelessWidget {
@@ -21,7 +23,7 @@ class DotsIndicatorAndButtons extends StatelessWidget {
       child: Column(
         children: [
           DotsIndicator(currentPageIndex: currentPageIndex),
-          const SizedBox(height: 32),
+          const SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Row(
@@ -30,8 +32,8 @@ class DotsIndicatorAndButtons extends StatelessWidget {
                     ? Expanded(
                         child: CustomButton(
                           foregroundColor: kPrimaryColor,
-                          text: 'Skip',
-                          backgroundColor: Colors.white.withOpacity(0.9),
+                          text: AppStrings.skip,
+                          backgroundColor: AppColors.white.withOpacity(0.9),
                         ),
                       )
                     : const SizedBox(),
@@ -40,7 +42,7 @@ class DotsIndicatorAndButtons extends StatelessWidget {
                 ),
                 Expanded(
                   child: CustomButton(
-                    foregroundColor: Colors.white,
+                    foregroundColor: AppColors.white,
                     text: text,
                     backgroundColor: kPrimaryColor,
                   ),
@@ -48,7 +50,7 @@ class DotsIndicatorAndButtons extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 32),
+          const SizedBox(height: 24),
         ],
       ),
     );

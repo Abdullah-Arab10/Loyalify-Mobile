@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loyalty_app/core/utils/app_colors.dart';
 
 class CustomCircularIndicator extends StatelessWidget {
   const CustomCircularIndicator({
@@ -7,13 +8,13 @@ class CustomCircularIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(bottom: 20.0), // Adjust the padding as needed
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20.0), // Adjust the padding as needed
       child: SizedBox(
         width: 50, // Width of the CircularProgressIndicator
         height: 50, // Height of the CircularProgressIndicator
         child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(Colors.white), // Customize color
+          valueColor: AlwaysStoppedAnimation<Color>(AppColors.white), // Customize color
           strokeWidth: 6.0, // Customize the border width
         ),
       ),
