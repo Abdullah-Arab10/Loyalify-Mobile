@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/widgets/CustomPageView.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/widgets/dots_indicator_and_buttons.dart';
+import 'package:loyalty_app/core/utils/strings_manager.dart';
 
 class OnboardingViewBody extends StatefulWidget {
   const OnboardingViewBody({super.key});
@@ -13,14 +14,14 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
 
   late PageController pageController;
   int currentPageIndex = 0;
-  String text = 'Continue';
+  String text = AppStrings.Continue;
 
   @override
   void initState() {
     pageController = PageController();
     pageController.addListener(() {
       currentPageIndex = pageController.page!.round();
-      currentPageIndex == 2 ? text = 'Let\'s Get Started' : text = 'Continue';
+      currentPageIndex == 2 ? text = AppStrings.letsGetStarted : text = AppStrings.Continue;
       setState(() {});
     });
     super.initState();

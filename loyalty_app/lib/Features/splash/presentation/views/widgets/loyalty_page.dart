@@ -13,10 +13,15 @@ class LoyaltyPage extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(
-          height: 72,
+          height: 56,
         ),
         Expanded(
-          child: Center(child: SvgPicture.asset(item.image)),
+          child: Center(child: AspectRatio(
+            aspectRatio: 1,
+            child: SvgPicture.asset(
+              item.image,
+              ),
+          )),
         ),
         index != 0 ? const SizedBox(height: 24,) : const SizedBox(),
         Expanded(

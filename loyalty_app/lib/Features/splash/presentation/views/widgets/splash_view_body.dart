@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/widgets/custom_circular_indicator.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/widgets/logo_and_sliding_text.dart';
-import 'package:loyalty_app/core/utils/app_royter.dart';
+import 'package:loyalty_app/core/utils/app_router.dart';
 
 class SplashViewbody extends StatefulWidget {
   const SplashViewbody({super.key});
@@ -35,9 +35,14 @@ class _SplashViewbodyState extends State<SplashViewbody>
 return Stack(
   children: [
     LogoAndSlidingText(slidingAnimation: slidingAnimation),
-    const Align(
-      alignment: Alignment.bottomCenter,
-      child: CustomCircularIndicator(),
+    const Positioned(
+      bottom: 0,
+      left: 0,
+      right: 0,
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: CustomCircularIndicator(),
+      ),
     ),
   ],
 );
@@ -60,7 +65,7 @@ return Stack(
     Future.delayed(
       const Duration(seconds: 2),
       () {
-        GoRouter.of(context).push(AppRouter.kOnboardingView);
+        GoRouter.of(context).go(AppRouter.kOnboardingView);
       },
     );
   }

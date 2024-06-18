@@ -1,9 +1,12 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:loyalty_app/constants.dart';
-import 'package:loyalty_app/core/utils/app_royter.dart';
+import 'package:loyalty_app/core/utils/app_router.dart';
 
 void main() {
-  runApp(const Loyalify());
+  runApp(DevicePreview(
+    enabled: true,
+    builder: (context)=> const Loyalify()
+    ));
 }
 
 class Loyalify extends StatelessWidget {
@@ -13,11 +16,10 @@ class Loyalify extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       routerConfig: AppRouter.router,
-      theme: ThemeData(
-        scaffoldBackgroundColor: kPrimaryColor,
-      ),
 );
   }
 }

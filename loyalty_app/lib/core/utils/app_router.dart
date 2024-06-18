@@ -3,7 +3,7 @@ import 'package:loyalty_app/Features/splash/presentation/views/onBoarding_view.d
 import 'package:loyalty_app/Features/splash/presentation/views/splash_view.dart';
 
 abstract class AppRouter {
-  static const kOnboardingView = '/onboardingView';
+  static const  kOnboardingView = '/onboardingView';
 
   static final router = GoRouter(
     routes: [
