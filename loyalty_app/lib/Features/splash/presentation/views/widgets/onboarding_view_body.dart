@@ -11,7 +11,6 @@ class OnboardingViewBody extends StatefulWidget {
 }
 
 class _OnboardingViewBodyState extends State<OnboardingViewBody> {
-
   late PageController pageController;
   int currentPageIndex = 0;
   String text = AppStrings.Continue;
@@ -21,20 +20,27 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
     pageController = PageController();
     pageController.addListener(() {
       currentPageIndex = pageController.page!.round();
-      currentPageIndex == 2 ? text = AppStrings.letsGetStarted : text = AppStrings.Continue;
+      currentPageIndex == 2
+          ? text = AppStrings.letsGetStarted
+          : text = AppStrings.Continue;
       setState(() {});
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      CustomPageView(pageController: pageController),
-      DotsIndicatorAndButtons(currentPageIndex: currentPageIndex, text: text,),
+    return CustomScrollView(slivers: [
+      SliverFillRemaining(
+        //hasScrollBody: false,
+        child: Column(children: [
+          Expanded(child: CustomPageView(pageController: pageController)),
+          DotsIndicatorAndButtons(
+            currentPageIndex: currentPageIndex,
+            text: text,
+          ),
+        ]),
+      ),
     ]);
   }
 }
-
-
-
-

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/widgets/custom_circular_indicator.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/widgets/logo_and_sliding_text.dart';
 import 'package:loyalty_app/core/utils/app_router.dart';
+import 'package:loyalty_app/core/utils/size_config.dart';
 
 class SplashViewbody extends StatefulWidget {
   const SplashViewbody({super.key});
@@ -32,20 +33,22 @@ class _SplashViewbodyState extends State<SplashViewbody>
 
   @override
   Widget build(BuildContext context) {
-return Stack(
-  children: [
-    LogoAndSlidingText(slidingAnimation: slidingAnimation),
-    const Positioned(
-      bottom: 0,
-      left: 0,
-      right: 0,
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: CustomCircularIndicator(),
-      ),
-    ),
-  ],
-);
+    SizeConfig.init(context);
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: SizeConfig.height * .3,
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: LogoAndSlidingText(slidingAnimation: slidingAnimation),
+        ),
+        const SliverFillRemaining(child: Align(
+          alignment: Alignment.bottomCenter,
+          child: CustomCircularIndicator())),
+      ],
+    );
   }
 
   void initSlidingAnimation() {
@@ -70,7 +73,3 @@ return Stack(
     );
   }
 }
-
-
-
-

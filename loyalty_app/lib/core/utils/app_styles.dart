@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:loyalty_app/core/utils/font_manager.dart';
 import 'package:loyalty_app/core/utils/size_config.dart';
 
-
 abstract class AppStyles {
-
   static TextStyle styleRegular24(BuildContext context) {
     return TextStyle(
       color: const Color(0xFF000000),
@@ -27,7 +25,7 @@ abstract class AppStyles {
 
   static TextStyle styleRegular12(BuildContext context) {
     return TextStyle(
-      color: const Color(0xFFAAAAAA),
+      color: const Color(0xFF000000),
       fontSize: getResponsiveFontSize(context, fontSize: 12),
       fontFamily: FontConstants.fontFamily,
       fontWeight: FontWeight.w400,
@@ -97,7 +95,7 @@ abstract class AppStyles {
     );
   }
 
-    static TextStyle styleBold18(BuildContext context) {
+  static TextStyle styleBold18(BuildContext context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 18),
       fontFamily: FontConstants.fontFamily,
@@ -106,30 +104,19 @@ abstract class AppStyles {
   }
 }
 
-// sacleFactor
-// responsive font size
-// (min , max) fontsize
 double getResponsiveFontSize(context, {required double fontSize}) {
   double scaleFactor = getScaleFactor(context);
   double responsiveFontSize = fontSize * scaleFactor;
   double lowerLimit = fontSize * .8;
   double upperLimit = fontSize * 1.2;
-
+  if (scaleFactor >= SizeConfig.tablet / 550) {
+    lowerLimit = fontSize * 1.2;
+    upperLimit = fontSize * 1.6;
+  }
   return responsiveFontSize.clamp(lowerLimit, upperLimit);
 }
 
 double getScaleFactor(context) {
-  // var dispatcher = PlatformDispatcher.instance;
-  // var physicalWidth = dispatcher.views.first.physicalSize.width;
-  // var devicePixelRatio = dispatcher.views.first.devicePixelRatio;
-  // double width = physicalWidth / devicePixelRatio;
-
   double width = MediaQuery.sizeOf(context).width;
-  if (width < SizeConfig.tablet) {
-    return width / 550;
-  } else if (width < SizeConfig.desktop) {
-    return width / 1000;
-  } else {
-    return width / 1920;
-  }
+  return width / 550;
 }

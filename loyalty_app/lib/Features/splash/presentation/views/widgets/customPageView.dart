@@ -32,6 +32,17 @@ class CustomPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        /*return ExpandablePageView(
+      controller: pageController,
+      scrollDirection: Axis.horizontal,
+      children: List.generate(
+        listOfPages.length,
+        (index) => LoyaltyPage(
+          item: listOfPages[index],
+          index: index,
+        ),
+      ),
+    );*/
     return PageView.builder(
       controller: pageController,
       itemCount: listOfPages.length,
