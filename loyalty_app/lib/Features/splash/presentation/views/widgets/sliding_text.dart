@@ -25,7 +25,7 @@ class SlidingText extends StatelessWidget {
               textAlign: TextAlign.center,
               style: AppStyles.styleBold29(context).copyWith(
                 color: AppColors.white,
-                fontSize: SizeConfig.width * 0.09,
+                fontSize: SizeConfig.width * 0.08,
               )
             ),
           );

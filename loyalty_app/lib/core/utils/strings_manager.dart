@@ -15,5 +15,13 @@ class AppStrings{
   // ignore: constant_identifier_names
   static const String Continue = 'Continue';
   static const String letsGetStarted = 'Let\'s Get Started';
+  static const String email = 'Email';
+  static const String password = 'Password';
+  static const String login = 'Login';
+  static const String createAnAccount = 'create an account';
   static const String skip = 'Skip';
+  static const emailError = "your email is empty or not valid";
+  static const passwordError1 =
+      "Your Password must not be empty or Less than 6 characters";
+  static const passwordError2 = "or there are no lowercase and uppercase letters or symbols";
 }

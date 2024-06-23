@@ -21,14 +21,19 @@ class LogoAndSlidingText extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SvgPicture.asset(
-            Assets.imagesLogo,
-            colorFilter: ColorFilter.mode(
-              AppColors.white,
-               BlendMode.srcIn),
-               width: SizeConfig.width * 0.43,
-               height: SizeConfig.width * 0.43,
+          Center(
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: SvgPicture.asset(
+                Assets.imagesLogo,
+                colorFilter: ColorFilter.mode(
+                  AppColors.white,
+                   BlendMode.srcIn),
+                   width: SizeConfig.width * 0.45,
+                   height: SizeConfig.width * 0.45,
+                ),
             ),
+          ),
           SlidingText(slidingAnimation: slidingAnimation),
         ],
       ),

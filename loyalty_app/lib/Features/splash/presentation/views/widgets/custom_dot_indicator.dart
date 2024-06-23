@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/constants.dart';
+import 'package:loyalty_app/core/utils/size_config.dart';
 
 class CustomDotIndicator extends StatelessWidget {
   const CustomDotIndicator({super.key, required this.isActive});
@@ -7,6 +8,7 @@ class CustomDotIndicator extends StatelessWidget {
   final bool isActive;
   @override
   Widget build(BuildContext context) {
+    SizeConfig.init(context);
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       width: isActive ? 32 : 8,
