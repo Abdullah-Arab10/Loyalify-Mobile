@@ -4,38 +4,35 @@ import 'package:loyalty_app/Features/authentication/data/models/text_field_model
 import 'package:loyalty_app/Features/authentication/presentation/manager/auth_validation_cubit/auth_validation_cubit.dart';
 import 'package:loyalty_app/Features/authentication/presentation/manager/eye_visibility_cubit/eye_visibility_cubit.dart';
 import 'package:loyalty_app/core/utils/app_images.dart';
-import 'package:loyalty_app/core/utils/app_styles.dart';
 import 'package:loyalty_app/core/utils/strings_manager.dart';
 import 'package:loyalty_app/core/utils/values_manager.dart';
 import 'package:loyalty_app/core/widgets/custom_text_field_widget.dart';
 
 class EmailAndpasswordfieldssection extends StatefulWidget {
-  const EmailAndpasswordfieldssection({super.key});
+  const EmailAndpasswordfieldssection({super.key, required this.onChangedEmail, required this.onChangedPassword});
+
+final ValueChanged<String> onChangedEmail;
+final ValueChanged<String> onChangedPassword;
 
   @override
   State<EmailAndpasswordfieldssection> createState() => _EmailAndpasswordfieldssectionState();
 }
 
 class _EmailAndpasswordfieldssectionState extends State<EmailAndpasswordfieldssection> {
-  final TextEditingController _emailController = TextEditingController();
 
-  final TextEditingController _passwordController = TextEditingController();
+_EmailAndpasswordfieldssectionState();
+
+   late TextEditingController _emailController;
+
+   late TextEditingController _passwordController;
 
    bool isEmailValid = true;
    bool isPasswordValid = true;
 
-  /*_bind() {
-    isEmailValid = true;
-    isPasswordValid = true;
-    _emailController
-        .addListener(() => AuthValidationCubit.get(context).setEmail(_emailController.text));
-    _passwordController
-        .addListener(() => AuthValidationCubit.get(context).setPassword(_passwordController.text));
-  }*/
-
 @override
   void initState() {
-    //_bind();
+  _emailController = TextEditingController();
+  _passwordController = TextEditingController();
     super.initState();
   }
 
@@ -60,11 +57,8 @@ class _EmailAndpasswordfieldssectionState extends State<EmailAndpasswordfieldsse
               textFieldModel: TextFieldModel(
                 controller: _emailController,
                 label: AppStrings.email,
-                onChanged: (value) => AuthValidationCubit.get(context).setEmail(value),
+                onChanged: widget.onChangedEmail,
                 error: (isEmailValid) ? null : AppStrings.emailError,
-                textStyle: AppStyles.styleMedium20(context).copyWith(
-                  color: Colors.grey[400],
-                ),
                 prefixIcon: Assets.imagesEmailOutlined,
               ),
             ),
@@ -77,13 +71,10 @@ class _EmailAndpasswordfieldssectionState extends State<EmailAndpasswordfieldsse
                     controller: _passwordController,
                     keyboardType: TextInputType.visiblePassword,
                     label: AppStrings.password,
-                    onChanged: (value) => AuthValidationCubit.get(context).setPassword(value),
+                    onChanged: widget.onChangedPassword,
                     error: (isPasswordValid)
                                 ? null
-                                : '${AppStrings.passwordError1}\n${AppStrings.passwordError2}',
-                    textStyle: AppStyles.styleMedium20(context).copyWith(
-                      color: Colors.grey[400],
-                    ),
+                                : AppStrings.passwordError,
                     prefixIcon: Assets.imagesLockOutlined,
                     obscureText: EyeVisibilityCubit.get(context).isPassword,
                     suffixPressed: EyeVisibilityCubit.get(context)
@@ -97,5 +88,12 @@ class _EmailAndpasswordfieldssectionState extends State<EmailAndpasswordfieldsse
         );
       },
     );
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 }

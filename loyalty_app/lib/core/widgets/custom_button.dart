@@ -1,6 +1,4 @@
-
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:loyalty_app/core/utils/app_styles.dart';
 
 class CustomButton extends StatelessWidget {

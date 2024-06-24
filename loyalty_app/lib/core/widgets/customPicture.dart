@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:loyalty_app/Features/splash/data/models/loyalty_page_model.dart';
 
 class CustomPicture extends StatelessWidget {
   const CustomPicture({

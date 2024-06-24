@@ -18,10 +18,21 @@ class AppStrings{
   static const String email = 'Email';
   static const String password = 'Password';
   static const String login = 'Login';
+  static const String register = 'Register';
   static const String createAnAccount = 'create an account';
+  static const String alreadyHaveAnAccount = 'already have an account ?';
   static const String skip = 'Skip';
-  static const emailError = "your email is empty or not valid";
-  static const passwordError1 =
-      "Your Password must not be empty or Less than 6 characters";
-  static const passwordError2 = "or there are no lowercase and uppercase letters or symbols";
+  static const String emailError = "your email is empty or not valid";
+  static const String passwordError =
+      "Your Password must not be empty or Less than 6 characters or there are no lowercase and uppercase letters or symbols";
+  static const String joinLoyalifyToday = 'Join Loyalify Today';
+  static const String unlockRewardsStartEarningNow = 'Unlock Rewards, Start Earning Now!';
+  static const String firstName = 'First name';
+  static const String lastName = 'Last name';
+  static const String address = 'Address';
+  static const String phoneNumber = 'Phone number';
+  static const String firstNameError = "FirstName must not be empty or Less than 3 characters";
+  static const String lastNameError = "LastName must not be empty or Less than 3 characters";
+  static const String addressError = "Address must not be empty or Less than 5 characters";
+  static const String phoneNumberError = "Phone Number must not be empty or Less than 10";
 }
