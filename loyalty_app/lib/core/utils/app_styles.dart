@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/core/utils/font_manager.dart';
 import 'package:loyalty_app/core/utils/size_config.dart';

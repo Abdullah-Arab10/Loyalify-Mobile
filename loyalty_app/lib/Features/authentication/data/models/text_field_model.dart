@@ -12,7 +12,6 @@ class TextFieldModel {
   final String? initial;
   final bool? enable;
   final bool obscureText;
-  final TextStyle? textStyle;
   final ValueChanged<String>? onChanged;
 
   const TextFieldModel({
@@ -25,7 +24,6 @@ class TextFieldModel {
     this.enable,
     this.initial,
     this.onChanged,
-    this.textStyle,
     this.suffixIcon,
     required this.prefixIcon,
     this.obscureText = false,

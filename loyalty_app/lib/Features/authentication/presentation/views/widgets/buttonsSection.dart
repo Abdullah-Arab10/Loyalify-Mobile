@@ -9,34 +9,32 @@ import 'package:loyalty_app/core/widgets/custom_button.dart';
 
 class ButtonsSection extends StatelessWidget {
   const ButtonsSection({
-    super.key,
+    super.key, required this.buttonText, required this.bottomCenterText, this.onPressed,
   });
+
+  final String buttonText;
+  final String bottomCenterText;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        BlocBuilder<AuthValidationCubit, AuthValidationState>(
-          builder: (context, state) {
-            return SizedBox(
-              width: double.infinity,
-              child: CustomButton(
-                foregroundColor: AppColors.white,
-                text: AppStrings.login,
-                backgroundColor: AppColors.kPrimaryColor,
-                onPressed: (state is AllDataIsValid)
-                    ? () {}
-                    : null,
-              ),
-            );
-          },
+        SizedBox(
+          width: double.infinity,
+          child: CustomButton(
+            foregroundColor: AppColors.white,
+            text: buttonText,
+            backgroundColor: AppColors.kPrimaryColor,
+            onPressed: onPressed,
+          ),
         ),
-        SizedBox(height: MediaQuery.of(context).size.height / AppPadding.p16),
+        SizedBox(height: MediaQuery.of(context).size.height / AppPadding.p22),
         Align(
-          alignment: Alignment.center,
+          alignment: Alignment.bottomCenter,
           child: CustomTextButton(
             onPressed: () {},
-            text: AppStrings.createAnAccount,
+            text: bottomCenterText,
           ),
         ),
       ],

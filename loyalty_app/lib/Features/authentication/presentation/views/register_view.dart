@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:loyalty_app/Features/authentication/presentation/views/widgets/login_view_body.dart';
+import 'package:loyalty_app/Features/authentication/presentation/views/widgets/register_view_body.dart';
 import 'package:loyalty_app/core/utils/app_colors.dart';
 import 'package:loyalty_app/core/widgets/custom_app_bar.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class RegisterView extends StatefulWidget {
+  const RegisterView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<RegisterView> createState() => _RegisterViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
-  @override
+class _RegisterViewState extends State<RegisterView> {
+
+@override
   void initState() {
     super.initState();
   }
@@ -21,7 +22,7 @@ class _LoginViewState extends State<LoginView> {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: const CustomAppBar(),
-      body: LoginViewBody(),
+      body: RegisterViewBody(),
     );
   }
 

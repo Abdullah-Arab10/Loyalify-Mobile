@@ -3,15 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loyalty_app/Features/authentication/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:loyalty_app/Features/authentication/presentation/manager/auth_validation_cubit/auth_validation_cubit.dart';
 import 'package:loyalty_app/Features/authentication/presentation/manager/eye_visibility_cubit/eye_visibility_cubit.dart';
+import 'package:loyalty_app/Features/authentication/presentation/views/widgets/address_and_phoneNumber_fields_section.dart';
 import 'package:loyalty_app/Features/authentication/presentation/views/widgets/buttonsSection.dart';
 import 'package:loyalty_app/Features/authentication/presentation/views/widgets/emailAndPasswordFieldsSection.dart';
-import 'package:loyalty_app/core/utils/app_images.dart';
+import 'package:loyalty_app/Features/authentication/presentation/views/widgets/firstName_and_lastName_fields_section.dart';
+import 'package:loyalty_app/Features/authentication/presentation/views/widgets/title_and_subtitle_section.dart';
 import 'package:loyalty_app/core/utils/strings_manager.dart';
 import 'package:loyalty_app/core/utils/values_manager.dart';
-import 'package:loyalty_app/core/widgets/customPicture.dart';
 
-class LoginViewBody extends StatelessWidget {
-  LoginViewBody({super.key});
+class RegisterViewBody extends StatelessWidget {
+  RegisterViewBody({super.key});
 
   final _formKey = GlobalKey<FormState>();
 
@@ -44,25 +45,37 @@ class LoginViewBody extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const CustomPicture(
-                        image: Assets.imagesLogin,
+                      const TitleAndSubTitleSection(),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height /
+                              AppPadding.p33),
+                      const FirstnameAndLastnameFieldsSection(),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height /
+                              AppPadding.p33),
+                      EmailAndpasswordfieldssection(
+                        onChangedEmail: (value) =>
+                            AuthValidationCubit.get(context)
+                                .setRegisterEmail(value),
+                        onChangedPassword: (value) =>
+                            AuthValidationCubit.get(context)
+                                .setRegisterPassword(value),
                       ),
                       SizedBox(
                           height: MediaQuery.of(context).size.height /
-                              AppPadding.p14),
-                       EmailAndpasswordfieldssection(
-                         onChangedEmail: (value) => AuthValidationCubit.get(context).setLoginEmail(value),
-                         onChangedPassword: (value) => AuthValidationCubit.get(context).setLoginPassword(value),
-                         ),
+                              AppPadding.p33),
+                      const AddressAndPhonenumberFieldsSection(),
                       SizedBox(
                           height: MediaQuery.of(context).size.height /
-                              AppPadding.p10),
+                              AppPadding.p12),
                       BlocBuilder<AuthValidationCubit, AuthValidationState>(
                         builder: (context, state) {
                           return ButtonsSection(
-                            buttonText: AppStrings.login,
-                            bottomCenterText: AppStrings.createAnAccount,
-                            onPressed: (state is AllDataLoginIsValid) ? () {} : null,
+                            buttonText: AppStrings.register,
+                            bottomCenterText: AppStrings.alreadyHaveAnAccount,
+                            onPressed: (state is AllDataRegisterIsValid)
+                                ? () {}
+                                : null,
                           );
                         },
                       ),

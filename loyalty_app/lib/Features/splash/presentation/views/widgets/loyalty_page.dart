@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:loyalty_app/Features/splash/data/models/loyalty_page_model.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/widgets/texts_section.dart';
 import 'package:loyalty_app/core/utils/size_config.dart';
