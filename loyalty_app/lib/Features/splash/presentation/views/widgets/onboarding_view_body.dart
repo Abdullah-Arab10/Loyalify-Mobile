@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/widgets/custom_page_view.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/widgets/dots_indicator_and_buttons.dart';
+import 'package:loyalty_app/core/resources/app_router.dart';
 import 'package:loyalty_app/core/resources/strings_manager.dart';
+import 'package:loyalty_app/core/utils/app_prefs.dart';
+import 'package:loyalty_app/core/utils/service_locator.dart';
 
 class OnboardingViewBody extends StatefulWidget {
   const OnboardingViewBody({super.key});
@@ -14,9 +18,14 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
   late PageController pageController;
   int currentPageIndex = 0;
   String text = AppStrings.Continue;
+  final AppPreferences _appPreferences = getIt.get<AppPreferences>();
+  _bind() {
+    _appPreferences.setOnBoardingScreenViewed();
+  }
 
   @override
   void initState() {
+    _bind();
     pageController = PageController();
     pageController.addListener(() {
       currentPageIndex = pageController.page!.round();
@@ -38,6 +47,14 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
           DotsIndicatorAndButtons(
             currentPageIndex: currentPageIndex,
             text: text,
+            onPressed: currentPageIndex != 2 ? () {
+              pageController.nextPage(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+              );
+            } : (){
+              GoRouter.of(context).go(AppRouter.kRegisterView);
+            },
           ),
         ]),
       ),
