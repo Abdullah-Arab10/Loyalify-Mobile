@@ -8,6 +8,7 @@ import 'package:loyalty_app/Features/authentication/presentation/views/widgets/b
 import 'package:loyalty_app/Features/authentication/presentation/views/widgets/email_and_password_fields_section.dart';
 import 'package:loyalty_app/core/resources/app_colors.dart';
 import 'package:loyalty_app/core/resources/app_images.dart';
+import 'package:loyalty_app/core/utils/app_prefs.dart';
 import 'package:loyalty_app/core/utils/service_locator.dart';
 import 'package:loyalty_app/core/resources/strings_manager.dart';
 import 'package:loyalty_app/core/resources/values_manager.dart';
@@ -18,7 +19,7 @@ class LoginViewBody extends StatelessWidget {
   LoginViewBody({super.key});
 
   final _formKey = GlobalKey<FormState>();
-
+  final AppPreferences _appPreferences = getIt.get<AppPreferences>();
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -34,7 +35,11 @@ class LoginViewBody extends StatelessWidget {
         ),
       ],
       child: BlocConsumer<AuthCubit, AuthState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if(state is AuthSuccessState){
+            _appPreferences.setUserLoggedIn();
+          }
+        },
         builder: (context, state) {
           return ModalProgressHUD(
             inAsyncCall: AuthCubit.get(context).isLoading,
