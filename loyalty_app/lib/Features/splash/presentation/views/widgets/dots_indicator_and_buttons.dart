@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/widgets/dots_indicator.dart';
 import 'package:loyalty_app/constants.dart';
-import 'package:loyalty_app/core/utils/app_colors.dart';
-import 'package:loyalty_app/core/utils/strings_manager.dart';
+import 'package:loyalty_app/core/resources/app_colors.dart';
+import 'package:loyalty_app/core/resources/strings_manager.dart';
 import 'package:loyalty_app/core/widgets/custom_button.dart';
 
 class DotsIndicatorAndButtons extends StatelessWidget {

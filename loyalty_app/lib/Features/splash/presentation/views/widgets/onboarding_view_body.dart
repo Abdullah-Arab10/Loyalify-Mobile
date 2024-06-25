@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:loyalty_app/Features/splash/presentation/views/widgets/CustomPageView.dart';
+import 'package:loyalty_app/Features/splash/presentation/views/widgets/custom_page_view.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/widgets/dots_indicator_and_buttons.dart';
-import 'package:loyalty_app/core/utils/strings_manager.dart';
+import 'package:loyalty_app/core/resources/strings_manager.dart';
 
 class OnboardingViewBody extends StatefulWidget {
   const OnboardingViewBody({super.key});

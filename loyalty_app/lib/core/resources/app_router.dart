@@ -1,8 +1,9 @@
 import 'package:go_router/go_router.dart';
 import 'package:loyalty_app/Features/authentication/presentation/views/login_view.dart';
 import 'package:loyalty_app/Features/authentication/presentation/views/register_view.dart';
-import 'package:loyalty_app/Features/splash/presentation/views/onBoarding_view.dart';
+import 'package:loyalty_app/Features/splash/presentation/views/on_boarding_view.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/splash_view.dart';
+import 'package:loyalty_app/core/utils/service_locator.dart';
 
 abstract class AppRouter {
   static const  kOnboardingView = '/onboardingView';
@@ -13,7 +14,9 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => const RegisterView(),
+        builder: (context, state) {
+          return const RegisterView();
+        },
       ),
       GoRoute(
         path: kOnboardingView,
