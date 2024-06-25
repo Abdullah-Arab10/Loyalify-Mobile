@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/Features/splash/data/models/loyalty_page_model.dart';
-import 'package:loyalty_app/core/utils/app_styles.dart';
+import 'package:loyalty_app/core/resources/app_styles.dart';
 
 class TextsSection extends StatelessWidget {
   const TextsSection({

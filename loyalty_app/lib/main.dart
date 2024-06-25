@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:loyalty_app/core/utils/app_router.dart';
+import 'package:loyalty_app/core/resources/app_router.dart';
+import 'package:loyalty_app/core/utils/service_locator.dart';
 
-void main() {
+void main() async{
+   WidgetsFlutterBinding.ensureInitialized();
+  await setupServiceLocator();
   runApp(const Loyalify());
   /*runApp(DevicePreview(
     enabled: true,

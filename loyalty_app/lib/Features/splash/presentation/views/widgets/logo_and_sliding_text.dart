@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/widgets/sliding_text.dart';
-import 'package:loyalty_app/core/utils/app_colors.dart';
-import 'package:loyalty_app/core/utils/app_images.dart';
+import 'package:loyalty_app/core/resources/app_colors.dart';
+import 'package:loyalty_app/core/resources/app_images.dart';
 import 'package:loyalty_app/core/utils/size_config.dart';
 
 class LogoAndSlidingText extends StatelessWidget {

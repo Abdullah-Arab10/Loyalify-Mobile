@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loyalty_app/core/utils/app_colors.dart';
+import 'package:loyalty_app/core/resources/app_colors.dart';
 
 class CustomCircularIndicator extends StatelessWidget {
   const CustomCircularIndicator({

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/Features/splash/data/models/loyalty_page_model.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/widgets/loyalty_page.dart';
-import 'package:loyalty_app/core/utils/app_images.dart';
-import 'package:loyalty_app/core/utils/strings_manager.dart';
+import 'package:loyalty_app/core/resources/app_images.dart';
+import 'package:loyalty_app/core/resources/strings_manager.dart';
 
 class CustomPageView extends StatelessWidget {
   CustomPageView({

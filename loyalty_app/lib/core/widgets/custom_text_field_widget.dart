@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/Features/authentication/data/models/text_field_model.dart';
-import 'package:loyalty_app/core/utils/app_colors.dart';
-import 'package:loyalty_app/core/utils/app_styles.dart';
-import 'package:loyalty_app/core/widgets/customIcon.dart';
+import 'package:loyalty_app/core/resources/app_colors.dart';
+import 'package:loyalty_app/core/resources/app_styles.dart';
+import 'package:loyalty_app/core/widgets/custom_icon.dart';
 
 class CustomTextFieldWidget extends StatelessWidget {
   final TextFieldModel textFieldModel;

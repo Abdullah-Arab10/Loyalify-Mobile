@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/widgets/onboarding_view_body.dart';
-import 'package:loyalty_app/core/utils/app_colors.dart';
+import 'package:loyalty_app/core/resources/app_colors.dart';
 
 class OnboardingView extends StatelessWidget {
   const OnboardingView({super.key});

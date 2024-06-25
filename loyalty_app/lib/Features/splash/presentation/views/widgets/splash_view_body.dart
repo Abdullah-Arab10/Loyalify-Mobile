@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/widgets/custom_circular_indicator.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/widgets/logo_and_sliding_text.dart';
-import 'package:loyalty_app/core/utils/app_router.dart';
+import 'package:loyalty_app/core/resources/app_router.dart';
 import 'package:loyalty_app/core/utils/size_config.dart';
 
 class SplashViewbody extends StatefulWidget {

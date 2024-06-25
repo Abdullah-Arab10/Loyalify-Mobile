@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/Features/authentication/presentation/views/widgets/login_view_body.dart';
-import 'package:loyalty_app/core/utils/app_colors.dart';
+import 'package:loyalty_app/core/resources/app_colors.dart';
 import 'package:loyalty_app/core/widgets/custom_app_bar.dart';
 
 class LoginView extends StatefulWidget {

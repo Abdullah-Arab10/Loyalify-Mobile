@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:loyalty_app/core/utils/app_colors.dart';
-import 'package:loyalty_app/core/utils/app_styles.dart';
+import 'package:loyalty_app/core/resources/app_colors.dart';
+import 'package:loyalty_app/core/resources/app_styles.dart';
 import 'package:loyalty_app/core/utils/size_config.dart';
-import 'package:loyalty_app/core/utils/strings_manager.dart';
+import 'package:loyalty_app/core/resources/strings_manager.dart';
 
 class SlidingText extends StatelessWidget {
   const SlidingText({
