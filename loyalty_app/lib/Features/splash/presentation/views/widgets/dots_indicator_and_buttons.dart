@@ -18,45 +18,40 @@ class DotsIndicatorAndButtons extends StatelessWidget {
   final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 0,
-      left: 0,
-      right: 0,
-      child: Column(
-        children: [
-          DotsIndicator(currentPageIndex: currentPageIndex),
-          const SizedBox(height: 32),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Row(
-              children: [
-                currentPageIndex != 2
-                    ? Expanded(
-                        child: CustomButton(
-                          foregroundColor: kPrimaryColor,
-                          text: AppStrings.skip,
-                          backgroundColor: AppColors.white.withOpacity(0.9), onPressed: () {
-                            GoRouter.of(context).go(AppRouter.kRegisterView);
-                          },
-                        ),
-                      )
-                    : const SizedBox(),
-                const SizedBox(
-                  width: 16,
+    return Column(
+      children: [
+        DotsIndicator(currentPageIndex: currentPageIndex),
+        const SizedBox(height: 32),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Row(
+            children: [
+              currentPageIndex != 2
+                  ? Expanded(
+                      child: CustomButton(
+                        foregroundColor: kPrimaryColor,
+                        text: AppStrings.skip,
+                        backgroundColor: AppColors.white.withOpacity(0.9), onPressed: () {
+                          GoRouter.of(context).go(AppRouter.kRegisterView);
+                        },
+                      ),
+                    )
+                  : const SizedBox(),
+              const SizedBox(
+                width: 16,
+              ),
+              Expanded(
+                child: CustomButton(
+                  foregroundColor: AppColors.white,
+                  text: text,
+                  backgroundColor: kPrimaryColor, onPressed: onPressed,
                 ),
-                Expanded(
-                  child: CustomButton(
-                    foregroundColor: AppColors.white,
-                    text: text,
-                    backgroundColor: kPrimaryColor, onPressed: onPressed,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-          const SizedBox(height: 24),
-        ],
-      ),
+        ),
+        const SizedBox(height: 24),
+      ],
     );
   }
 }
