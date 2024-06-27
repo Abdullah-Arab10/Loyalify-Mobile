@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:loyalty_app/core/resources/app_images.dart';
+import 'package:loyalty_app/core/utils/app_images.dart';
 part 'eye_visibility_state.dart';
 
 class EyeVisibilityCubit extends Cubit<EyeVisibilityState> {

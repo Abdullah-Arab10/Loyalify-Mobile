@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loyalty_app/core/resources/app_colors.dart';
 import 'package:loyalty_app/core/resources/font_manager.dart';
 import 'package:loyalty_app/core/utils/size_config.dart';
 
@@ -14,7 +15,7 @@ abstract class AppStyles {
 
   static TextStyle styleRegular16(context) {
     return TextStyle(
-      color: Colors.black54,
+      color: AppColors.kPrimaryColor,
       fontSize: getResponsiveFontSize(context, fontSize: 16),
       fontFamily: FontConstants.fontFamily,
       fontWeight: FontWeight.w400,
@@ -32,7 +33,7 @@ abstract class AppStyles {
 
   static TextStyle styleMedium20(BuildContext context) {
     return TextStyle(
-      color: const Color(0xFFFFFFFF),
+      color: AppColors.gray74,
       fontSize: getResponsiveFontSize(context, fontSize: 20),
       fontFamily: FontConstants.fontFamily,
       fontWeight: FontWeight.w500,
@@ -50,7 +51,7 @@ abstract class AppStyles {
 
   static TextStyle styleSemiBold20(BuildContext context) {
     return TextStyle(
-      color: const Color(0xFF064061),
+      color: AppColors.black,
       fontSize: getResponsiveFontSize(context, fontSize: 20),
       fontFamily: FontConstants.fontFamily,
       fontWeight: FontWeight.w600,
@@ -68,7 +69,7 @@ abstract class AppStyles {
 
   static TextStyle styleSemiBold16(BuildContext context) {
     return TextStyle(
-      color: const Color(0xFF064061),
+      color: AppColors.kPrimaryColor,
       fontSize: getResponsiveFontSize(context, fontSize: 16),
       fontFamily: FontConstants.fontFamily,
       fontWeight: FontWeight.w600,
@@ -88,6 +89,15 @@ abstract class AppStyles {
     return TextStyle(
       color: const Color(0xFF000000),
       fontSize: getResponsiveFontSize(context, fontSize: 29),
+      fontFamily: FontConstants.fontFamily,
+      fontWeight: FontWeight.w700,
+    );
+  }
+
+  static TextStyle styleBold20(BuildContext context) {
+    return TextStyle(
+      color: AppColors.black,
+      fontSize: getResponsiveFontSize(context, fontSize: 20),
       fontFamily: FontConstants.fontFamily,
       fontWeight: FontWeight.w700,
     );

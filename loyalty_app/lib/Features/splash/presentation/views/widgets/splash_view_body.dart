@@ -73,7 +73,7 @@ class _SplashViewbodyState extends State<SplashViewbody>
       if (isUserLoggedIn)
         {
           // navigate to main screen
-          //Navigator.pushReplacementNamed(context, Routes.homeLayoutRoute)
+           GoRouter.of(context).go(AppRouter.kHomeLayoutView),
         }
       else
         {

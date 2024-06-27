@@ -33,24 +33,20 @@ class CustomTextFieldWidget extends StatelessWidget {
   InputDecoration customInputDecoration(BuildContext context) {
     return InputDecoration(
       filled: true,
-      fillColor: AppColors.grey1,
+      fillColor: textFieldModel.fillColor ?? AppColors.guyabano,
       labelText: textFieldModel.label,
-      labelStyle: AppStyles.styleMedium20(context).copyWith(
-        color: AppColors.grey,
-      ),
+      labelStyle: AppStyles.styleMedium20(context),
       errorText: textFieldModel.error,
       errorMaxLines: 3,
-      errorStyle: AppStyles.styleRegular16(context).copyWith(
-        color: AppColors.kPrimaryColor
-      ),
+      errorStyle: AppStyles.styleRegular16(context),
       prefixIcon: CustomIcon(
-        image: textFieldModel.prefixIcon, color: AppColors.grey600,
+        image: textFieldModel.prefixIcon, color: AppColors.sonicSilver,
       ),
       suffixIcon: textFieldModel.suffixIcon != null
           ? GestureDetector(
               onTap: textFieldModel.suffixPressed,
               child: CustomIcon(
-                image: textFieldModel.suffixIcon!, color: AppColors.grey600,
+                image: textFieldModel.suffixIcon!, color: AppColors.sonicSilver,
               ))
           : null,
       enabledBorder: customOutlineInputBorder(),
@@ -65,7 +61,7 @@ class CustomTextFieldWidget extends StatelessWidget {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
       borderSide: BorderSide(
-        color: color ?? AppColors.grey1,
+        color: color ?? AppColors.guyabano ,
         width: 1.5,
       ),
     );

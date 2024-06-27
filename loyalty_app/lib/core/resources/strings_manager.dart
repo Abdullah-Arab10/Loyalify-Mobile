@@ -35,4 +35,10 @@ class AppStrings{
   static const String lastNameError = "LastName must not be empty or Less than 3 characters";
   static const String addressError = "Address must not be empty or Less than 5 characters";
   static const String phoneNumberError = "Phone Number must not be empty or Less than 10";
+  static const String home = 'Home';
+  static const String merchants = 'Merchants';
+  static const String myVoucher = 'My Voucher';
+  static const String activity = 'Activity';
+  static const String account = 'Account';
+  static const String search = 'search';
 }

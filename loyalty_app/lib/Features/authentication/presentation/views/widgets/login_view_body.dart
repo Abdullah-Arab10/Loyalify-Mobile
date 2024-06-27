@@ -7,13 +7,15 @@ import 'package:loyalty_app/Features/authentication/presentation/manager/eye_vis
 import 'package:loyalty_app/Features/authentication/presentation/views/widgets/buttons_section.dart';
 import 'package:loyalty_app/Features/authentication/presentation/views/widgets/email_and_password_fields_section.dart';
 import 'package:loyalty_app/core/resources/app_colors.dart';
-import 'package:loyalty_app/core/resources/app_images.dart';
+import 'package:loyalty_app/core/utils/app_images.dart';
 import 'package:loyalty_app/core/utils/app_prefs.dart';
 import 'package:loyalty_app/core/utils/service_locator.dart';
 import 'package:loyalty_app/core/resources/strings_manager.dart';
 import 'package:loyalty_app/core/resources/values_manager.dart';
 import 'package:loyalty_app/core/widgets/custom_picture.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class LoginViewBody extends StatelessWidget {
   LoginViewBody({super.key});
@@ -36,7 +38,15 @@ class LoginViewBody extends StatelessWidget {
       ],
       child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
-          if(state is AuthSuccessState){
+          if (state is AuthSuccessState) {
+            showTopSnackBar(
+              Overlay.of(context),
+              const CustomSnackBar.info(
+                backgroundColor: Colors.green,
+                message:
+                    "There is some information. You need to do something with that",
+              ),
+            );
             _appPreferences.setUserLoggedIn();
           }
         },
@@ -65,10 +75,14 @@ class LoginViewBody extends StatelessWidget {
                         SizedBox(
                             height: MediaQuery.of(context).size.height /
                                 AppPadding.p14),
-                         EmailAndpasswordfieldssection(
-                           onChangedEmail: (value) => AuthValidationCubit.get(context).setLoginEmail(value),
-                           onChangedPassword: (value) => AuthValidationCubit.get(context).setLoginPassword(value),
-                           ),
+                        EmailAndpasswordfieldssection(
+                          onChangedEmail: (value) =>
+                              AuthValidationCubit.get(context)
+                                  .setLoginEmail(value),
+                          onChangedPassword: (value) =>
+                              AuthValidationCubit.get(context)
+                                  .setLoginPassword(value),
+                        ),
                         SizedBox(
                             height: MediaQuery.of(context).size.height /
                                 AppPadding.p10),
@@ -77,9 +91,11 @@ class LoginViewBody extends StatelessWidget {
                             return ButtonsSection(
                               buttonText: AppStrings.login,
                               bottomCenterText: AppStrings.createAnAccount,
-                              onPressed: (state is AllDataLoginIsValid) ? () {
-                                AuthCubit.get(context).login(context);
-                              } : null,
+                              onPressed: (state is AllDataLoginIsValid)
+                                  ? () {
+                                      AuthCubit.get(context).login(context);
+                                    }
+                                  : null,
                             );
                           },
                         ),

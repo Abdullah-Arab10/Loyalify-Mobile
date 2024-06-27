@@ -13,6 +13,7 @@ class TextFieldModel {
   final bool? enable;
   final bool obscureText;
   final ValueChanged<String>? onChanged;
+  final Color? fillColor;
 
   const TextFieldModel({
     required this.label,
@@ -27,5 +28,6 @@ class TextFieldModel {
     this.suffixIcon,
     required this.prefixIcon,
     this.obscureText = false,
+    this.fillColor,
   });
 }
