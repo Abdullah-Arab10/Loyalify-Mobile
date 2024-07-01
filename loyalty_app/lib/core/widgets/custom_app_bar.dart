@@ -7,11 +7,13 @@ import 'package:loyalty_app/core/widgets/custom_icon.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
-    super.key, required this.backgroundColor, required this.svgPicture, this.onTap, this.isTitle, this.isActions,
+    super.key, required this.backgroundColor, required this.svgPicture, this.onTap, this.isTitle, this.isActions, this.title, this.icon,
   });
 
 final bool? isTitle;
 final bool? isActions;
+final String? title;
+final String? icon;
 final Color backgroundColor;
 final CustomIcon svgPicture;
 final GestureTapCallback? onTap;
@@ -24,7 +26,7 @@ final GestureTapCallback? onTap;
       scrolledUnderElevation: 0.0,
       elevation: 0,
       backgroundColor: backgroundColor,
-      leading: GestureDetector(
+      leading: InkWell(
         onTap: onTap,
         child: Center(
           child: svgPicture,
@@ -33,12 +35,12 @@ final GestureTapCallback? onTap;
       title: isTitle != null ? Align(
         alignment: Alignment.center,
         child: Text(
-                AppStrings.merchants,
+                title!,
                 style: AppStyles.styleBold29(context),
               ),
       ) : null,
     actions: isActions != null ? [
-      CustomIcon(image: Assets.imagesMenu, color: AppColors.black,)
+      CustomIcon(image: icon!, color: AppColors.black, padding: 12.0,)
     ] : null,
     );
   }

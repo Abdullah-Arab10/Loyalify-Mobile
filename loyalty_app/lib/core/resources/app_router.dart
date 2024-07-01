@@ -16,7 +16,7 @@ abstract class AppRouter {
       GoRoute(
         path: '/',
         builder: (context, state) {
-          return const OnboardingView();
+          return const RegisterView();
         },
       ),
       GoRoute(

@@ -25,6 +25,7 @@ class TitleAndSubTitleSection extends StatelessWidget {
             CustomIcon(
               image: Assets.imagesPerson,
               color: AppColors.kPrimaryColor,
+              padding: 12.0,
             ),
           ],
         ),

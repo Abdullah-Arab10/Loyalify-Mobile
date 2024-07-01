@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loyalty_app/Features/authentication/data/repos/auth_repo_impl.dart';
+import 'package:loyalty_app/Features/authentication/presentation/manager/auth_cubit/auth_cubit.dart';
+import 'package:loyalty_app/Features/authentication/presentation/manager/auth_validation_cubit/auth_validation_cubit.dart';
+import 'package:loyalty_app/Features/authentication/presentation/manager/eye_visibility_cubit/eye_visibility_cubit.dart';
 import 'package:loyalty_app/Features/authentication/presentation/views/widgets/register_view_body.dart';
 import 'package:loyalty_app/core/resources/app_colors.dart';
 import 'package:loyalty_app/core/utils/app_images.dart';
+import 'package:loyalty_app/core/utils/service_locator.dart';
 import 'package:loyalty_app/core/widgets/custom_app_bar.dart';
 import 'package:loyalty_app/core/widgets/custom_icon.dart';
 
@@ -20,17 +26,36 @@ class _RegisterViewState extends State<RegisterView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      appBar: CustomAppBar(
-        backgroundColor: AppColors.white,
-        svgPicture: CustomIcon(
-          image: Assets.imagesLeftArrow,
-          color: AppColors.black,
-        ),
-      ),
-      body: RegisterViewBody(),
-    );
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => AuthCubit(getIt.get<AuthRepoImpl>()),
+          ),
+          BlocProvider(
+            create: (context) => AuthValidationCubit(),
+          ),
+          BlocProvider(
+            create: (context) => EyeVisibilityCubit(),
+          ),
+        ],
+        child: BlocBuilder<AuthCubit, AuthState>(
+          builder: (context, state) {
+            return Scaffold(
+              backgroundColor: AppColors.white,
+              appBar: CustomAppBar(
+                backgroundColor: state is AuthLoadingState
+                    ? const Color(0xffE2E2E2)
+                    : AppColors.white,
+                svgPicture: CustomIcon(
+                  image: Assets.imagesLeftArrow,
+                  color: AppColors.black,
+                  padding: 12.0,
+                ),
+              ),
+              body: RegisterViewBody(),
+            );
+          },
+        ));
   }
 
   @override

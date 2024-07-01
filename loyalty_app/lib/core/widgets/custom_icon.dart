@@ -5,15 +5,17 @@ class CustomIcon extends StatelessWidget {
   const CustomIcon({
     super.key,
     required this.image,
-    required this.color,
+    required this.color, required this.padding,
   });
 
   final String image;
   final Color color;
+  final double padding;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: EdgeInsets.all(padding),
           child: SvgPicture.asset(
             image,
             colorFilter: ColorFilter.mode(

@@ -10,4 +10,5 @@ class AppColors{
   static Color gainsboro = const Color(0xffF5F5F5);
   static Color darkGainsboro = const Color(0xff9B9B9B);
   static Color lightGray = const Color(0xffE0E0E0); // 9B9B9B
+  static Color successGren = const Color(0xff4BB543);
 }

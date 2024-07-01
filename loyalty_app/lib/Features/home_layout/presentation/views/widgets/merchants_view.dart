@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/Features/authentication/data/models/text_field_model.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/custom_sliver_grid.dart';
+import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/field_and_list_of_filtering_Item_section.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/list_of_filtering_item.dart';
 import 'package:loyalty_app/core/resources/app_colors.dart';
 import 'package:loyalty_app/core/resources/strings_manager.dart';
@@ -27,40 +28,10 @@ class _MerchantsViewState extends State<MerchantsView> {
   Widget build(BuildContext context) {
     return CustomScrollView(slivers: [
       SliverToBoxAdapter(
-        child: Padding(
-          padding: const EdgeInsets.only(
-            top: 12,
-            left: 16,
-            right: 16,
-          ),
-          child: CustomTextFieldWidget(
-            textFieldModel: TextFieldModel(
-              controller: _searchController,
-              label: AppStrings.search,
-              fillColor: AppColors.white,
-              onChanged: (value) {},
-              prefixIcon: Assets.imagesSearch,
-            ),
-          ),
-        ),
-      ),
-      const SliverToBoxAdapter(
-        child: SizedBox(
-          height: 24,
-        ),
-      ),
-      const SliverToBoxAdapter(child: ListOfFilteringItem()),
-      const SliverToBoxAdapter(
-        child: SizedBox(
-          height: 24,
-        ),
-      ),
+          child: FieldAndListOfFilteringItemSection(
+              searchController: _searchController)),
       const SliverPadding(
-          padding: EdgeInsetsDirectional.only(
-            start: 16,
-            end: 16,
-            bottom: 16
-          ),
+          padding: EdgeInsetsDirectional.only(start: 16, end: 16, bottom: 16),
           sliver: CustomSliverGrid()),
     ]);
   }

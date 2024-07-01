@@ -6,6 +6,7 @@ import 'package:loyalty_app/core/resources/app_router.dart';
 import 'package:loyalty_app/core/resources/strings_manager.dart';
 import 'package:loyalty_app/core/utils/app_prefs.dart';
 import 'package:loyalty_app/core/utils/service_locator.dart';
+import 'package:loyalty_app/core/utils/size_config.dart';
 
 class OnboardingViewBody extends StatefulWidget {
   const OnboardingViewBody({super.key});
@@ -39,11 +40,18 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig.init(context);
     return CustomScrollView(slivers: [
+      SliverToBoxAdapter(
+        child: SizedBox(
+          height: SizeConfig.height * .09,
+        ),
+      ),
       SliverFillRemaining(
-        //hasScrollBody: false,
+        hasScrollBody: false,
         child: Column(children: [
           Expanded(child: CustomPageView(pageController: pageController)),
+          const SizedBox(height: 32),
           DotsIndicatorAndButtons(
             currentPageIndex: currentPageIndex,
             text: text,

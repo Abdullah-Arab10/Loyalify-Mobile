@@ -113,18 +113,56 @@ abstract class AppStyles {
 }
 
 double getResponsiveFontSize(context, {required double fontSize}) {
+  double height = MediaQuery.sizeOf(context).height;
   double scaleFactor = getScaleFactor(context);
   double responsiveFontSize = fontSize * scaleFactor;
-  double lowerLimit = fontSize * .8;
-  double upperLimit = fontSize * 1.2;
-  if (scaleFactor >= SizeConfig.tablet / 550) {
-    lowerLimit = fontSize * 1.2;
-    upperLimit = fontSize * 1.6;
+
+  double lowerLimit = 0.0;
+  double upperLimit = 0.0;
+
+  if (height >= 1600) {
+    responsiveFontSize *= 1.3;
+    lowerLimit = fontSize * 1.8;
+    upperLimit =fontSize * 2.2;
+  }else{
+    lowerLimit = fontSize * .8;
+    upperLimit =fontSize * 1.2;
   }
+
   return responsiveFontSize.clamp(lowerLimit, upperLimit);
 }
 
 double getScaleFactor(context) {
+  // var dispatcher = PlatformDispatcher.instance;
+  // var physicalWidth = dispatcher.views.first.physicalSize.width;
+  // var devicePixelRatio = dispatcher.views.first.devicePixelRatio;
+  // double width = physicalWidth / devicePixelRatio;
+
   double width = MediaQuery.sizeOf(context).width;
-  return width / 550;
+
+  if (width < SizeConfig.tablet) {
+    return width / 550;
+  } else if (width < SizeConfig.desktop) {
+    return width / 800;
+  } else {
+    return width / 1100;
+  }
 }
+
+
+// double getResponsiveFontSize(context, {required double fontSize}) {
+//   double scaleFactor = getScaleFactor(context);
+//   double responsiveFontSize = fontSize * scaleFactor;
+//   double lowerLimit = fontSize * .8;
+//   double upperLimit = fontSize * 1.2;
+//   if (scaleFactor >= SizeConfig.tablet / 550) {
+//     lowerLimit = fontSize * 1.2;
+//     upperLimit = fontSize * 1.6;
+//   }
+//   return responsiveFontSize.clamp(lowerLimit, upperLimit);
+// }
+
+// double getScaleFactor(context) {
+//   double width = MediaQuery.sizeOf(context).width;
+//   return width / 550;
+// }

@@ -22,13 +22,17 @@ class ServerFailure extends Failure {
 
       case DioExceptionType.badResponse:
         return ServerFailure.fromResponse(
-            dioError.response?.statusCode, dioError.response?.data);
+            dioError.response?.statusCode);
       case DioExceptionType.cancel:
         return ServerFailure('Request to ApiServer was canceled');
 
       case DioExceptionType.unknown:
-        if (dioError.message!.contains('SocketException')) {
-          return ServerFailure('No Internet Connection');
+        if (dioError.message != null) {
+          if (dioError.message!.contains('SocketException')) {
+            return ServerFailure('No Internet Connection');
+          }
+        } else if (dioError.message == null) {
+          return ServerFailure('Oops There was an Error, Please try again');
         }
         return ServerFailure('Unexpected Error, Please try again!');
       default:
@@ -36,9 +40,11 @@ class ServerFailure extends Failure {
     }
   }
 
-  factory ServerFailure.fromResponse(int? statusCode, dynamic response) {
-    if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
-      return ServerFailure(response['title']);
+  factory ServerFailure.fromResponse(int? statusCode) {
+    if (statusCode == 400) {
+      return ServerFailure('Invalid Email or Password');
+    } else if (statusCode == 401) {
+      return ServerFailure('Incorrect Email or Password');
     } else if (statusCode == 404) {
       return ServerFailure('Your request not found, Please try later!');
     } else if (statusCode == 500) {
