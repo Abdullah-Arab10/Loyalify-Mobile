@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/manager/home_layout_cubit/home_layout_cubit.dart';
@@ -9,10 +10,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupServiceLocator();
   runApp(const Loyalify());
-  /*runApp(DevicePreview(
-    enabled: true,
-    builder: (context) => const Loyalify()
-    ));*/
+  // runApp(DevicePreview(
+  //   enabled: true,
+  //   builder: (context) => const Loyalify()
+  //   ));
 }
 
 class Loyalify extends StatelessWidget {
@@ -24,8 +25,8 @@ class Loyalify extends StatelessWidget {
     return BlocProvider(
       create: (context) => HomeLayoutCubit(),
       child: MaterialApp.router(
-        /*locale: DevicePreview.locale(context),
-          builder: DevicePreview.appBuilder,*/
+        // locale: DevicePreview.locale(context),
+        // builder: DevicePreview.appBuilder,
         debugShowCheckedModeBanner: false,
         routerConfig: AppRouter.router,
         theme: getApplicationTheme(),

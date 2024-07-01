@@ -8,12 +8,17 @@ import 'package:loyalty_app/core/widgets/custom_button.dart';
 
 class ButtonsSection extends StatelessWidget {
   const ButtonsSection({
-    super.key, required this.buttonText, required this.bottomCenterText, this.onPressed,
+    super.key,
+    required this.buttonText,
+    required this.bottomCenterText,
+    this.onPressed,
+    required this.textButtonOnPressed,
   });
 
   final String buttonText;
   final String bottomCenterText;
   final VoidCallback? onPressed;
+  final VoidCallback textButtonOnPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +37,7 @@ class ButtonsSection extends StatelessWidget {
         Align(
           alignment: Alignment.bottomCenter,
           child: CustomTextButton(
-            onPressed: () {
-              GoRouter.of(context).go(AppRouter.kLoginView);
-            },
+            onPressed: textButtonOnPressed,
             text: bottomCenterText,
           ),
         ),

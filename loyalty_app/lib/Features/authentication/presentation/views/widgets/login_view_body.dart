@@ -1,113 +1,83 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:loyalty_app/Features/authentication/data/repos/auth_repo_impl.dart';
+import 'package:go_router/go_router.dart';
 import 'package:loyalty_app/Features/authentication/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:loyalty_app/Features/authentication/presentation/manager/auth_validation_cubit/auth_validation_cubit.dart';
-import 'package:loyalty_app/Features/authentication/presentation/manager/eye_visibility_cubit/eye_visibility_cubit.dart';
-import 'package:loyalty_app/Features/authentication/presentation/views/widgets/buttons_section.dart';
-import 'package:loyalty_app/Features/authentication/presentation/views/widgets/email_and_password_fields_section.dart';
+import 'package:loyalty_app/Features/authentication/presentation/views/widgets/login_fields_and_buttons.dart';
 import 'package:loyalty_app/core/resources/app_colors.dart';
+import 'package:loyalty_app/core/resources/app_router.dart';
 import 'package:loyalty_app/core/utils/app_images.dart';
 import 'package:loyalty_app/core/utils/app_prefs.dart';
+import 'package:loyalty_app/core/utils/functions.dart';
 import 'package:loyalty_app/core/utils/service_locator.dart';
-import 'package:loyalty_app/core/resources/strings_manager.dart';
-import 'package:loyalty_app/core/resources/values_manager.dart';
 import 'package:loyalty_app/core/widgets/custom_picture.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:top_snackbar_flutter/custom_snack_bar.dart';
-import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class LoginViewBody extends StatelessWidget {
   LoginViewBody({super.key});
 
   final _formKey = GlobalKey<FormState>();
   final AppPreferences _appPreferences = getIt.get<AppPreferences>();
+
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => AuthCubit(getIt.get<AuthRepoImpl>()),
-        ),
-        BlocProvider(
-          create: (context) => AuthValidationCubit(),
-        ),
-        BlocProvider(
-          create: (context) => EyeVisibilityCubit(),
-        ),
-      ],
-      child: BlocConsumer<AuthCubit, AuthState>(
-        listener: (context, state) {
-          if (state is AuthSuccessState) {
-            showTopSnackBar(
-              Overlay.of(context),
-              const CustomSnackBar.info(
-                backgroundColor: Colors.green,
-                message:
-                    "There is some information. You need to do something with that",
-              ),
-            );
-            _appPreferences.setUserLoggedIn();
-          }
-        },
-        builder: (context, state) {
-          return ModalProgressHUD(
-            inAsyncCall: AuthCubit.get(context).isLoading,
-            color: AppColors.white,
-            progressIndicator: CircularProgressIndicator(
-              color: AppColors.kPrimaryColor,
-            ),
-            child: Center(
-              child: SingleChildScrollView(
-                child: Form(
-                  key: _formKey,
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: 32,
-                      right: 32,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const CustomPicture(
+    return BlocConsumer<AuthCubit, AuthState>(
+      listener: (context, state) {
+        final SnackBar snackBar;
+        if (state is AuthSuccessState) {
+          snackBar = customSnackBar(
+            title: 'Will Done!',
+            message: 'Logged in successfully',
+            contentType: ContentType.success,
+            color: AppColors.successGren
+          );
+          showSnackBar(context, snackBar);
+          _appPreferences.setUserLoggedIn();
+          GoRouter.of(context).go(AppRouter.kHomeLayoutView);
+        } else if (state is AuthFailureState) {
+          snackBar = customSnackBar(
+            title: 'On Snap',
+            message: state.message,
+            contentType: ContentType.failure,
+          );
+          showSnackBar(context, snackBar);
+          AuthValidationCubit.get(context).clearLoginObject();
+        }
+      },
+      builder: (context, state) {
+        return ModalProgressHUD(
+          inAsyncCall: AuthCubit.get(context).isLoading,
+          color: AppColors.darkGainsboro,
+          progressIndicator: CircularProgressIndicator(
+            color: AppColors.kPrimaryColor,
+          ),
+          child: Center(
+            child: SingleChildScrollView(
+              child: Form(
+                key: _formKey,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 32,
+                    right: 32,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CustomPicture(
                           image: Assets.imagesLogin,
-                        ),
-                        SizedBox(
-                            height: MediaQuery.of(context).size.height /
-                                AppPadding.p14),
-                        EmailAndpasswordfieldssection(
-                          onChangedEmail: (value) =>
-                              AuthValidationCubit.get(context)
-                                  .setLoginEmail(value),
-                          onChangedPassword: (value) =>
-                              AuthValidationCubit.get(context)
-                                  .setLoginPassword(value),
-                        ),
-                        SizedBox(
-                            height: MediaQuery.of(context).size.height /
-                                AppPadding.p10),
-                        BlocBuilder<AuthValidationCubit, AuthValidationState>(
-                          builder: (context, state) {
-                            return ButtonsSection(
-                              buttonText: AppStrings.login,
-                              bottomCenterText: AppStrings.createAnAccount,
-                              onPressed: (state is AllDataLoginIsValid)
-                                  ? () {
-                                      AuthCubit.get(context).login(context);
-                                    }
-                                  : null,
-                            );
-                          },
-                        ),
-                      ],
-                    ),
+                          padding: 0,
+                          maxWidth: getMaxWidth(context)),
+                      const LoginFieldsAndButtons(),
+                    ],
                   ),
                 ),
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }
+

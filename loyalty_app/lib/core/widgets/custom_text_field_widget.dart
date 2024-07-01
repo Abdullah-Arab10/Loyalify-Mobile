@@ -40,13 +40,17 @@ class CustomTextFieldWidget extends StatelessWidget {
       errorMaxLines: 3,
       errorStyle: AppStyles.styleRegular16(context),
       prefixIcon: CustomIcon(
-        image: textFieldModel.prefixIcon, color: AppColors.sonicSilver,
+        image: textFieldModel.prefixIcon,
+        color: AppColors.sonicSilver,
+        padding: 12.0,
       ),
       suffixIcon: textFieldModel.suffixIcon != null
           ? GestureDetector(
               onTap: textFieldModel.suffixPressed,
               child: CustomIcon(
-                image: textFieldModel.suffixIcon!, color: AppColors.sonicSilver,
+                image: textFieldModel.suffixIcon!,
+                color: AppColors.sonicSilver,
+                padding: 12.0,
               ))
           : null,
       enabledBorder: customOutlineInputBorder(),
@@ -61,7 +65,7 @@ class CustomTextFieldWidget extends StatelessWidget {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
       borderSide: BorderSide(
-        color: color ?? AppColors.guyabano ,
+        color: color ?? AppColors.guyabano,
         width: 1.5,
       ),
     );

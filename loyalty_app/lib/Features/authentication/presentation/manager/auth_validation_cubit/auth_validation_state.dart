@@ -30,4 +30,8 @@ final class PhoneNumberIsInValid extends AuthValidationState {}
 
 final class AllDataLoginIsValid extends AuthValidationState {}
 
+final class AllDataLoginIsInValid extends AuthValidationState {}
+
 final class AllDataRegisterIsValid extends AuthValidationState {}
+
+final class AllDataRegisterIsInValid extends AuthValidationState {}

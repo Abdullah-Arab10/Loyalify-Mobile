@@ -54,18 +54,18 @@ class AuthValidationCubit extends Cubit<AuthValidationState> {
   }
 
   setRegisterPassword(String password) {
-    if(_isPasswordValid(password)){
-    registerObject = registerObject.copyWith(password: password);
-    }else {
+    if (_isPasswordValid(password)) {
+      registerObject = registerObject.copyWith(password: password);
+    } else {
       registerObject = registerObject.copyWith(password: "");
     }
     _areAllInputsRegisterValid();
   }
 
   setRegisterEmail(String email) {
-    if(_isEmailValid(email)){
-    registerObject = registerObject.copyWith(email: email);
-    }else {
+    if (_isEmailValid(email)) {
+      registerObject = registerObject.copyWith(email: email);
+    } else {
       registerObject = registerObject.copyWith(email: "");
     }
     _areAllInputsRegisterValid();
@@ -94,20 +94,20 @@ class AuthValidationCubit extends Cubit<AuthValidationState> {
   }
 
   bool _isFirstNameValid(String firstName) {
-    if(firstName.length >= 3){
+    if (firstName.length >= 3) {
       emit(FirstNameIsValid());
       return true;
-    }else{
+    } else {
       emit(FirstNameIsInValid());
       return false;
     }
   }
 
   bool _isLastNameValid(String lastName) {
-        if(lastName.length >= 3){
+    if (lastName.length >= 3) {
       emit(LastNameIsValid());
       return true;
-    }else{
+    } else {
       emit(LastNameIsInValid());
       return false;
     }
@@ -138,40 +138,55 @@ class AuthValidationCubit extends Cubit<AuthValidationState> {
   }
 
   bool _isPhoneNumberValid(String phoneNumber) {
-    if(phoneNumber.length >= 10 && phoneNumber.isNotEmpty){
+    if (phoneNumber.length >= 10 && phoneNumber.isNotEmpty) {
       emit(PhoneNumberIsValid());
       return true;
-    }else{
+    } else {
       emit(PhoneNumberIsInValid());
       return false;
     }
   }
 
   bool _isAddressValid(String address) {
-    if(address.length >= 5 && address.isNotEmpty){
+    if (address.length >= 5 && address.isNotEmpty) {
       emit(AddressIsValid());
       return true;
-    }else{
+    } else {
       emit(AddressIsInValid());
       return false;
     }
   }
 
   void _areAllInputsLoginValid() {
-    if (loginObject.email.isNotEmpty &&
-        loginObject.password.isNotEmpty) {
+    if (loginObject.email.isNotEmpty && loginObject.password.isNotEmpty) {
       emit(AllDataLoginIsValid());
     }
   }
 
   void _areAllInputsRegisterValid() {
-    if(registerObject.lastName.isNotEmpty &&
+    if (registerObject.lastName.isNotEmpty &&
         registerObject.firstName.isNotEmpty &&
         registerObject.email.isNotEmpty &&
         registerObject.password.isNotEmpty &&
         registerObject.phoneNumber.isNotEmpty &&
-        registerObject.address.isNotEmpty){
-         emit(AllDataRegisterIsValid());
-        }
+        registerObject.address.isNotEmpty) {
+      emit(AllDataRegisterIsValid());
+    }
+  }
+
+  clearLoginObject() {
+    loginObject = loginObject.copyWith(email: "");
+    loginObject = loginObject.copyWith(password: "");
+    emit(AllDataLoginIsInValid());
+  }
+
+  clearRegisterObject() {
+    registerObject = registerObject.copyWith(firstName: "");
+    registerObject = registerObject.copyWith(lastName: "");
+    loginObject = loginObject.copyWith(email: "");
+    loginObject = loginObject.copyWith(password: "");
+    registerObject = registerObject.copyWith(address: "");
+    registerObject = registerObject.copyWith(phoneNumber: "");
+    emit(AllDataRegisterIsInValid());
   }
 }

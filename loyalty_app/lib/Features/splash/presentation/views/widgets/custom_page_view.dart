@@ -3,6 +3,7 @@ import 'package:loyalty_app/Features/splash/data/models/loyalty_page_model.dart'
 import 'package:loyalty_app/Features/splash/presentation/views/widgets/loyalty_page.dart';
 import 'package:loyalty_app/core/resources/strings_manager.dart';
 import 'package:loyalty_app/core/utils/app_images.dart';
+import 'package:expandable_page_view/expandable_page_view.dart';
 
 class CustomPageView extends StatelessWidget {
   CustomPageView({
@@ -32,7 +33,7 @@ class CustomPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        /*return ExpandablePageView(
+      return ExpandablePageView(
       controller: pageController,
       scrollDirection: Axis.horizontal,
       children: List.generate(
@@ -42,16 +43,16 @@ class CustomPageView extends StatelessWidget {
           index: index,
         ),
       ),
-    );*/
-    return PageView.builder(
-      controller: pageController,
-      itemCount: listOfPages.length,
-      itemBuilder: (BuildContext context, int index) {
-        return LoyaltyPage(
-          item: listOfPages[index],
-          index: index,
-        );
-      },
     );
+    // return PageView.builder(
+    //   controller: pageController,
+    //   itemCount: listOfPages.length,
+    //   itemBuilder: (BuildContext context, int index) {
+    //     return LoyaltyPage(
+    //       item: listOfPages[index],
+    //       index: index,
+    //     );
+    //   },
+    // );
   }
 }
