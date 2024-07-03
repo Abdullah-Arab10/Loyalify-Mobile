@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/merchants_image.dart';
 import 'package:loyalty_app/core/resources/app_colors.dart';
 import 'package:loyalty_app/core/resources/app_styles.dart';
+import 'package:loyalty_app/core/widgets/custom_image.dart';
 import 'package:loyalty_app/core/widgets/fitted_text.dart';
 
 class MerchantsItem extends StatelessWidget {
@@ -29,13 +29,18 @@ class MerchantsItem extends StatelessWidget {
           const SizedBox(
             height: 8,
           ),
-           Expanded(
+          Expanded(
             flex: 3,
-            child: MerchantsImage(
-              image: image,
+            child: CustomImage(
+              image: Image.network(
+                image,
+                fit: BoxFit.cover,
+              ),
               maxWidth: 250,
               decoration: const BoxDecoration(shape: BoxShape.circle),
               clipBehavior: Clip.antiAlias,
+              padding: 0,
+              aspectRatio: 1,
             ),
           ),
           const SizedBox(

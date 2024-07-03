@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CustomPicture extends StatelessWidget {
-  const CustomPicture({
+class CustomSvgPicture extends StatelessWidget {
+  const CustomSvgPicture({
     super.key,
     required this.image,
     this.color,

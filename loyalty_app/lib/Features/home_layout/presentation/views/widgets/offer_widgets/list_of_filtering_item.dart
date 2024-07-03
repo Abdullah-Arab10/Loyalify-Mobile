@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/manager/merchants_cubit/merchants_cubit.dart';
-import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/filtering_item.dart';
+import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/merchants_widgets/filtering_item.dart';
 
 class ListOfFilteringItem extends StatelessWidget {
   const ListOfFilteringItem({super.key});

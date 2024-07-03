@@ -15,17 +15,17 @@ class CustomPageView extends StatelessWidget {
 
   final listOfPages = [
     const LoyaltyPageModel(
-        image: Assets.imagesBrandloyaltyRafiki,
+        image: Assets.imagesBrandLoyaltyRafiki,
         title1: AppStrings.discoverRewards,
         title2: AppStrings.embraceLoyalty,
         subTitle: AppStrings.welcomeToLoyalify),
     const LoyaltyPageModel(
-        image: Assets.imagesBrandloyaltyPana,
+        image: Assets.imagesBrandLoyaltyPana,
         title1: AppStrings.earnPointsEnjoy,
         title2: AppStrings.rewards,
         subTitle: AppStrings.startEnjoying),
     const LoyaltyPageModel(
-        image: Assets.imagesBrandloyaltyCuate,
+        image: Assets.imagesBrandLoyaltyCuate,
         title1: AppStrings.tailorYourRewards,
         title2: AppStrings.experience,
         subTitle: AppStrings.journeywithLoyalify),

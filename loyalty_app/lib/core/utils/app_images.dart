@@ -13,17 +13,17 @@ class Assets {
   /// assets/images/address.svg
   static const String imagesAddress = "assets/images/address.svg";
 
-  /// Assets for imagesBrand loyaltyCuate
-  /// assets/images/brand loyalty-cuate.svg
-  static const String imagesBrandloyaltyCuate = "assets/images/brand loyalty-cuate.svg";
+  /// Assets for imagesBrandLoyaltyCuate
+  /// assets/images/brandLoyaltyCuate.svg
+  static const String imagesBrandLoyaltyCuate = "assets/images/brandLoyaltyCuate.svg";
 
-  /// Assets for imagesBrand loyaltyPana
-  /// assets/images/brand loyalty-pana.svg
-  static const String imagesBrandloyaltyPana = "assets/images/brand loyalty-pana.svg";
+  /// Assets for imagesBrandLoyaltyPana
+  /// assets/images/brandLoyaltyPana.svg
+  static const String imagesBrandLoyaltyPana = "assets/images/brandLoyaltyPana.svg";
 
-  /// Assets for imagesBrand loyaltyRafiki
-  /// assets/images/brand loyalty-rafiki.svg
-  static const String imagesBrandloyaltyRafiki = "assets/images/brand loyalty-rafiki.svg";
+  /// Assets for imagesBrandLoyaltyRafiki
+  /// assets/images/brandLoyaltyRafiki.svg
+  static const String imagesBrandLoyaltyRafiki = "assets/images/brandLoyaltyRafiki.svg";
 
   /// Assets for imagesEmailOutlined
   /// assets/images/emailOutlined.svg
@@ -72,6 +72,10 @@ class Assets {
   /// Assets for imagesMerchants
   /// assets/images/merchants.svg
   static const String imagesMerchants = "assets/images/merchants.svg";
+
+  /// Assets for imagesNoDataCuate
+  /// assets/images/noDataCuate.svg
+  static const String imagesNoDataCuate = "assets/images/noDataCuate.svg";
 
   /// Assets for imagesOffer
   /// assets/images/offer.svg
