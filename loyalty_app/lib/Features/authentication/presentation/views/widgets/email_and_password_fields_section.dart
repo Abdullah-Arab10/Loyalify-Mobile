@@ -9,47 +9,51 @@ import 'package:loyalty_app/core/utils/app_images.dart';
 import 'package:loyalty_app/core/widgets/custom_text_field_widget.dart';
 
 class EmailAndpasswordfieldssection extends StatefulWidget {
-  const EmailAndpasswordfieldssection({super.key, required this.onChangedEmail, required this.onChangedPassword});
+  const EmailAndpasswordfieldssection(
+      {super.key,
+      required this.onChangedEmail,
+      required this.onChangedPassword});
 
-final ValueChanged<String> onChangedEmail;
-final ValueChanged<String> onChangedPassword;
+  final ValueChanged<String> onChangedEmail;
+  final ValueChanged<String> onChangedPassword;
 
   @override
-  State<EmailAndpasswordfieldssection> createState() => _EmailAndpasswordfieldssectionState();
+  State<EmailAndpasswordfieldssection> createState() =>
+      _EmailAndpasswordfieldssectionState();
 }
 
-class _EmailAndpasswordfieldssectionState extends State<EmailAndpasswordfieldssection> {
+class _EmailAndpasswordfieldssectionState
+    extends State<EmailAndpasswordfieldssection> {
+  _EmailAndpasswordfieldssectionState();
 
-_EmailAndpasswordfieldssectionState();
+  late TextEditingController _emailController;
 
-   late TextEditingController _emailController;
+  late TextEditingController _passwordController;
 
-   late TextEditingController _passwordController;
+  bool isEmailValid = true;
+  bool isPasswordValid = true;
 
-   bool isEmailValid = true;
-   bool isPasswordValid = true;
-
-@override
+  @override
   void initState() {
-  _emailController = TextEditingController();
-  _passwordController = TextEditingController();
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthValidationCubit, AuthValidationState>(
-      listener: (BuildContext context, AuthValidationState state) { 
-        if(state is EmailIsValid){
+      listener: (BuildContext context, AuthValidationState state) {
+        if (state is EmailIsValid) {
           isEmailValid = true;
-        }else if(state is EmailIsInValid){
+        } else if (state is EmailIsInValid) {
           isEmailValid = false;
-        }else if(state is PasswordIsValid){
+        } else if (state is PasswordIsValid) {
           isPasswordValid = true;
-        }else if(state is PasswordIsInValid){
+        } else if (state is PasswordIsInValid) {
           isPasswordValid = false;
         }
-       },
+      },
       builder: (context, state) {
         return Column(
           children: [
@@ -72,9 +76,7 @@ _EmailAndpasswordfieldssectionState();
                     keyboardType: TextInputType.visiblePassword,
                     label: AppStrings.password,
                     onChanged: widget.onChangedPassword,
-                    error: (isPasswordValid)
-                                ? null
-                                : AppStrings.passwordError,
+                    error: (isPasswordValid) ? null : AppStrings.passwordError,
                     prefixIcon: Assets.imagesLockOutlined,
                     obscureText: EyeVisibilityCubit.get(context).isPassword,
                     suffixPressed: EyeVisibilityCubit.get(context)

@@ -12,10 +12,9 @@ class AuthRepoImpl implements AuthRepo {
 
   AuthRepoImpl(this.apiService);
   @override
-  Future<Either<Failure, LoginModel>> login(
-      LoginRequest loginRequest) async {
+  Future<Either<Failure, LoginModel>> login(LoginRequest loginRequest) async {
     try {
-      var result = await apiService.post(endPoint: 'Auth/login', data: {
+      var result = await apiService.post(endPoint: '/Auth/login', data: {
         'email': loginRequest.email,
         'password': loginRequest.password,
       });
@@ -23,7 +22,6 @@ class AuthRepoImpl implements AuthRepo {
       final value = LoginModel.fromJson(result);
 
       return right(value);
-
     } catch (e) {
       if (e is DioException) {
         return left(
@@ -42,7 +40,7 @@ class AuthRepoImpl implements AuthRepo {
   Future<Either<Failure, RegisterModel>> register(
       RegisterRequest registerRequest) async {
     try {
-      var result = await apiService.post(endPoint: 'Auth/register', data: {
+      var result = await apiService.post(endPoint: '/Auth/register', data: {
         'firstName': registerRequest.firstName,
         'lastName': registerRequest.lastName,
         'email': registerRequest.email,

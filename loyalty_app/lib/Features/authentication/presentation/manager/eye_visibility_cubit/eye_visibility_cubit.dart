@@ -3,10 +3,9 @@ import 'package:loyalty_app/core/utils/app_images.dart';
 part 'eye_visibility_state.dart';
 
 class EyeVisibilityCubit extends Cubit<EyeVisibilityState> {
-
   EyeVisibilityCubit() : super(EyeVisibilityInitial());
 
-static EyeVisibilityCubit get(context) => BlocProvider.of(context);
+  static EyeVisibilityCubit get(context) => BlocProvider.of(context);
 
   String suffix = Assets.imagesEyeIconVisibilityOn;
   bool isPassword = true;
@@ -18,5 +17,4 @@ static EyeVisibilityCubit get(context) => BlocProvider.of(context);
         : Assets.imagesEyeIconVisibilityOff;
     emit(ChangePasswordVisibilityState());
   }
-
 }

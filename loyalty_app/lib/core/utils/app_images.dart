@@ -73,6 +73,10 @@ class Assets {
   /// assets/images/merchants.svg
   static const String imagesMerchants = "assets/images/merchants.svg";
 
+  /// Assets for imagesOffer
+  /// assets/images/offer.svg
+  static const String imagesOffer = "assets/images/offer.svg";
+
   /// Assets for imagesPerson
   /// assets/images/person.svg
   static const String imagesPerson = "assets/images/person.svg";
@@ -88,6 +92,10 @@ class Assets {
   /// Assets for imagesSss
   /// assets/images/sss.jpg
   static const String imagesSss = "assets/images/sss.jpg";
+
+  /// Assets for imagesTtt
+  /// assets/images/ttt.jpeg
+  static const String imagesTtt = "assets/images/ttt.jpeg";
 
   /// Assets for imagesVoucher
   /// assets/images/voucher.svg

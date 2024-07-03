@@ -4,4 +4,4 @@ abstract class EyeVisibilityState {}
 
 final class EyeVisibilityInitial extends EyeVisibilityState {}
 
-final class ChangePasswordVisibilityState extends EyeVisibilityState{}
+final class ChangePasswordVisibilityState extends EyeVisibilityState {}

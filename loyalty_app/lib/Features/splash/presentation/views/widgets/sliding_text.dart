@@ -20,14 +20,12 @@ class SlidingText extends StatelessWidget {
         builder: (context, _) {
           return SlideTransition(
             position: slidingAnimation,
-            child: Text(
-              AppStrings.loyalify,
-              textAlign: TextAlign.center,
-              style: AppStyles.styleBold29(context).copyWith(
-                color: AppColors.white,
-                fontSize: SizeConfig.width * 0.08,
-              )
-            ),
+            child: Text(AppStrings.loyalify,
+                textAlign: TextAlign.center,
+                style: AppStyles.styleBold29(context).copyWith(
+                  color: AppColors.white,
+                  fontSize: SizeConfig.width * 0.08,
+                )),
           );
         });
   }

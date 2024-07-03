@@ -6,5 +6,6 @@ import 'package:loyalty_app/core/errors/failures.dart';
 
 abstract class AuthRepo {
   Future<Either<Failure, LoginModel>> login(LoginRequest loginRequest);
-  Future<Either<Failure, RegisterModel>> register(RegisterRequest registerRequest);
+  Future<Either<Failure, RegisterModel>> register(
+      RegisterRequest registerRequest);
 }

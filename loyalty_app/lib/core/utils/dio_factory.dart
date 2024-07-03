@@ -10,10 +10,9 @@ const String AUTHORIZATION = "authorization";
 // const String DEFAULT_LANGUAGE = "language";
 
 class DioFactory {
-
   DioFactory();
 
-  Future<Dio> getDio() async{
+  Future<Dio> getDio() async {
     Dio dio = Dio();
 
     Map<String, String> headers = {
@@ -23,9 +22,9 @@ class DioFactory {
     };
 
     dio.options = BaseOptions(
-        baseUrl: ApiService.baseUrl,
-        headers: headers,
-);
+      baseUrl: ApiService.baseUrl,
+      headers: headers,
+    );
 
     if (!kReleaseMode) {
       // its debug mode so print app logs

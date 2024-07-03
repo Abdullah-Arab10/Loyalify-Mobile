@@ -2,13 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/merchants_image.dart';
 import 'package:loyalty_app/core/resources/app_colors.dart';
 import 'package:loyalty_app/core/resources/app_styles.dart';
-import 'package:loyalty_app/core/utils/app_images.dart';
 import 'package:loyalty_app/core/widgets/fitted_text.dart';
 
 class MerchantsItem extends StatelessWidget {
   const MerchantsItem({
     super.key,
+    required this.image,
+    required this.merchantName,
+    required this.categoryName,
   });
+
+  final String image;
+  final String merchantName;
+  final String categoryName;
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +29,12 @@ class MerchantsItem extends StatelessWidget {
           const SizedBox(
             height: 8,
           ),
-          const Expanded(
+           Expanded(
             flex: 3,
             child: MerchantsImage(
-              image: Assets.imagesSss,
+              image: image,
               maxWidth: 250,
-              decoration: BoxDecoration(shape: BoxShape.circle),
+              decoration: const BoxDecoration(shape: BoxShape.circle),
               clipBehavior: Clip.antiAlias,
             ),
           ),
@@ -36,12 +42,12 @@ class MerchantsItem extends StatelessWidget {
             height: 8,
           ),
           FittedText(
-              text: 'Loyalify', textStyle: AppStyles.styleBold20(context)),
+              text: merchantName, textStyle: AppStyles.styleBold20(context)),
           const SizedBox(
             height: 8,
           ),
           FittedText(
-              text: 'Food & Drinks',
+              text: categoryName,
               textStyle: AppStyles.styleSemiBold16(context)),
           const SizedBox(
             height: 8,

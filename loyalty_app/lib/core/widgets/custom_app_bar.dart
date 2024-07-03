@@ -7,16 +7,23 @@ import 'package:loyalty_app/core/widgets/custom_icon.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
-    super.key, required this.backgroundColor, required this.svgPicture, this.onTap, this.isTitle, this.isActions, this.title, this.icon,
+    super.key,
+    required this.backgroundColor,
+    required this.svgPicture,
+    this.onTap,
+    this.isTitle,
+    this.isActions,
+    this.title,
+    this.icon,
   });
 
-final bool? isTitle;
-final bool? isActions;
-final String? title;
-final String? icon;
-final Color backgroundColor;
-final CustomIcon svgPicture;
-final GestureTapCallback? onTap;
+  final bool? isTitle;
+  final bool? isActions;
+  final String? title;
+  final String? icon;
+  final Color backgroundColor;
+  final CustomIcon svgPicture;
+  final GestureTapCallback? onTap;
   @override
   Size get preferredSize => const Size.fromHeight(60.0);
 
@@ -32,16 +39,24 @@ final GestureTapCallback? onTap;
           child: svgPicture,
         ),
       ),
-      title: isTitle != null ? Align(
-        alignment: Alignment.center,
-        child: Text(
+      title: isTitle != null
+          ? Align(
+              alignment: Alignment.center,
+              child: Text(
                 title!,
                 style: AppStyles.styleBold29(context),
               ),
-      ) : null,
-    actions: isActions != null ? [
-      CustomIcon(image: icon!, color: AppColors.black, padding: 12.0,)
-    ] : null,
+            )
+          : null,
+      actions: isActions != null
+          ? [
+              CustomIcon(
+                image: icon!,
+                color: AppColors.black,
+                padding: 12.0,
+              )
+            ]
+          : null,
     );
   }
 }

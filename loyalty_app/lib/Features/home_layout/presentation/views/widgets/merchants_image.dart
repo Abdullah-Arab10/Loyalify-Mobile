@@ -23,7 +23,7 @@ class MerchantsImage extends StatelessWidget {
         child: Container(
             decoration: decoration,
             clipBehavior: clipBehavior,
-            child: Image.asset(
+            child: Image.network(
               image,
               fit: BoxFit.cover,
             )),

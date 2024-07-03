@@ -33,7 +33,7 @@ class RegisterViewBody extends StatelessWidget {
               contentType: ContentType.success,
               color: AppColors.successGren);
           showSnackBar(context, snackBar);
-          GoRouter.of(context).go(AppRouter.kHomeLayoutView);
+          GoRouter.of(context).go(AppRouter.kLoginView);
         } else if (state is AuthFailureState) {
           snackBar = customSnackBar(
             title: 'On Snap',

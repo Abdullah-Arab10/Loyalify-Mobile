@@ -123,10 +123,10 @@ double getResponsiveFontSize(context, {required double fontSize}) {
   if (height >= 1600) {
     responsiveFontSize *= 1.3;
     lowerLimit = fontSize * 1.8;
-    upperLimit =fontSize * 2.2;
-  }else{
+    upperLimit = fontSize * 2.2;
+  } else {
     lowerLimit = fontSize * .8;
-    upperLimit =fontSize * 1.2;
+    upperLimit = fontSize * 1.2;
   }
 
   return responsiveFontSize.clamp(lowerLimit, upperLimit);
@@ -148,7 +148,6 @@ double getScaleFactor(context) {
     return width / 1100;
   }
 }
-
 
 // double getResponsiveFontSize(context, {required double fontSize}) {
 //   double scaleFactor = getScaleFactor(context);

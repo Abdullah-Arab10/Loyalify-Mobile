@@ -8,7 +8,7 @@ const String prefsKeyIsUserLoggedIn = "PREFS_KEY_IS_USER_LOGGED_IN";
 
 const String TOKEN = "TOKEN";
 
-class AppPreferences{
+class AppPreferences {
   final SharedPreferences _sharedPreferences;
   AppPreferences(this._sharedPreferences);
 
@@ -53,8 +53,7 @@ class AppPreferences{
   }
 
   Future<bool> isOnBoardingScreenViewed() async {
-    return _sharedPreferences.getBool(prefsKeyOnboardingScreenViewed) ??
-        false;
+    return _sharedPreferences.getBool(prefsKeyOnboardingScreenViewed) ?? false;
   }
 
   //login
