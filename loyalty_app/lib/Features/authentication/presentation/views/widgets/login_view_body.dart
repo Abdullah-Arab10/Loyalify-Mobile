@@ -11,7 +11,7 @@ import 'package:loyalty_app/core/utils/app_images.dart';
 import 'package:loyalty_app/core/utils/app_prefs.dart';
 import 'package:loyalty_app/core/utils/functions.dart';
 import 'package:loyalty_app/core/utils/service_locator.dart';
-import 'package:loyalty_app/core/widgets/custom_picture.dart';
+import 'package:loyalty_app/core/widgets/custom_svg_picture.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class LoginViewBody extends StatelessWidget {
@@ -63,7 +63,7 @@ class LoginViewBody extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CustomPicture(
+                      CustomSvgPicture(
                           image: Assets.imagesLogin,
                           padding: 0,
                           maxWidth: getMaxWidth(context)),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/Features/authentication/data/models/text_field_model.dart';
-import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/list_of_filtering_item.dart';
+import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/offer_widgets/list_of_filtering_item.dart';
 import 'package:loyalty_app/core/resources/app_colors.dart';
 import 'package:loyalty_app/core/resources/strings_manager.dart';
 import 'package:loyalty_app/core/utils/app_images.dart';

@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 
-class MerchantsImage extends StatelessWidget {
-  const MerchantsImage({
+class CustomImage extends StatelessWidget {
+  const CustomImage({
     super.key,
     required this.image,
+    required this.padding,
     required this.maxWidth,
     this.decoration,
-    this.clipBehavior = Clip.none,
+    required this.aspectRatio,
+    required this.clipBehavior,
   });
 
-  final String image;
+  final Image image;
+  final double padding;
   final double maxWidth;
   final Decoration? decoration;
+  final double aspectRatio;
   final Clip clipBehavior;
 
   @override
@@ -19,14 +23,11 @@ class MerchantsImage extends StatelessWidget {
     return ConstrainedBox(
       constraints: BoxConstraints(maxWidth: maxWidth),
       child: AspectRatio(
-        aspectRatio: 1,
+        aspectRatio: aspectRatio,
         child: Container(
             decoration: decoration,
             clipBehavior: clipBehavior,
-            child: Image.network(
-              image,
-              fit: BoxFit.cover,
-            )),
+            child: Padding(padding: EdgeInsets.all(padding), child: image)),
       ),
     );
   }

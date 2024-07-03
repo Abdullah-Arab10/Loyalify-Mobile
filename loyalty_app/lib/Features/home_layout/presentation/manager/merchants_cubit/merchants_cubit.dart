@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loyalty_app/Features/home_layout/data/models/categories_model/categories_model.dart';
-import 'package:loyalty_app/Features/home_layout/data/models/categories_model/category.dart';
 import 'package:loyalty_app/Features/home_layout/data/models/stores_model/stores_model.dart';
 import 'package:loyalty_app/Features/home_layout/data/repos/merchants_repos/merchants_repos.dart';
 part 'merchants_state.dart';
