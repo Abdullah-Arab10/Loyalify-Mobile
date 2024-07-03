@@ -10,7 +10,9 @@ import 'package:loyalty_app/core/widgets/custom_button.dart';
 class DotsIndicatorAndButtons extends StatelessWidget {
   const DotsIndicatorAndButtons({
     super.key,
-    required this.currentPageIndex, required this.text, required this.onPressed,
+    required this.currentPageIndex,
+    required this.text,
+    required this.onPressed,
   });
 
   final int currentPageIndex;
@@ -31,7 +33,8 @@ class DotsIndicatorAndButtons extends StatelessWidget {
                       child: CustomButton(
                         foregroundColor: kPrimaryColor,
                         text: AppStrings.skip,
-                        backgroundColor: AppColors.white.withOpacity(0.9), onPressed: () {
+                        backgroundColor: AppColors.white.withOpacity(0.9),
+                        onPressed: () {
                           GoRouter.of(context).go(AppRouter.kRegisterView);
                         },
                       ),
@@ -44,7 +47,8 @@ class DotsIndicatorAndButtons extends StatelessWidget {
                 child: CustomButton(
                   foregroundColor: AppColors.white,
                   text: text,
-                  backgroundColor: kPrimaryColor, onPressed: onPressed,
+                  backgroundColor: kPrimaryColor,
+                  onPressed: onPressed,
                 ),
               ),
             ],

@@ -21,7 +21,6 @@ class _SplashViewbodyState extends State<SplashViewbody>
   late Animation<Offset> slidingAnimation;
   final AppPreferences _appPreferences = getIt.get<AppPreferences>();
 
-  
   @override
   void initState() {
     super.initState();
@@ -48,9 +47,10 @@ class _SplashViewbodyState extends State<SplashViewbody>
         SliverToBoxAdapter(
           child: LogoAndSlidingText(slidingAnimation: slidingAnimation),
         ),
-        const SliverFillRemaining(child: Align(
-          alignment: Alignment.bottomCenter,
-          child: CustomCircularIndicator())),
+        const SliverFillRemaining(
+            child: Align(
+                alignment: Alignment.bottomCenter,
+                child: CustomCircularIndicator())),
       ],
     );
   }
@@ -70,31 +70,31 @@ class _SplashViewbodyState extends State<SplashViewbody>
 
   _goNext() async {
     _appPreferences.isUserLoggedIn().then((isUserLoggedIn) => {
-      if (isUserLoggedIn)
-        {
-          // navigate to main screen
-           GoRouter.of(context).go(AppRouter.kHomeLayoutView),
-        }
-      else
-        {
-          _appPreferences
-              .isOnBoardingScreenViewed()
-              .then((isOnBoardingScreenViewed) => {
-            if (isOnBoardingScreenViewed)
-              {
-                // navigate to login screen
+          if (isUserLoggedIn)
+            {
+              // navigate to main screen
+              GoRouter.of(context).go(AppRouter.kHomeLayoutView),
+            }
+          else
+            {
+              _appPreferences
+                  .isOnBoardingScreenViewed()
+                  .then((isOnBoardingScreenViewed) => {
+                        if (isOnBoardingScreenViewed)
+                          {
+                            // navigate to login screen
 
-                GoRouter.of(context).go(AppRouter.kLoginView),
-              }
-            else
-              {
-                // navigate to onboarding screen
+                            GoRouter.of(context).go(AppRouter.kLoginView),
+                          }
+                        else
+                          {
+                            // navigate to onboarding screen
 
-                GoRouter.of(context).go(AppRouter.kOnboardingView),
-              }
-          })
-        }
-    });
+                            GoRouter.of(context).go(AppRouter.kOnboardingView),
+                          }
+                      })
+            }
+        });
   }
 
   void navigateToHome() {

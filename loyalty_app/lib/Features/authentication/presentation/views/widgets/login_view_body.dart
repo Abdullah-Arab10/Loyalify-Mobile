@@ -27,11 +27,10 @@ class LoginViewBody extends StatelessWidget {
         final SnackBar snackBar;
         if (state is AuthSuccessState) {
           snackBar = customSnackBar(
-            title: 'Will Done!',
-            message: 'Logged in successfully',
-            contentType: ContentType.success,
-            color: AppColors.successGren
-          );
+              title: 'Will Done!',
+              message: 'Logged in successfully',
+              contentType: ContentType.success,
+              color: AppColors.successGren);
           showSnackBar(context, snackBar);
           _appPreferences.setUserLoggedIn();
           GoRouter.of(context).go(AppRouter.kHomeLayoutView);
@@ -80,4 +79,3 @@ class LoginViewBody extends StatelessWidget {
     );
   }
 }
-

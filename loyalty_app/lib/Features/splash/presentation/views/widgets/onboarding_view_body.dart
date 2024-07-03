@@ -55,14 +55,16 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
           DotsIndicatorAndButtons(
             currentPageIndex: currentPageIndex,
             text: text,
-            onPressed: currentPageIndex != 2 ? () {
-              pageController.nextPage(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeInOut,
-              );
-            } : (){
-              GoRouter.of(context).go(AppRouter.kRegisterView);
-            },
+            onPressed: currentPageIndex != 2
+                ? () {
+                    pageController.nextPage(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                    );
+                  }
+                : () {
+                    GoRouter.of(context).go(AppRouter.kRegisterView);
+                  },
           ),
         ]),
       ),

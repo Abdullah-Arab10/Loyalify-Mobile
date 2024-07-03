@@ -33,7 +33,7 @@ class CustomPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      return ExpandablePageView(
+    return ExpandablePageView(
       controller: pageController,
       scrollDirection: Axis.horizontal,
       children: List.generate(

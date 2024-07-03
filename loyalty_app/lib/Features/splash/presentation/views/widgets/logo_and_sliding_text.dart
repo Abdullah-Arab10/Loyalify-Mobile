@@ -12,7 +12,7 @@ class LogoAndSlidingText extends StatelessWidget {
   });
 
   final Animation<Offset> slidingAnimation;
-  
+
   @override
   Widget build(BuildContext context) {
     SizeConfig.init(context);
@@ -26,12 +26,10 @@ class LogoAndSlidingText extends StatelessWidget {
               fit: BoxFit.scaleDown,
               child: SvgPicture.asset(
                 Assets.imagesLogo,
-                colorFilter: ColorFilter.mode(
-                  AppColors.white,
-                   BlendMode.srcIn),
-                   width: SizeConfig.width * 0.45,
-                   height: SizeConfig.width * 0.45,
-                ),
+                colorFilter: ColorFilter.mode(AppColors.white, BlendMode.srcIn),
+                width: SizeConfig.width * 0.45,
+                height: SizeConfig.width * 0.45,
+              ),
             ),
           ),
           SlidingText(slidingAnimation: slidingAnimation),

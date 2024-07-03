@@ -117,6 +117,7 @@ class AuthValidationCubit extends Cubit<AuthValidationState> {
     if (password.isNotEmpty &&
         password.length >= 8 &&
         isDigitPasswordValid(password) &&
+        isSymbolPasswordValid(password) &&
         isUpperCasePasswordValid(password) &&
         isLowerCasePasswordValid(password)) {
       emit(PasswordIsValid());

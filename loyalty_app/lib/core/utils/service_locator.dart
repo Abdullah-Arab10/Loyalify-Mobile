@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:loyalty_app/Features/authentication/data/repos/auth_repo_impl.dart';
+import 'package:loyalty_app/Features/home_layout/data/repos/merchants_repos/merchants_repos_impl.dart';
 import 'package:loyalty_app/core/utils/app_prefs.dart';
 import 'package:loyalty_app/core/utils/dio_factory.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,5 +27,12 @@ Future<void> setupServiceLocator() async {
     getIt.registerSingleton<AuthRepoImpl>(AuthRepoImpl(
       getIt.get<ApiService>(),
     ));
+  }
+}
+
+initMerchantsModule() {
+  if (!GetIt.I.isRegistered<MerchantsReposImpl>()) {
+    getIt.registerSingleton<MerchantsReposImpl>(
+        MerchantsReposImpl(getIt.get<ApiService>()));
   }
 }

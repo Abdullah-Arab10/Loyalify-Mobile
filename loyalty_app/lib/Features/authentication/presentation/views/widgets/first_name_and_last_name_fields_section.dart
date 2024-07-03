@@ -11,38 +11,40 @@ class FirstnameAndLastnameFieldsSection extends StatefulWidget {
   const FirstnameAndLastnameFieldsSection({super.key});
 
   @override
-  State<FirstnameAndLastnameFieldsSection> createState() => _FirstnameAndLastnameFieldsSectionState();
+  State<FirstnameAndLastnameFieldsSection> createState() =>
+      _FirstnameAndLastnameFieldsSectionState();
 }
 
-class _FirstnameAndLastnameFieldsSectionState extends State<FirstnameAndLastnameFieldsSection> {
+class _FirstnameAndLastnameFieldsSectionState
+    extends State<FirstnameAndLastnameFieldsSection> {
   late TextEditingController _firstNameController;
 
   late TextEditingController _lastNameController;
 
-   bool isFirstNameValid = true;
-   bool isLastNameValid = true;
+  bool isFirstNameValid = true;
+  bool isLastNameValid = true;
 
-@override
+  @override
   void initState() {
     _firstNameController = TextEditingController();
-    _lastNameController  = TextEditingController();
+    _lastNameController = TextEditingController();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthValidationCubit, AuthValidationState>(
-      listener: (BuildContext context, AuthValidationState state) { 
-        if(state is FirstNameIsValid){
+      listener: (BuildContext context, AuthValidationState state) {
+        if (state is FirstNameIsValid) {
           isFirstNameValid = true;
-        }else if(state is FirstNameIsInValid){
+        } else if (state is FirstNameIsInValid) {
           isFirstNameValid = false;
-        }else if(state is LastNameIsValid){
+        } else if (state is LastNameIsValid) {
           isLastNameValid = true;
-        }else if(state is LastNameIsInValid){
+        } else if (state is LastNameIsInValid) {
           isLastNameValid = false;
         }
-       },
+      },
       builder: (context, state) {
         return Column(
           children: [
@@ -50,7 +52,8 @@ class _FirstnameAndLastnameFieldsSectionState extends State<FirstnameAndLastname
               textFieldModel: TextFieldModel(
                 controller: _firstNameController,
                 label: AppStrings.firstName,
-                onChanged: (value) => AuthValidationCubit.get(context).setFirstName(value),
+                onChanged: (value) =>
+                    AuthValidationCubit.get(context).setFirstName(value),
                 error: (isFirstNameValid) ? null : AppStrings.firstNameError,
                 prefixIcon: Assets.imagesFirst,
               ),
@@ -58,16 +61,15 @@ class _FirstnameAndLastnameFieldsSectionState extends State<FirstnameAndLastname
             SizedBox(
                 height: MediaQuery.of(context).size.height / AppPadding.p33),
             CustomTextFieldWidget(
-                  textFieldModel: TextFieldModel(
-                    controller: _lastNameController,
-                    label: AppStrings.lastName,
-                    onChanged: (value) => AuthValidationCubit.get(context).setLastName(value),
-                    error: (isLastNameValid)
-                                ? null
-                                : AppStrings.lastNameError,
-                    prefixIcon: Assets.imagesLast,
-                  ),
-                ),
+              textFieldModel: TextFieldModel(
+                controller: _lastNameController,
+                label: AppStrings.lastName,
+                onChanged: (value) =>
+                    AuthValidationCubit.get(context).setLastName(value),
+                error: (isLastNameValid) ? null : AppStrings.lastNameError,
+                prefixIcon: Assets.imagesLast,
+              ),
+            ),
           ],
         );
       },

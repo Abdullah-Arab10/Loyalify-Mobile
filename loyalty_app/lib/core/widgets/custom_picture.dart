@@ -4,7 +4,12 @@ import 'package:flutter_svg/svg.dart';
 class CustomPicture extends StatelessWidget {
   const CustomPicture({
     super.key,
-    required this.image, this.color, required this.padding, required this.maxWidth, this.decoration, this.colorFilter,
+    required this.image,
+    this.color,
+    required this.padding,
+    required this.maxWidth,
+    this.decoration,
+    this.colorFilter,
   });
 
   final String image;
@@ -21,20 +26,19 @@ class CustomPicture extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: 1,
         child: Container(
-          decoration: decoration,
-          // const ShapeDecoration(
-          //   shape: OvalBorder(),
-          // ),
-          child: Padding(
-        padding: EdgeInsets.all(padding),
-        child: SvgPicture.asset(
-          image,
-          colorFilter: colorFilter != null ? ColorFilter.mode(
-            color!,
-             BlendMode.srcIn) : null,
-        ),
-      )
-        ),
+            decoration: decoration,
+            // const ShapeDecoration(
+            //   shape: OvalBorder(),
+            // ),
+            child: Padding(
+              padding: EdgeInsets.all(padding),
+              child: SvgPicture.asset(
+                image,
+                colorFilter: colorFilter != null
+                    ? ColorFilter.mode(color!, BlendMode.srcIn)
+                    : null,
+              ),
+            )),
       ),
     );
   }

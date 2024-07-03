@@ -11,18 +11,20 @@ class AddressAndPhonenumberFieldsSection extends StatefulWidget {
   const AddressAndPhonenumberFieldsSection({super.key});
 
   @override
-  State<AddressAndPhonenumberFieldsSection> createState() => _AddressAndPhonenumberFieldsSectionState();
+  State<AddressAndPhonenumberFieldsSection> createState() =>
+      _AddressAndPhonenumberFieldsSectionState();
 }
 
-class _AddressAndPhonenumberFieldsSectionState extends State<AddressAndPhonenumberFieldsSection> {
+class _AddressAndPhonenumberFieldsSectionState
+    extends State<AddressAndPhonenumberFieldsSection> {
   late TextEditingController _addressController;
 
   late TextEditingController _phoneNumberController;
 
-   bool isAddressValid = true;
-   bool isPhoneNumberValid = true;
+  bool isAddressValid = true;
+  bool isPhoneNumberValid = true;
 
-@override
+  @override
   void initState() {
     _addressController = TextEditingController();
     _phoneNumberController = TextEditingController();
@@ -32,17 +34,17 @@ class _AddressAndPhonenumberFieldsSectionState extends State<AddressAndPhonenumb
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthValidationCubit, AuthValidationState>(
-      listener: (BuildContext context, AuthValidationState state) { 
-        if(state is AddressIsValid){
+      listener: (BuildContext context, AuthValidationState state) {
+        if (state is AddressIsValid) {
           isAddressValid = true;
-        }else if(state is AddressIsInValid){
+        } else if (state is AddressIsInValid) {
           isAddressValid = false;
-        }else if(state is PhoneNumberIsValid){
+        } else if (state is PhoneNumberIsValid) {
           isPhoneNumberValid = true;
-        }else if(state is PhoneNumberIsInValid){
+        } else if (state is PhoneNumberIsInValid) {
           isPhoneNumberValid = false;
         }
-       },
+      },
       builder: (context, state) {
         return Column(
           children: [
@@ -50,7 +52,8 @@ class _AddressAndPhonenumberFieldsSectionState extends State<AddressAndPhonenumb
               textFieldModel: TextFieldModel(
                 controller: _addressController,
                 label: AppStrings.address,
-                onChanged: (value) => AuthValidationCubit.get(context).setAddress(value),
+                onChanged: (value) =>
+                    AuthValidationCubit.get(context).setAddress(value),
                 error: (isAddressValid) ? null : AppStrings.addressError,
                 prefixIcon: Assets.imagesAddress,
               ),
@@ -58,18 +61,17 @@ class _AddressAndPhonenumberFieldsSectionState extends State<AddressAndPhonenumb
             SizedBox(
                 height: MediaQuery.of(context).size.height / AppPadding.p33),
             CustomTextFieldWidget(
-                  textFieldModel: TextFieldModel(
-                    controller: _phoneNumberController,
-                    keyboardType: TextInputType.phone,
-                    label: AppStrings.phoneNumber,
-                    onChanged: (value) => AuthValidationCubit.get(context).setPhoneNumber(value),
-                    error: (isPhoneNumberValid)
-                                ? null
-                                : AppStrings.phoneNumberError,
-                    prefixIcon: Assets.imagesPhone,
-                    
-                  ),
-                ),
+              textFieldModel: TextFieldModel(
+                controller: _phoneNumberController,
+                keyboardType: TextInputType.phone,
+                label: AppStrings.phoneNumber,
+                onChanged: (value) =>
+                    AuthValidationCubit.get(context).setPhoneNumber(value),
+                error:
+                    (isPhoneNumberValid) ? null : AppStrings.phoneNumberError,
+                prefixIcon: Assets.imagesPhone,
+              ),
+            ),
           ],
         );
       },

@@ -1,6 +1,6 @@
 part of 'auth_validation_cubit.dart';
 
-abstract class AuthValidationState{}
+abstract class AuthValidationState {}
 
 final class AuthValidationInitial extends AuthValidationState {}
 

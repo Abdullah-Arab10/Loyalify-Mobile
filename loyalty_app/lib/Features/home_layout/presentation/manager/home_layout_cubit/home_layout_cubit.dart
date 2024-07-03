@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/merchants_view.dart';
+import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/offers_view.dart';
 part 'home_layout_state.dart';
 
 class HomeLayoutCubit extends Cubit<HomeLayoutState> {
@@ -16,10 +17,10 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
   }
 
   List<Widget> screens = [
-    SizedBox(),
-    MerchantsView(),
-    SizedBox(),
-    SizedBox(),
-    SizedBox(),
+    const SizedBox(),
+    const MerchantsView(),
+    const OffersView(),
+    const SizedBox(),
+    const SizedBox(),
   ];
 }

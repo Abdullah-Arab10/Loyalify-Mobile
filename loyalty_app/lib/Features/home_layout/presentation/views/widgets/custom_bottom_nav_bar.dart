@@ -44,22 +44,22 @@ class CustomBottomNavBar extends StatelessWidget {
             label: AppStrings.merchants),
         BottomNavigationBarItem(
             icon: CustomIcon(
-              image: Assets.imagesVoucher,
+              image: Assets.imagesOffer,
               color: currentIndex == 2
                   ? AppColors.kPrimaryColor
                   : AppColors.darkGainsboro,
               padding: 0,
             ),
-            label: AppStrings.myVoucher),
+            label: AppStrings.offers),
         BottomNavigationBarItem(
             icon: CustomIcon(
-              image: Assets.imagesActivity,
+              image: Assets.imagesVoucher,
               color: currentIndex == 3
                   ? AppColors.kPrimaryColor
                   : AppColors.darkGainsboro,
               padding: 0,
             ),
-            label: AppStrings.activity),
+            label: AppStrings.myVoucher),
         BottomNavigationBarItem(
             icon: CustomIcon(
               image: Assets.imagesAccount,
