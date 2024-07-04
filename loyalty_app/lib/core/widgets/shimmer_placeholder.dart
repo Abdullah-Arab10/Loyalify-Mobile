@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
 
 class ShimmerPlaceholder extends StatelessWidget {
-  const ShimmerPlaceholder({super.key, this.height, this.width});
+  const ShimmerPlaceholder({
+    super.key,
+    required this.aspectRatio,
+    required this.padding,
+    required this.borderRadius,
+  });
 
-  final double? height, width;
+  final double aspectRatio;
+  final EdgeInsetsGeometry padding;
+  final BorderRadiusGeometry borderRadius;
 
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 1,
+      aspectRatio: aspectRatio,
       child: Container(
-        padding: const EdgeInsets.all(4),
+        padding: padding,
         decoration: BoxDecoration(
           color: Colors.white.withOpacity(0.4),
-          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+          borderRadius: borderRadius,
         ),
       ),
     );

@@ -14,8 +14,7 @@ class LoyaltyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomSvgPicture(
-            image: item.image, padding: 0, maxWidth: getMaxWidth(context)),
+        CustomSvgPicture(image: item.image, maxWidth: getMaxWidth(context)),
         index != 0
             ? const SizedBox(
                 height: 24,

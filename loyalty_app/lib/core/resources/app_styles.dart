@@ -4,14 +4,14 @@ import 'package:loyalty_app/core/resources/font_manager.dart';
 import 'package:loyalty_app/core/utils/size_config.dart';
 
 abstract class AppStyles {
-  static TextStyle styleRegular24(BuildContext context) {
-    return TextStyle(
-      color: const Color(0xFF000000),
-      fontSize: getResponsiveFontSize(context, fontSize: 24),
-      fontFamily: FontConstants.fontFamily,
-      fontWeight: FontWeight.w400,
-    );
-  }
+  // static TextStyle styleRegular24(BuildContext context) {
+  //   return TextStyle(
+  //     color: const Color(0xFF000000),
+  //     fontSize: getResponsiveFontSize(context, fontSize: 24),
+  //     fontFamily: FontConstants.fontFamily,
+  //     fontWeight: FontWeight.w400,
+  //   );
+  // }
 
   static TextStyle styleRegular16(context) {
     return TextStyle(
@@ -22,14 +22,14 @@ abstract class AppStyles {
     );
   }
 
-  static TextStyle styleRegular12(BuildContext context) {
-    return TextStyle(
-      color: const Color(0xFF000000),
-      fontSize: getResponsiveFontSize(context, fontSize: 12),
-      fontFamily: FontConstants.fontFamily,
-      fontWeight: FontWeight.w400,
-    );
-  }
+  // static TextStyle styleRegular12(BuildContext context) {
+  //   return TextStyle(
+  //     color: const Color(0xFF000000),
+  //     fontSize: getResponsiveFontSize(context, fontSize: 12),
+  //     fontFamily: FontConstants.fontFamily,
+  //     fontWeight: FontWeight.w400,
+  //   );
+  // }
 
   static TextStyle styleMedium20(BuildContext context) {
     return TextStyle(
@@ -51,21 +51,21 @@ abstract class AppStyles {
 
   static TextStyle styleSemiBold20(BuildContext context) {
     return TextStyle(
-      color: AppColors.black,
+      color: AppColors.sonicSilver,
       fontSize: getResponsiveFontSize(context, fontSize: 20),
       fontFamily: FontConstants.fontFamily,
       fontWeight: FontWeight.w600,
     );
   }
 
-  static TextStyle styleSemiBold18(BuildContext context) {
-    return TextStyle(
-      color: const Color(0xFFFFFFFF),
-      fontSize: getResponsiveFontSize(context, fontSize: 18),
-      fontFamily: FontConstants.fontFamily,
-      fontWeight: FontWeight.w600,
-    );
-  }
+  // static TextStyle styleSemiBold18(BuildContext context) {
+  //   return TextStyle(
+  //     color: const Color(0xFFFFFFFF),
+  //     fontSize: getResponsiveFontSize(context, fontSize: 18),
+  //     fontFamily: FontConstants.fontFamily,
+  //     fontWeight: FontWeight.w600,
+  //   );
+  // }
 
   static TextStyle styleSemiBold16(BuildContext context) {
     return TextStyle(
@@ -76,14 +76,14 @@ abstract class AppStyles {
     );
   }
 
-  static TextStyle styleSemiBold24(BuildContext context) {
-    return TextStyle(
-      color: const Color(0xFF4EB7F2),
-      fontSize: getResponsiveFontSize(context, fontSize: 24),
-      fontFamily: FontConstants.fontFamily,
-      fontWeight: FontWeight.w600,
-    );
-  }
+  // static TextStyle styleSemiBold24(BuildContext context) {
+  //   return TextStyle(
+  //     color: const Color(0xFF4EB7F2),
+  //     fontSize: getResponsiveFontSize(context, fontSize: 24),
+  //     fontFamily: FontConstants.fontFamily,
+  //     fontWeight: FontWeight.w600,
+  //   );
+  // }
 
   static TextStyle styleBold29(BuildContext context) {
     return TextStyle(
