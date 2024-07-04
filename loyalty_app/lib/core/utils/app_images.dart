@@ -37,6 +37,10 @@ class Assets {
   /// assets/images/eyeIconVisibilityOn.svg
   static const String imagesEyeIconVisibilityOn = "assets/images/eyeIconVisibilityOn.svg";
 
+  /// Assets for imagesFailure
+  /// assets/images/failure.svg
+  static const String imagesFailure = "assets/images/failure.svg";
+
   /// Assets for imagesFirst
   /// assets/images/first.svg
   static const String imagesFirst = "assets/images/first.svg";

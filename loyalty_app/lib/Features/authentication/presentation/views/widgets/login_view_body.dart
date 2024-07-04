@@ -65,7 +65,6 @@ class LoginViewBody extends StatelessWidget {
                     children: [
                       CustomSvgPicture(
                           image: Assets.imagesLogin,
-                          padding: 0,
                           maxWidth: getMaxWidth(context)),
                       const LoginFieldsAndButtons(),
                     ],

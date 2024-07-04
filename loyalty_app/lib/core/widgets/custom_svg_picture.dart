@@ -6,7 +6,6 @@ class CustomSvgPicture extends StatelessWidget {
     super.key,
     required this.image,
     this.color,
-    required this.padding,
     required this.maxWidth,
     this.decoration,
     this.colorFilter,
@@ -14,7 +13,6 @@ class CustomSvgPicture extends StatelessWidget {
 
   final String image;
   final Color? color;
-  final double padding;
   final double maxWidth;
   final Decoration? decoration;
   final ColorFilter? colorFilter;
@@ -30,14 +28,11 @@ class CustomSvgPicture extends StatelessWidget {
             // const ShapeDecoration(
             //   shape: OvalBorder(),
             // ),
-            child: Padding(
-              padding: EdgeInsets.all(padding),
-              child: SvgPicture.asset(
-                image,
-                colorFilter: colorFilter != null
-                    ? ColorFilter.mode(color!, BlendMode.srcIn)
-                    : null,
-              ),
+            child: SvgPicture.asset(
+              image,
+              colorFilter: colorFilter != null
+                  ? ColorFilter.mode(color!, BlendMode.srcIn)
+                  : null,
             )),
       ),
     );
