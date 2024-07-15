@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:loyalty_app/Features/authentication/data/models/text_field_model.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/manager/merchants_cubit/merchants_category_cubit/merchants_category_cubit.dart';
-import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/offer_widgets/list_of_filtering_item.dart';
+import 'package:loyalty_app/Features/home_layout/presentation/manager/merchants_cubit/merchants_cubit.dart';
+import 'package:loyalty_app/Features/home_layout/presentation/manager/merchants_cubit/merchants_store_cubit/merchants_store_cubit.dart';
+import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/merchants_widgets/list_of_filtering_item.dart';
 import 'package:loyalty_app/core/resources/app_colors.dart';
+import 'package:loyalty_app/core/resources/app_router.dart';
 import 'package:loyalty_app/core/resources/app_styles.dart';
 import 'package:loyalty_app/core/resources/strings_manager.dart';
 import 'package:loyalty_app/core/utils/app_images.dart';
@@ -13,10 +17,14 @@ import 'package:loyalty_app/core/widgets/shimmer_list.dart';
 class FieldAndListOfFilteringItemSection extends StatelessWidget {
   const FieldAndListOfFilteringItemSection({
     super.key,
-    required TextEditingController searchController,
-  }) : _searchController = searchController;
+    required this.searchController,
+    required this.onFieldSubmitted,
+    required this.fetchOrSearch,
+  });
 
-  final TextEditingController _searchController;
+  final TextEditingController searchController;
+  final ValueChanged<String> onFieldSubmitted;
+  final bool fetchOrSearch;
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +39,10 @@ class FieldAndListOfFilteringItemSection extends StatelessWidget {
           ),
           child: CustomTextFieldWidget(
             textFieldModel: TextFieldModel(
-              controller: _searchController,
+              controller: searchController,
               label: AppStrings.search,
               fillColor: AppColors.white,
-              onChanged: (value) {},
+              onFieldSubmitted: onFieldSubmitted,
               prefixIcon: Assets.imagesSearch,
             ),
           ),
@@ -47,12 +55,16 @@ class FieldAndListOfFilteringItemSection extends StatelessWidget {
             return state is FetchCategoriesSuccess
                 ? ListOfFilteringItem(
                     items: state,
+                    fetchOrSearch: fetchOrSearch,
                   )
                 : state is FetchCategoriesFailure
-                    ? Text(
-                        state.errMessage,
-                        style: AppStyles.styleSemiBold20(context),
-                        textAlign: TextAlign.center,
+                    ? Padding(
+                        padding: const EdgeInsets.only(left: 16),
+                        child: Text(
+                          state.errMessage,
+                          style: AppStyles.styleSemiBold20(context),
+                          textAlign: TextAlign.center,
+                        ),
                       )
                     : const ShimmerList();
           },

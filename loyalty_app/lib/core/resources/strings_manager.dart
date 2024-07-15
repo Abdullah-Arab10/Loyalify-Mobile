@@ -45,6 +45,7 @@ class AppStrings {
   static const String myVoucher = 'My Voucher';
   static const String activity = 'Activity';
   static const String account = 'Account';
-  static const String search = 'search';
+  static const String search = 'Search';
   static const String offers = 'Offers';
+  static const String searchPage = 'Search Page';
 }

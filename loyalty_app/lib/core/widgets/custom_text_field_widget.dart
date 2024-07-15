@@ -25,6 +25,7 @@ class CustomTextFieldWidget extends StatelessWidget {
         decoration: customInputDecoration(context),
         initialValue: textFieldModel.initial,
         onChanged: textFieldModel.onChanged,
+        onFieldSubmitted: textFieldModel.onFieldSubmitted,
         enabled: textFieldModel.enable,
       ),
     );
