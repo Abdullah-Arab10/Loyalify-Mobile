@@ -6,13 +6,13 @@ part 'merchants_store_state.dart';
 class MerchantsStoreCubit extends Cubit<MerchantsStoreState> {
   MerchantsStoreCubit(this.merchantsRepo) : super(MerchantsStoreInitial());
 
-  MerchantsStoreCubit get(context) => BlocProvider.of(context);
+  static MerchantsStoreCubit get(context) => BlocProvider.of(context);
 
   final MerchantsRepo merchantsRepo;
 
-  Future<void> fetchStores() async {
+  Future<void> fetchStores({required int categoryId}) async {
     emit(FetchStoresLoading());
-    var result = await merchantsRepo.fetchAllStores(categoryId: 0);
+    var result = await merchantsRepo.fetchAllStores(categoryId: categoryId);
     result.fold((failure) {
       emit(FetchStoresFailure(failure.errMessage));
     }, (stores) {

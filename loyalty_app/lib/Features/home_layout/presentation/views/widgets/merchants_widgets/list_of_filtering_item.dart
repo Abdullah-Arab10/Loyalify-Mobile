@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/manager/merchants_cubit/merchants_category_cubit/merchants_category_cubit.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/manager/merchants_cubit/merchants_cubit.dart';
+import 'package:loyalty_app/Features/home_layout/presentation/manager/merchants_cubit/merchants_store_cubit/merchants_store_cubit.dart';
+import 'package:loyalty_app/Features/home_layout/presentation/manager/merchants_cubit/search_cubit/search_cubit.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/merchants_widgets/filtering_item.dart';
 
 class ListOfFilteringItem extends StatelessWidget {
-  const ListOfFilteringItem({super.key, required this.items});
+  const ListOfFilteringItem(
+      {super.key, required this.items, required this.fetchOrSearch});
 
   final FetchCategoriesSuccess items;
+  final bool fetchOrSearch;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +28,11 @@ class ListOfFilteringItem extends StatelessWidget {
                   onTap: () {
                     MerchantsCubit.get(context)
                         .changeIndex(items.categories.categories.indexOf(e));
+                    fetchOrSearch == true
+                        ? MerchantsStoreCubit.get(context).fetchStores(
+                            categoryId: items.categories.categories.indexOf(e))
+                        : SearchCubit.get(context).searchStores(
+                            categoryId: items.categories.categories.indexOf(e));
                   },
                   child: FilteringItem(
                     text: e.name ?? '',

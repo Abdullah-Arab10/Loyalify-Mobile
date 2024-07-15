@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:loyalty_app/Features/home_layout/presentation/manager/merchants_cubit/merchants_store_cubit/merchants_store_cubit.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/merchants_widgets/merchants_item.dart';
 import 'package:loyalty_app/core/utils/api_service.dart';
 
@@ -9,7 +8,7 @@ class CustomSliverGrid extends StatelessWidget {
     required this.state,
   });
 
-  final FetchStoresSuccess state;
+  final dynamic state;
 
   @override
   Widget build(BuildContext context) {

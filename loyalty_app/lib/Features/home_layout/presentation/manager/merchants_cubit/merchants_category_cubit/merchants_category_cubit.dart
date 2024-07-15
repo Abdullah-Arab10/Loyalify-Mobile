@@ -7,7 +7,7 @@ class MerchantsCategoryCubit extends Cubit<MerchantsCategoryState> {
   MerchantsCategoryCubit(this.merchantsRepo)
       : super(MerchantsCategoryInitial());
 
-  MerchantsCategoryCubit get(context) => BlocProvider.of(context);
+  static MerchantsCategoryCubit get(context) => BlocProvider.of(context);
 
   final MerchantsRepo merchantsRepo;
 

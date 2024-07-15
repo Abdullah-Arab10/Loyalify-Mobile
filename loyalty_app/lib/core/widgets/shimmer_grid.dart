@@ -24,7 +24,7 @@ class ShimmerGrid extends StatelessWidget {
         ),
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        itemCount: 6,
+        itemCount: 8,
         itemBuilder: (context, index) => const ShimmerPlaceholder(
           aspectRatio: 1,
           padding: EdgeInsets.all(4),

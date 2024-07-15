@@ -15,13 +15,8 @@ class HomeLayoutView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => HomeLayoutCubit(),
-        ),
-        BlocProvider(create: (context) => MerchantsCubit()),
-      ],
+    return BlocProvider(
+      create: (context) => HomeLayoutCubit(),
       child: BlocBuilder<HomeLayoutCubit, HomeLayoutState>(
         builder: (context, state) {
           return Scaffold(

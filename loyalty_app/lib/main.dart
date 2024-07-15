@@ -7,6 +7,7 @@ import 'package:loyalty_app/Features/home_layout/presentation/manager/home_layou
 import 'package:loyalty_app/Features/home_layout/presentation/manager/merchants_cubit/merchants_category_cubit/merchants_category_cubit.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/manager/merchants_cubit/merchants_cubit.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/manager/merchants_cubit/merchants_store_cubit/merchants_store_cubit.dart';
+import 'package:loyalty_app/Features/home_layout/presentation/manager/merchants_cubit/search_cubit/search_cubit.dart';
 import 'package:loyalty_app/core/resources/app_router.dart';
 import 'package:loyalty_app/core/resources/theme_manager.dart';
 import 'package:loyalty_app/core/utils/service_locator.dart';
@@ -29,9 +30,13 @@ class Loyalify extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => MerchantsCubit(),
+        ),
         BlocProvider(create: (context) => MerchantsCategoryCubit(getIt.get<MerchantsReposImpl>())..fetchCategories()
         ),
-        BlocProvider(create: (context) => MerchantsStoreCubit(getIt.get<MerchantsReposImpl>())..fetchStores(),
+        BlocProvider(create: (context) => MerchantsStoreCubit(getIt.get<MerchantsReposImpl>())..fetchStores(categoryId: 0),
+        ),
+        BlocProvider(create: (context) => SearchCubit(getIt.get<MerchantsReposImpl>()),
         ),
       ],
       child: MaterialApp.router(
