@@ -58,14 +58,14 @@ abstract class AppStyles {
     );
   }
 
-  // static TextStyle styleSemiBold18(BuildContext context) {
-  //   return TextStyle(
-  //     color: const Color(0xFFFFFFFF),
-  //     fontSize: getResponsiveFontSize(context, fontSize: 18),
-  //     fontFamily: FontConstants.fontFamily,
-  //     fontWeight: FontWeight.w600,
-  //   );
-  // }
+  static TextStyle styleSemiBold18(BuildContext context) {
+    return TextStyle(
+      color: AppColors.ligthBlack,
+      fontSize: getResponsiveFontSize(context, fontSize: 18),
+      fontFamily: FontConstants.fontFamily,
+      fontWeight: FontWeight.w600,
+    );
+  }
 
   static TextStyle styleSemiBold16(BuildContext context) {
     return TextStyle(

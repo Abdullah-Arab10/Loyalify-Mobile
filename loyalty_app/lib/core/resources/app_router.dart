@@ -3,6 +3,8 @@ import 'package:loyalty_app/Features/authentication/presentation/views/login_vie
 import 'package:loyalty_app/Features/authentication/presentation/views/register_view.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/views/home_layout_view.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/views/search_view.dart';
+import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/merchants_widgets/merchants_view.dart';
+import 'package:loyalty_app/Features/merchants_details/presentation/views/merchants_details_view.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/on_boarding_view.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/splash_view.dart';
 import 'package:loyalty_app/core/utils/service_locator.dart';
@@ -13,15 +15,16 @@ abstract class AppRouter {
   static const kRegisterView = '/registerView';
   static const kHomeLayoutView = '/homeLayoutView';
   static const kSearchView = '/searchView';
+  static const kMerchantcDetailsView = '/merchantcDetailsView';
 
   static final router = GoRouter(
     routes: [
       GoRoute(
         path: '/',
         builder: (context, state) {
-          initMerchantsModule();
-          return const HomeLayoutView();
-          //return const LoginView();
+          // initMerchantsModule();
+          // return const HomeLayoutView();
+          return const MerchantsDetailsView();
         },
       ),
       GoRoute(
@@ -48,6 +51,10 @@ abstract class AppRouter {
         builder: (context, state) {
           return const SearchView();
         },
+      ),
+      GoRoute(
+        path: kMerchantcDetailsView,
+        builder: (context, state) => const MerchantsDetailsView(),
       ),
     ],
   );

@@ -57,6 +57,10 @@ class Assets {
   /// assets/images/leftArrow.svg
   static const String imagesLeftArrow = "assets/images/leftArrow.svg";
 
+  /// Assets for imagesLocation
+  /// assets/images/location.svg
+  static const String imagesLocation = "assets/images/location.svg";
+
   /// Assets for imagesLockOutlined
   /// assets/images/lockOutlined.svg
   static const String imagesLockOutlined = "assets/images/lockOutlined.svg";
