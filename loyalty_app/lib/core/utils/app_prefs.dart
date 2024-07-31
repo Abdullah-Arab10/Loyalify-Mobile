@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const String prefsKeyLang = "PREFS_KEY_LANG";
@@ -6,7 +5,7 @@ const String prefsKeyOnboardingScreenViewed =
     "PREFS_KEY_ONBOARDING_SCREEN_VIEWED";
 const String prefsKeyIsUserLoggedIn = "PREFS_KEY_IS_USER_LOGGED_IN";
 
-const String TOKEN = "TOKEN";
+const String tOKEN = "TOKEN";
 
 class AppPreferences {
   final SharedPreferences _sharedPreferences;
@@ -67,11 +66,11 @@ class AppPreferences {
   }
 
   Future<void> setToken(String token) async {
-    _sharedPreferences.setString(TOKEN, token);
+    _sharedPreferences.setString(tOKEN, token);
   }
 
   Future<String> getToken() async {
-    return _sharedPreferences.getString(TOKEN) ?? '';
+    return _sharedPreferences.getString(tOKEN) ?? '';
   }
 
   Future<void> logout() async {

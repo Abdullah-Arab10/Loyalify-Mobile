@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:loyalty_app/core/resources/app_colors.dart';
-import 'package:loyalty_app/core/resources/app_router.dart';
 import 'package:loyalty_app/core/resources/values_manager.dart';
 import 'package:loyalty_app/core/widgets/custom_text_button.dart';
 import 'package:loyalty_app/core/widgets/custom_button.dart';

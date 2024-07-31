@@ -27,7 +27,6 @@ class ShimmerGrid extends StatelessWidget {
         itemCount: 8,
         itemBuilder: (context, index) => const ShimmerPlaceholder(
           aspectRatio: 1,
-          padding: EdgeInsets.all(4),
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),
       ),

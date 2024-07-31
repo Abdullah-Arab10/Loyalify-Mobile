@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:loyalty_app/Features/authentication/data/repos/auth_repo_impl.dart';
 import 'package:loyalty_app/Features/home_layout/data/repos/merchants_repos/merchants_repos_impl.dart';
+import 'package:loyalty_app/Features/merchants_details/data/repos/store_details_repo_impl.dart';
 import 'package:loyalty_app/core/utils/app_prefs.dart';
 import 'package:loyalty_app/core/utils/dio_factory.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -34,5 +35,12 @@ initMerchantsModule() {
   if (!GetIt.I.isRegistered<MerchantsReposImpl>()) {
     getIt.registerSingleton<MerchantsReposImpl>(
         MerchantsReposImpl(getIt.get<ApiService>()));
+  }
+}
+
+initStoreDetailsModule() {
+  if (!GetIt.I.isRegistered<StoreDetailsRepoImpl>()) {
+    getIt.registerSingleton<StoreDetailsRepoImpl>(
+        StoreDetailsRepoImpl(getIt.get<ApiService>()));
   }
 }

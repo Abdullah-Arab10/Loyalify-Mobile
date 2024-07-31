@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/manager/merchants_cubit/search_cubit/search_cubit.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/merchants_widgets/custom_sliver_grid.dart';
-import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/merchants_widgets/field_and_list_of_filtering_Item_section.dart';
+import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/merchants_widgets/field_and_list_of_filtering_item_section.dart';
 import 'package:loyalty_app/core/utils/app_images.dart';
 import 'package:loyalty_app/core/widgets/custom_no_data_or_failure.dart';
 import 'package:loyalty_app/core/widgets/shimmer_grid.dart';

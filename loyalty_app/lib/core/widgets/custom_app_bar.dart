@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/core/resources/app_colors.dart';
 import 'package:loyalty_app/core/resources/app_styles.dart';
-import 'package:loyalty_app/core/resources/strings_manager.dart';
-import 'package:loyalty_app/core/utils/app_images.dart';
 import 'package:loyalty_app/core/widgets/custom_icon.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {

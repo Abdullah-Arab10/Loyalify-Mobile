@@ -11,7 +11,7 @@ class CustomImage extends StatelessWidget {
     required this.clipBehavior,
   });
 
-  final Image image;
+  final dynamic image;
   final double padding;
   final double maxWidth;
   final Decoration? decoration;

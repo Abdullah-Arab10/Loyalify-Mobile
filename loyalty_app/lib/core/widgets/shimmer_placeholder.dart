@@ -4,12 +4,10 @@ class ShimmerPlaceholder extends StatelessWidget {
   const ShimmerPlaceholder({
     super.key,
     required this.aspectRatio,
-    required this.padding,
     required this.borderRadius,
   });
 
   final double aspectRatio;
-  final EdgeInsetsGeometry padding;
   final BorderRadiusGeometry borderRadius;
 
   @override
@@ -17,7 +15,6 @@ class ShimmerPlaceholder extends StatelessWidget {
     return AspectRatio(
       aspectRatio: aspectRatio,
       child: Container(
-        padding: padding,
         decoration: BoxDecoration(
           color: Colors.white.withOpacity(0.4),
           borderRadius: borderRadius,
