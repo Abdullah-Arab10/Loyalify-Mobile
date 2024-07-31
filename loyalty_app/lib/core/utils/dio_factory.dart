@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:loyalty_app/core/utils/api_service.dart';

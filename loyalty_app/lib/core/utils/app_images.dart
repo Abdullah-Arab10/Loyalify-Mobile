@@ -25,6 +25,14 @@ class Assets {
   /// assets/images/brandLoyaltyRafiki.svg
   static const String imagesBrandLoyaltyRafiki = "assets/images/brandLoyaltyRafiki.svg";
 
+  /// Assets for imagesDefaultStoreCoverImage
+  /// assets/images/defaultStoreCoverImage.svg
+  static const String imagesDefaultStoreCoverImage = "assets/images/defaultStoreCoverImage.svg";
+
+  /// Assets for imagesDefaultStoreImage
+  /// assets/images/defaultStoreImage.svg
+  static const String imagesDefaultStoreImage = "assets/images/defaultStoreImage.svg";
+
   /// Assets for imagesEmailOutlined
   /// assets/images/emailOutlined.svg
   static const String imagesEmailOutlined = "assets/images/emailOutlined.svg";
@@ -104,6 +112,10 @@ class Assets {
   /// Assets for imagesSss
   /// assets/images/sss.jpg
   static const String imagesSss = "assets/images/sss.jpg";
+
+  /// Assets for imagesStore
+  /// assets/images/store.svg
+  static const String imagesStore = "assets/images/store.svg";
 
   /// Assets for imagesTtt
   /// assets/images/ttt.jpeg

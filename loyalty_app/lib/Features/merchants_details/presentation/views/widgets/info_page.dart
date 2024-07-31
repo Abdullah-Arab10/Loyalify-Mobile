@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loyalty_app/Features/merchants_details/data/models/store_details_model/store_details_model.dart';
 import 'package:loyalty_app/Features/merchants_details/presentation/views/widgets/item_info.dart';
 import 'package:loyalty_app/core/resources/app_styles.dart';
 import 'package:loyalty_app/core/utils/app_images.dart';
@@ -6,7 +7,10 @@ import 'package:loyalty_app/core/utils/app_images.dart';
 class InfoPage extends StatelessWidget {
   const InfoPage({
     super.key,
+    required this.storeDetailsModel,
   });
+
+  final StoreDetailsModel? storeDetailsModel;
 
   @override
   Widget build(BuildContext context) {
@@ -14,23 +18,23 @@ class InfoPage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Welcome to Starbucks, a global coffeehouse chain that has been enchanting coffee lovers since 1971. Renowned for our commitment to quality coffee, ethically sourced beans, and a warm ambiance, Starbucks is not just a coffee destination; it’s a community.\n \nAt Starbucks, we pride ourselves on delivering an exceptional coffee experience. From our iconic handcrafted beverages to our delectable pastries, each item on our menu is crafted with precision and passion. Our baristas, trained to perfection, are dedicated to bringing you the finest coffee moments.\n \nBeyond coffee, Starbucks is committed to social responsibility and sustainability. We strive to make a positive impact on the communities we serve and the environment. Join us in this mission.',
+          storeDetailsModel?.items?.description ?? '',
           style: AppStyles.styleSemiBold18(context),
           textAlign: TextAlign.left,
         ),
         const SizedBox(
           height: 16,
         ),
-        const InfoItem(
+        InfoItem(
           image: Assets.imagesLocation,
-          text: 'Nabek',
+          text: storeDetailsModel?.items?.address ?? '',
         ),
         const SizedBox(
           height: 16,
         ),
-        const InfoItem(
+        InfoItem(
           image: Assets.imagesPhone,
-          text: '(212) 555-1234',
+          text: storeDetailsModel?.items?.phoneNumber ?? '',
         ),
         const SizedBox(
           height: 16,

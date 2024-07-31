@@ -2,7 +2,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'merchants_details_state.dart';
 
 class MerchantsDetailsCubit extends Cubit<MerchantsDetailsState> {
-  MerchantsDetailsCubit() : super(MerchantsDetailsInitial());
+  MerchantsDetailsCubit()
+      : super(MerchantsDetailsInitial());
 
   static MerchantsDetailsCubit get(context) => BlocProvider.of(context);
 

@@ -1,15 +1,15 @@
 import 'package:equatable/equatable.dart';
 
 class Store extends Equatable {
-  final int? id;
+  final int id;
   final String? name;
   final String? category;
   final String? storeImage;
 
-  const Store({this.id, this.name, this.category, this.storeImage});
+  const Store({required this.id, this.name, this.category, this.storeImage});
 
   factory Store.fromJson(Map<String, dynamic> json) => Store(
-        id: json['id'] as int?,
+        id: json['id'] as int,
         name: json['name'] as String?,
         category: json['category'] as String?,
         storeImage: json['storeImage'] as String?,
