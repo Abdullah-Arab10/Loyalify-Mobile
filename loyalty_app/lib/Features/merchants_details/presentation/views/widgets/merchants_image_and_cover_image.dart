@@ -26,6 +26,7 @@ class MerchantsImageAndCoverImage extends StatelessWidget {
         child: OfferImagesSection(
           isLogo: true,
           storeDetailsModel: storeDetailsModel,
+          coverImageAspectRatio: 3 / 1,
         ));
   }
 }
