@@ -8,6 +8,7 @@ import 'package:loyalty_app/Features/merchants_details/data/repos/store_details_
 import 'package:loyalty_app/Features/merchants_details/presentation/manager/fetch_store_details_cubit/fetch_store_details_cubit.dart';
 import 'package:loyalty_app/Features/merchants_details/presentation/manager/merchants_details_cubit/merchants_details_cubit.dart';
 import 'package:loyalty_app/Features/merchants_details/presentation/views/merchants_details_view.dart';
+import 'package:loyalty_app/Features/offer_details/presentation/views/offer_details_view.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/on_boarding_view.dart';
 import 'package:loyalty_app/core/utils/service_locator.dart';
 
@@ -18,17 +19,19 @@ abstract class AppRouter {
   static const kHomeLayoutView = '/homeLayoutView';
   static const kSearchView = '/searchView';
   static const kMerchantcDetailsView = '/merchantcDetailsView';
+  static const kOfferDetailsView = '/offerDetailsView';
 
   static final router = GoRouter(
     routes: [
       GoRoute(
         path: '/',
         builder: (context, state) {
-          initMerchantsModule();
-          initStoreDetailsModule();
-          return const HomeLayoutView();
+          // initMerchantsModule();
+          // initStoreDetailsModule();
+          // return const HomeLayoutView();
           // initStoreDetailsModule();
           // return const MerchantsDetailsView();
+          return const OfferDetailsView();
         },
       ),
       GoRoute(

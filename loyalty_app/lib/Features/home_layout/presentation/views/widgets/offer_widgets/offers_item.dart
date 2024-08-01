@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/core/widgets/offer_images_section.dart';
-import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/offer_widgets/offer_texts_section.dart';
+import 'package:loyalty_app/core/widgets/offer_texts_section.dart';
 import 'package:loyalty_app/core/resources/app_colors.dart';
 
 class OffersItem extends StatelessWidget {
@@ -38,11 +38,16 @@ class OffersItem extends StatelessWidget {
           children: [
             OfferImagesSection(
               isLogo: isLogo,
+              coverImageAspectRatio: 3 / 1,
             ),
             const SizedBox(
               height: 10,
             ),
-            const OfferTextsSection(),
+            const OfferTextsSection(
+              offerName: 'Get Free 1 Cup Coffe E-Voucher',
+              text1: '3.750 points',
+              text2: 'Starbucks',
+            ),
             const SizedBox(
               height: 10,
             ),
