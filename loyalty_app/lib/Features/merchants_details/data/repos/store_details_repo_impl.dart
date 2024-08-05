@@ -11,10 +11,10 @@ class StoreDetailsRepoImpl implements StoreDetailsRepo {
 
   @override
   Future<Either<Failure, StoreDetailsModel>> fetchStoreDetails(
-      {required int categoryId}) async {
+      {required int storeId}) async {
     try {
       var data =
-          await apiService.get(endPoint: '/Store/GetStoreById/$categoryId');
+          await apiService.get(endPoint: '/Store/GetStoreById/$storeId');
 
       StoreDetailsModel storeDetails = StoreDetailsModel.fromJson(data);
 

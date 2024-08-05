@@ -25,7 +25,8 @@ class MerchantsImageAndCoverImage extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         child: OfferImagesSection(
           isLogo: true,
-          storeDetailsModel: storeDetailsModel,
+          coverImage: storeDetailsModel?.items?.coverImage,
+          storeImage: storeDetailsModel?.items?.storeImage,
           coverImageAspectRatio: 3 / 1,
         ));
   }

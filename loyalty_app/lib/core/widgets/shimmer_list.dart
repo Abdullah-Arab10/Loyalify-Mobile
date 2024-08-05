@@ -3,9 +3,29 @@ import 'package:loyalty_app/core/resources/app_colors.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimmerList extends StatelessWidget {
-  const ShimmerList({super.key, this.scrollDirection});
+  const ShimmerList(
+      {super.key,
+      this.scrollDirection,
+      required this.itemCount,
+      this.isAspectRatio = false,
+      this.height,
+      this.aspectRatio,
+      this.topMargin = 0.0,
+      this.leftMargin = 0.0,
+      this.rightMargin,
+      this.bottomMargin = 0.0,
+      required this.itemBorderRadius});
 
   final Axis? scrollDirection;
+  final int itemCount;
+  final double topMargin;
+  final double leftMargin;
+  final double? rightMargin;
+  final double bottomMargin;
+  final bool isAspectRatio;
+  final double? aspectRatio;
+  final double? height;
+  final double itemBorderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -16,23 +36,67 @@ class ShimmerList extends StatelessWidget {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         scrollDirection: scrollDirection ?? Axis.vertical,
-        itemCount: 20,
+        itemCount: itemCount,
         itemBuilder: (context, index) {
-          return Padding(
-            padding:
-                EdgeInsets.only(bottom: 50, right: index % 2 == 0 ? 70 : 0),
-            child: SizedBox(
-              height: 10,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.4),
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-              ),
-            ),
-          );
+          return isAspectRatio
+              ? AspectRatio(
+                  aspectRatio: aspectRatio ?? 2 / 1,
+                  child: CustomContainer(
+                    bottomMargin: bottomMargin,
+                    rightMargin: rightMargin ?? 0.0,
+                    leftMargin: leftMargin,
+                    topMargin: topMargin,
+                    borderRadius: itemBorderRadius,
+                  ),
+                )
+              : SizedBox(
+                  height: height ?? 10,
+                  child: CustomContainer(
+                    bottomMargin: bottomMargin,
+                    rightMargin: rightMargin != null
+                        ? rightMargin!
+                        : index % 2 == 0
+                            ? 70
+                            : 0,
+                    leftMargin: leftMargin,
+                    topMargin: topMargin,
+                    borderRadius: itemBorderRadius,
+                  ),
+                );
         },
       ),
+    );
+  }
+}
+
+class CustomContainer extends StatelessWidget {
+  const CustomContainer({
+    super.key,
+    this.topMargin = 0.0,
+    this.leftMargin = 0.0,
+    this.rightMargin = 0.0,
+    this.bottomMargin = 0.0,
+    required this.borderRadius,
+  });
+
+  final double topMargin;
+  final double leftMargin;
+  final double rightMargin;
+  final double bottomMargin;
+  final double borderRadius;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.4),
+        borderRadius: BorderRadius.circular(borderRadius),
+      ),
+      margin: EdgeInsetsDirectional.only(
+          top: topMargin,
+          start: leftMargin,
+          end: rightMargin,
+          bottom: bottomMargin),
     );
   }
 }

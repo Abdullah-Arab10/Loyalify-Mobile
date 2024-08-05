@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/merchants_widgets/filtering_item.dart';
+import 'package:loyalty_app/Features/merchants_details/presentation/manager/fetch_store_offers_cubit/fetch_store_offers_cubit.dart';
 import 'package:loyalty_app/Features/merchants_details/presentation/manager/merchants_details_cubit/merchants_details_cubit.dart';
 import 'package:loyalty_app/core/resources/app_colors.dart';
 
@@ -7,9 +8,11 @@ class InfoAndOffersTabs extends StatelessWidget {
   const InfoAndOffersTabs({
     super.key,
     required this.currentIndex,
+    required this.storeId,
   });
 
   final int currentIndex;
+  final int storeId;
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +46,8 @@ class InfoAndOffersTabs extends StatelessWidget {
               child: GestureDetector(
             onTap: () {
               MerchantsDetailsCubit.get(context).changeIndex(1);
+              FetchStoreOffersCubit.get(context)
+                  .fetchStoreOffers(storeId: storeId);
             },
             child: FilteringItem(
               text: 'Offers',

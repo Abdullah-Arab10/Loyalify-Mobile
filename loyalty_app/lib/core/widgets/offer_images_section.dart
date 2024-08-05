@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:loyalty_app/Features/merchants_details/data/models/store_details_model/store_details_model.dart';
 import 'package:loyalty_app/core/resources/app_colors.dart';
 import 'package:loyalty_app/core/utils/api_service.dart';
 import 'package:loyalty_app/core/utils/app_images.dart';
@@ -12,12 +11,14 @@ class OfferImagesSection extends StatelessWidget {
   const OfferImagesSection({
     super.key,
     required this.isLogo,
-    this.storeDetailsModel,
+    required this.coverImage,
+    required this.storeImage,
     required this.coverImageAspectRatio,
   });
 
   final bool isLogo;
-  final StoreDetailsModel? storeDetailsModel;
+  final String? coverImage;
+  final String? storeImage;
   final double coverImageAspectRatio;
 
   @override
@@ -27,11 +28,11 @@ class OfferImagesSection extends StatelessWidget {
       alignment: Alignment.bottomLeft,
       children: [
         OfferCoverImage(
-          storeDetailsModel: storeDetailsModel,
+          coverImage: coverImage,
           aspectRatio: coverImageAspectRatio,
         ),
         isLogo == true
-            ? StoreImage(storeDetailsModel: storeDetailsModel)
+            ? StoreImage(storeImage: storeImage,)
             : const SizedBox()
       ],
     );
@@ -41,19 +42,19 @@ class OfferImagesSection extends StatelessWidget {
 class StoreImage extends StatelessWidget {
   const StoreImage({
     super.key,
-    required this.storeDetailsModel,
+    required this.storeImage,
   });
 
-  final StoreDetailsModel? storeDetailsModel;
+  final String? storeImage;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(6),
       child: CustomImage(
-        image: storeDetailsModel?.items?.storeImage != null
+        image: storeImage != null
             ? Image.network(
-                '${ApiService.baseUrl}${storeDetailsModel?.items?.storeImage}',
+                '${ApiService.baseUrl}$storeImage',
                 fit: BoxFit.cover,
               )
             : Container(

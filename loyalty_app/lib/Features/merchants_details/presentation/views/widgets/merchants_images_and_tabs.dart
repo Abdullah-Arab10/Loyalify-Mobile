@@ -11,9 +11,11 @@ class MerchantsImagesAndTabs extends StatelessWidget {
   const MerchantsImagesAndTabs({
     super.key,
     this.state,
+    required this.storeId,
   });
 
   final dynamic state;
+  final int storeId;
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +46,7 @@ class MerchantsImagesAndTabs extends StatelessWidget {
             ? const SizedBox()
             : InfoAndOffersTabs(
                 currentIndex: MerchantsDetailsCubit.get(context).currentIndex,
+                storeId: storeId,
               ),
       ],
     );
