@@ -11,6 +11,11 @@ class OffersItem extends StatelessWidget {
     required this.rightMargin,
     required this.bottomMargin,
     required this.isLogo,
+    required this.coverImage,
+    required this.storeImage,
+    required this.offerName,
+    required this.pointsAmount,
+    required this.storeName,
   });
 
   final double topMargin;
@@ -18,6 +23,11 @@ class OffersItem extends StatelessWidget {
   final double rightMargin;
   final double bottomMargin;
   final bool isLogo;
+  final String? coverImage;
+  final String? storeImage;
+  final String? offerName;
+  final int? pointsAmount;
+  final String? storeName;
 
   @override
   Widget build(BuildContext context) {
@@ -39,14 +49,16 @@ class OffersItem extends StatelessWidget {
             OfferImagesSection(
               isLogo: isLogo,
               coverImageAspectRatio: 3 / 1,
+              coverImage: coverImage,
+              storeImage: storeImage,
             ),
             const SizedBox(
               height: 10,
             ),
-            const OfferTextsSection(
-              offerName: 'Get Free 1 Cup Coffe E-Voucher',
-              text1: '3.750 points',
-              text2: 'Starbucks',
+            OfferTextsSection(
+              offerName: offerName ?? '',
+              text1: '$pointsAmount',
+              text2: storeName ?? '',
             ),
             const SizedBox(
               height: 10,

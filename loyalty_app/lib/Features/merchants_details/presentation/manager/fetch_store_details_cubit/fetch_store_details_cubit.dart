@@ -3,19 +3,19 @@ import 'package:loyalty_app/Features/merchants_details/data/models/store_details
 import 'package:loyalty_app/Features/merchants_details/data/repos/store_details_repo.dart';
 part 'fetch_store_details_state.dart';
 
-
 class FetchStoreDetailsCubit extends Cubit<FetchStoreDetailsState> {
-  FetchStoreDetailsCubit(this.storeDetailsRepo) : super(FetchStoreDetailsInitial());
+  FetchStoreDetailsCubit(this.storeDetailsRepo)
+      : super(FetchStoreDetailsInitial());
 
   static FetchStoreDetailsCubit get(context) => BlocProvider.of(context);
 
-    StoreDetailsRepo storeDetailsRepo;
-    StoreDetailsModel? storeDetailsModel;
+  final StoreDetailsRepo storeDetailsRepo;
 
-    Future<void> fetchStoreDetails({required int categoryId}) async {
+  StoreDetailsModel? storeDetailsModel;
+
+  Future<void> fetchStoreDetails({required int storeId}) async {
     emit(FetchStoreDetailsLoading());
-    var result =
-        await storeDetailsRepo.fetchStoreDetails(categoryId: categoryId);
+    var result = await storeDetailsRepo.fetchStoreDetails(storeId: storeId);
     result.fold((failure) {
       emit(FetchStoreDetailsFailure(failure.errMessage));
     }, (details) {
@@ -23,5 +23,4 @@ class FetchStoreDetailsCubit extends Cubit<FetchStoreDetailsState> {
       emit(FetchStoreDetailsSuccess());
     });
   }
-
 }

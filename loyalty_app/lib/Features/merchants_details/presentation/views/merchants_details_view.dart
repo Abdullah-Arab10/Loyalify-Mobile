@@ -21,7 +21,7 @@ class _MerchantsDetailsViewState extends State<MerchantsDetailsView> {
   @override
   void initState() {
     BlocProvider.of<FetchStoreDetailsCubit>(context).fetchStoreDetails(
-      categoryId: widget.storeId,
+      storeId: widget.storeId,
     );
     super.initState();
   }
@@ -45,7 +45,9 @@ class _MerchantsDetailsViewState extends State<MerchantsDetailsView> {
           GoRouter.of(context).pop();
         },
       ),
-      body: const MerchantsDetailsViewBody(),
+      body: MerchantsDetailsViewBody(
+        storeId: widget.storeId,
+      ),
     );
   }
 }

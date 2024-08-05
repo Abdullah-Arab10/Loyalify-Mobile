@@ -22,7 +22,7 @@ class OfferCoverImageAndTextsSection extends StatelessWidget {
                 ]),
             clipBehavior: Clip.antiAlias,
             child: const OfferCoverImage(
-                storeDetailsModel: null, aspectRatio: 2 / 1)),
+                coverImage: null, aspectRatio: 2 / 1)),
         const SizedBox(
           height: 10,
         ),

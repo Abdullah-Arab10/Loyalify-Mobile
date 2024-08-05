@@ -25,7 +25,11 @@ class DescriptionSection extends StatelessWidget {
             : state is FetchStoreDetailsFailure
                 ? CustomNoDataOrFailure(
                     text: state.errMessage, image: Assets.imagesFailure)
-                : const ShimmerList(),
+                : const ShimmerList(
+                    itemCount: 20,
+                    bottomMargin: 50,
+                    itemBorderRadius: 30,
+                  ),
       ],
     );
   }
