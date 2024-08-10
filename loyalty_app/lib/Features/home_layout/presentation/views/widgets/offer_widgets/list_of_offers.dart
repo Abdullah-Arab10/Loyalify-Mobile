@@ -1,8 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:loyalty_app/Features/home_layout/data/models/offer_model/item.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/offer_widgets/offers_item.dart';
+import 'package:loyalty_app/core/resources/app_router.dart';
 
 class ListOfOffers extends StatelessWidget {
   const ListOfOffers({
@@ -44,6 +45,10 @@ class ListOfOffers extends StatelessWidget {
               offerName: offers[index].offerName,
               pointsAmount: offers[index].pointAmount,
               storeName: offers[index].storeName,
+              onTap: () => GoRouter.of(context).push(
+                AppRouter.kOfferDetailsView,
+                extra: <dynamic>[1, offers[index].id],
+              ),
             );
           } else {
             Timer(const Duration(milliseconds: 30), () {

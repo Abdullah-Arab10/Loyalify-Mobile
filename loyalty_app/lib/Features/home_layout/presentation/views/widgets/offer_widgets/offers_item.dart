@@ -16,6 +16,7 @@ class OffersItem extends StatelessWidget {
     required this.offerName,
     required this.pointsAmount,
     required this.storeName,
+    required this.onTap,
   });
 
   final double topMargin;
@@ -28,42 +29,48 @@ class OffersItem extends StatelessWidget {
   final String? offerName;
   final int? pointsAmount;
   final String? storeName;
+  final GestureTapCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration: BoxDecoration(
-            color: AppColors.white,
-            borderRadius: BorderRadius.circular(8),
-            boxShadow: [BoxShadow(color: AppColors.lightGray, blurRadius: 8)]),
-        clipBehavior: Clip.antiAlias,
-        margin: EdgeInsetsDirectional.only(
-            top: topMargin,
-            start: leftMargin,
-            end: rightMargin,
-            bottom: bottomMargin),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            OfferImagesSection(
-              isLogo: isLogo,
-              coverImageAspectRatio: 3 / 1,
-              coverImage: coverImage,
-              storeImage: storeImage,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            OfferTextsSection(
-              offerName: offerName ?? '',
-              text1: '$pointsAmount',
-              text2: storeName ?? '',
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-          ],
-        ));
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+          decoration: BoxDecoration(
+              color: AppColors.white,
+              borderRadius: BorderRadius.circular(8),
+              boxShadow: [
+                BoxShadow(color: AppColors.lightGray, blurRadius: 8)
+              ]),
+          clipBehavior: Clip.antiAlias,
+          margin: EdgeInsetsDirectional.only(
+              top: topMargin,
+              start: leftMargin,
+              end: rightMargin,
+              bottom: bottomMargin),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              OfferImagesSection(
+                isLogo: isLogo,
+                coverImageAspectRatio: 3 / 1,
+                coverImage: coverImage,
+                storeImage: storeImage,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              OfferTextsSection(
+                offerName: offerName ?? '',
+                text1: '$pointsAmount',
+                text2: storeName ?? '',
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+            ],
+          )),
+    );
   }
 }

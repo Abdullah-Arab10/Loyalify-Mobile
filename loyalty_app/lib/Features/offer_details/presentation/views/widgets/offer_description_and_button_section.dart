@@ -6,14 +6,17 @@ import 'package:loyalty_app/core/widgets/custom_button.dart';
 class OfferDescriptionAndButtonSection extends StatelessWidget {
   const OfferDescriptionAndButtonSection({
     super.key,
+    required this.description,
   });
+
+  final String description;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Text(
-          'Welcome to Starbucks, a global coffeehouse chain that has been enchanting coffee lovers since 1971. Renowned for our commitment to quality coffee, ethically sourced beans, and a warm ambiance, Starbucks is not just a coffee destination; it’s a community.',
+          description,
           style: AppStyles.styleSemiBold18(context).copyWith(
             color: AppColors.sonicSilver,
           ),
