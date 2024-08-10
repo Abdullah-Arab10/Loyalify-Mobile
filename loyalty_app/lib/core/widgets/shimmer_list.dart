@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/core/resources/app_colors.dart';
+import 'package:loyalty_app/core/widgets/custom_container.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimmerList extends StatelessWidget {
@@ -49,19 +50,17 @@ class ShimmerList extends StatelessWidget {
                     borderRadius: itemBorderRadius,
                   ),
                 )
-              : SizedBox(
-                  height: height ?? 10,
-                  child: CustomContainer(
-                    bottomMargin: bottomMargin,
-                    rightMargin: rightMargin != null
-                        ? rightMargin!
-                        : index % 2 == 0
-                            ? 70
-                            : 0,
-                    leftMargin: leftMargin,
-                    topMargin: topMargin,
-                    borderRadius: itemBorderRadius,
-                  ),
+              : CustomContainer(
+                  bottomMargin: bottomMargin,
+                  rightMargin: rightMargin != null
+                      ? rightMargin!
+                      : index % 2 == 0
+                          ? 70
+                          : 0,
+                  height: height,
+                  leftMargin: leftMargin,
+                  topMargin: topMargin,
+                  borderRadius: itemBorderRadius,
                 );
         },
       ),
@@ -69,34 +68,4 @@ class ShimmerList extends StatelessWidget {
   }
 }
 
-class CustomContainer extends StatelessWidget {
-  const CustomContainer({
-    super.key,
-    this.topMargin = 0.0,
-    this.leftMargin = 0.0,
-    this.rightMargin = 0.0,
-    this.bottomMargin = 0.0,
-    required this.borderRadius,
-  });
 
-  final double topMargin;
-  final double leftMargin;
-  final double rightMargin;
-  final double bottomMargin;
-  final double borderRadius;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.4),
-        borderRadius: BorderRadius.circular(borderRadius),
-      ),
-      margin: EdgeInsetsDirectional.only(
-          top: topMargin,
-          start: leftMargin,
-          end: rightMargin,
-          bottom: bottomMargin),
-    );
-  }
-}

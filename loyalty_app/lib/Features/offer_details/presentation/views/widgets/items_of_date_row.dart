@@ -18,7 +18,7 @@ class ItemsOfDateRow extends StatelessWidget {
       children: [
         Text(startDayOrExpiresIn, style: AppStyles.styleSemiBold18(context)),
         Text(
-          dateOrDays,
+          dateOrDays != '' ? dateOrDays.substring(0, 10) : '',
           style: AppStyles.styleSemiBold16(context)
               .copyWith(color: AppColors.sonicSilver),
         ),

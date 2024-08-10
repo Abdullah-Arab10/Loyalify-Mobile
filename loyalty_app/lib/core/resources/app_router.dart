@@ -10,6 +10,8 @@ import 'package:loyalty_app/Features/merchants_details/presentation/manager/fetc
 import 'package:loyalty_app/Features/merchants_details/presentation/manager/fetch_store_offers_cubit/fetch_store_offers_cubit.dart';
 import 'package:loyalty_app/Features/merchants_details/presentation/manager/merchants_details_cubit/merchants_details_cubit.dart';
 import 'package:loyalty_app/Features/merchants_details/presentation/views/merchants_details_view.dart';
+import 'package:loyalty_app/Features/offer_details/data/repos/offer_details_repo_impl.dart';
+import 'package:loyalty_app/Features/offer_details/presentation/manager/fetch_offer_details_cubit/fetch_offer_details_cubit.dart';
 import 'package:loyalty_app/Features/offer_details/presentation/views/offer_details_view.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/on_boarding_view.dart';
 import 'package:loyalty_app/core/utils/service_locator.dart';
@@ -83,6 +85,20 @@ abstract class AppRouter {
               ],
               child: MerchantsDetailsView(
                 storeId: state.extra as int,
+              ),
+            );
+          }),
+      GoRoute(
+          path: kOfferDetailsView,
+          builder: (context, state) {
+            final List<dynamic> ids = state.extra as List<dynamic>;
+            initOffersDetailsModule();
+            return BlocProvider(
+              create: (context) =>
+                  FetchOfferDetailsCubit(getIt.get<OfferDetailsRepoImpl>()),
+              child: OfferDetailsView(
+                userId: ids.elementAt(0),
+                offerId: ids.elementAt(1),
               ),
             );
           }),

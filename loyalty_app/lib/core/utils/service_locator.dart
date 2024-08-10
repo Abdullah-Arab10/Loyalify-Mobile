@@ -6,6 +6,7 @@ import 'package:loyalty_app/Features/authentication/data/repos/auth_repo_impl.da
 import 'package:loyalty_app/Features/home_layout/data/repos/merchants_repos/merchants_repos_impl.dart';
 import 'package:loyalty_app/Features/home_layout/data/repos/offers_repo/offer_repo_impl.dart';
 import 'package:loyalty_app/Features/merchants_details/data/repos/store_details_repo_impl.dart';
+import 'package:loyalty_app/Features/offer_details/data/repos/offer_details_repo_impl.dart';
 import 'package:loyalty_app/core/utils/app_prefs.dart';
 import 'package:loyalty_app/core/utils/dio_factory.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -50,5 +51,12 @@ initOffersModule() {
   if (!GetIt.I.isRegistered<OfferRepoImpl>()) {
     getIt.registerSingleton<OfferRepoImpl>(
         OfferRepoImpl(getIt.get<ApiService>()));
+  }
+}
+
+initOffersDetailsModule() {
+  if (!GetIt.I.isRegistered<OfferDetailsRepoImpl>()) {
+    getIt.registerSingleton<OfferDetailsRepoImpl>(
+        OfferDetailsRepoImpl(getIt.get<ApiService>()));
   }
 }

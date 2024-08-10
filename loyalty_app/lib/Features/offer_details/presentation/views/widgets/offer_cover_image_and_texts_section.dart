@@ -7,7 +7,16 @@ import 'package:loyalty_app/core/widgets/offer_texts_section.dart';
 class OfferCoverImageAndTextsSection extends StatelessWidget {
   const OfferCoverImageAndTextsSection({
     super.key,
+    required this.coverImage,
+    required this.offerName,
+    required this.pointAmount,
+    required this.userPoints,
   });
+
+  final String? coverImage;
+  final String? offerName;
+  final int? pointAmount;
+  final double? userPoints;
 
   @override
   Widget build(BuildContext context) {
@@ -21,22 +30,21 @@ class OfferCoverImageAndTextsSection extends StatelessWidget {
                   BoxShadow(color: AppColors.lightGray, blurRadius: 8)
                 ]),
             clipBehavior: Clip.antiAlias,
-            child: const OfferCoverImage(
-                coverImage: null, aspectRatio: 2 / 1)),
+            child: OfferCoverImage(coverImage: coverImage, aspectRatio: 2 / 1)),
         const SizedBox(
           height: 10,
         ),
         OfferTextsSection(
           leftPadding: 0,
-          offerName: 'Get Free 1 Cup Coffe E-Voucher',
-          text1: '249.560',
+          offerName: offerName ?? '',
+          text1: '$userPoints',
           style1: AppStyles.styleSemiBold16(context),
           spacerBetweenText1AndText2: Text(
             ' / ',
             style: AppStyles.styleSemiBold16(context)
                 .copyWith(color: AppColors.sonicSilver),
           ),
-          text2: '3750',
+          text2: '$pointAmount',
           style2: AppStyles.styleSemiBold16(context)
               .copyWith(color: AppColors.sonicSilver),
         ),

@@ -35,6 +35,7 @@ class ListOfStoreOffers extends StatelessWidget {
         offerName: state.storeOffers.items[index].offerName,
         pointsAmount: state.storeOffers.items[index].pointAmount,
         storeName: state.storeOffers.items[index].storeName,
+        onTap: () {},
       ),
     );
   }
