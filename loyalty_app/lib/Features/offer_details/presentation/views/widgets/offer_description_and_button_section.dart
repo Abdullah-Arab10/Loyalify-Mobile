@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:loyalty_app/Features/offer_details/presentation/views/widgets/qr_code.dart';
 import 'package:loyalty_app/core/resources/app_colors.dart';
 import 'package:loyalty_app/core/resources/app_styles.dart';
 import 'package:loyalty_app/core/widgets/custom_button.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class OfferDescriptionAndButtonSection extends StatelessWidget {
   const OfferDescriptionAndButtonSection({
     super.key,
     required this.description,
+    required this.offerId,
   });
 
   final String description;
+  final String offerId;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +40,19 @@ class OfferDescriptionAndButtonSection extends StatelessWidget {
                   foregroundColor: AppColors.white,
                   text: 'Redeem',
                   backgroundColor: AppColors.kPrimaryColor,
-                  onPressed: () {},
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      builder: (BuildContext context) {
+                        return Container(
+                          padding: const EdgeInsets.all(16.0),
+                          height: MediaQuery.of(context).size.height * 0.5,
+                          child: QRCode(offerId: offerId,),
+                        );
+                      },
+                    );
+                  },
                 ),
               ),
               const SizedBox(
