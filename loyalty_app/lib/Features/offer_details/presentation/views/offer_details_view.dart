@@ -44,7 +44,9 @@ class _OfferDetailsViewState extends State<OfferDetailsView> {
           GoRouter.of(context).pop();
         },
       ),
-      body: const OfferDetailsViewBody(),
+      body: OfferDetailsViewBody(
+        offerId: widget.offerId,
+      ),
     );
   }
 }
