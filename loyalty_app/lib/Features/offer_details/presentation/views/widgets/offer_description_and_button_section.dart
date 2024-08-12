@@ -3,7 +3,6 @@ import 'package:loyalty_app/Features/offer_details/presentation/views/widgets/qr
 import 'package:loyalty_app/core/resources/app_colors.dart';
 import 'package:loyalty_app/core/resources/app_styles.dart';
 import 'package:loyalty_app/core/widgets/custom_button.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 
 class OfferDescriptionAndButtonSection extends StatelessWidget {
   const OfferDescriptionAndButtonSection({

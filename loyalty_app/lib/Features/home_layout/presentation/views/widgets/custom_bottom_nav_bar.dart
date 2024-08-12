@@ -51,24 +51,6 @@ class CustomBottomNavBar extends StatelessWidget {
               padding: 0,
             ),
             label: AppStrings.offers),
-        BottomNavigationBarItem(
-            icon: CustomIcon(
-              image: Assets.imagesVoucher,
-              color: currentIndex == 3
-                  ? AppColors.kPrimaryColor
-                  : AppColors.darkGainsboro,
-              padding: 0,
-            ),
-            label: AppStrings.myVoucher),
-        BottomNavigationBarItem(
-            icon: CustomIcon(
-              image: Assets.imagesAccount,
-              color: currentIndex == 4
-                  ? AppColors.kPrimaryColor
-                  : AppColors.darkGainsboro,
-              padding: 0,
-            ),
-            label: AppStrings.account),
       ],
     );
   }

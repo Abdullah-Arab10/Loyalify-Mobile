@@ -36,6 +36,7 @@ class OffersItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        width: 260,
           decoration: BoxDecoration(
               color: AppColors.white,
               borderRadius: BorderRadius.circular(8),

@@ -4,7 +4,6 @@ import 'package:loyalty_app/Features/home_layout/presentation/manager/home_layou
 import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/custom_bottom_nav_bar.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/home_layout_view_body.dart';
 import 'package:loyalty_app/core/resources/app_colors.dart';
-import 'package:loyalty_app/core/resources/strings_manager.dart';
 import 'package:loyalty_app/core/utils/app_images.dart';
 import 'package:loyalty_app/core/widgets/custom_app_bar.dart';
 import 'package:loyalty_app/core/widgets/custom_icon.dart';
@@ -23,14 +22,20 @@ class HomeLayoutView extends StatelessWidget {
               appBar: CustomAppBar(
                 isActions: true,
                 isTitle: true,
-                title: AppStrings.merchants,
+                title: HomeLayoutCubit.get(context)
+                    .titles[HomeLayoutCubit.get(context).currentIndex],
                 icon: Assets.imagesMenu,
-                backgroundColor: AppColors.gainsboro,
+                backgroundColor: HomeLayoutCubit.get(context).currentIndex == 0
+                    ? AppColors.kPrimaryColor
+                    : AppColors.gainsboro,
                 svgPicture: CustomIcon(
                   image: Assets.imagesLogo,
-                  color: AppColors.kPrimaryColor,
+                  color: HomeLayoutCubit.get(context).currentIndex == 0
+                      ? AppColors.white
+                      : AppColors.kPrimaryColor,
                   padding: 12.0,
                 ),
+                currentIndex: HomeLayoutCubit.get(context).currentIndex,
               ),
               body: HomeLayoutViewBody(
                 currentIndex: HomeLayoutCubit.get(context).currentIndex,
