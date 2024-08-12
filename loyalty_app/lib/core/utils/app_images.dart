@@ -113,9 +113,9 @@ class Assets {
   /// assets/images/sss.jpg
   static const String imagesSss = "assets/images/sss.jpg";
 
-  /// Assets for imagesStore
-  /// assets/images/store.svg
-  static const String imagesStore = "assets/images/store.svg";
+  /// Assets for imagesStar
+  /// assets/images/star.svg
+  static const String imagesStar = "assets/images/star.svg";
 
   /// Assets for imagesTtt
   /// assets/images/ttt.jpeg

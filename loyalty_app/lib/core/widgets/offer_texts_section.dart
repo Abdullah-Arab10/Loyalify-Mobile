@@ -28,8 +28,10 @@ class OfferTextsSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.only(left: leftPadding ?? 10),
-          child: Text(offerName, style: AppStyles.styleBold20(context)),
+          padding: EdgeInsets.only(left: leftPadding ?? 10, right: 10),
+          child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(offerName, style: AppStyles.styleBold20(context))),
         ),
         const SizedBox(
           height: 10,
@@ -38,15 +40,21 @@ class OfferTextsSection extends StatelessWidget {
           padding: EdgeInsets.only(left: leftPadding ?? 10),
           child: Row(
             children: [
-              Text(text1,
-                  style: style1 ??
-                      AppStyles.styleSemiBold16(context)
-                          .copyWith(color: AppColors.sonicSilver)),
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(text1,
+                    style: style1 ??
+                        AppStyles.styleSemiBold16(context)
+                            .copyWith(color: AppColors.sonicSilver)),
+              ),
               spacerBetweenText1AndText2 ??
                   const SizedBox(
                     width: 16,
                   ),
-              Text(text2, style: style2 ?? AppStyles.styleSemiBold16(context)),
+              FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(text2,
+                      style: style2 ?? AppStyles.styleSemiBold16(context))),
             ],
           ),
         ),
