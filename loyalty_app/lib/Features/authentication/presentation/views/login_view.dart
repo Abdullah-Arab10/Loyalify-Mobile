@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loyalty_app/Features/authentication/data/repos/auth_repo_impl.dart';
 import 'package:loyalty_app/Features/authentication/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:loyalty_app/Features/authentication/presentation/manager/auth_validation_cubit/auth_validation_cubit.dart';
-import 'package:loyalty_app/Features/authentication/presentation/manager/eye_visibility_cubit/eye_visibility_cubit.dart';
 import 'package:loyalty_app/Features/authentication/presentation/views/widgets/login_view_body.dart';
 import 'package:loyalty_app/core/resources/app_colors.dart';
 import 'package:loyalty_app/core/utils/app_images.dart';
@@ -33,9 +32,6 @@ class _LoginViewState extends State<LoginView> {
         ),
         BlocProvider(
           create: (context) => AuthValidationCubit(),
-        ),
-        BlocProvider(
-          create: (context) => EyeVisibilityCubit(),
         ),
       ],
       child: BlocBuilder<AuthCubit, AuthState>(

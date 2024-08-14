@@ -5,13 +5,25 @@ class Assets {
   /// assets/images/account.svg
   static const String imagesAccount = "assets/images/account.svg";
 
+  /// Assets for imagesAccountant
+  /// assets/images/accountant.svg
+  static const String imagesAccountant = "assets/images/accountant.svg";
+
   /// Assets for imagesActivity
   /// assets/images/activity.svg
   static const String imagesActivity = "assets/images/activity.svg";
 
+  /// Assets for imagesAddCashier
+  /// assets/images/addCashier.svg
+  static const String imagesAddCashier = "assets/images/addCashier.svg";
+
   /// Assets for imagesAddress
   /// assets/images/address.svg
   static const String imagesAddress = "assets/images/address.svg";
+
+  /// Assets for imagesAdministrator
+  /// assets/images/administrator.svg
+  static const String imagesAdministrator = "assets/images/administrator.svg";
 
   /// Assets for imagesBrandLoyaltyCuate
   /// assets/images/brandLoyaltyCuate.svg
@@ -25,6 +37,10 @@ class Assets {
   /// assets/images/brandLoyaltyRafiki.svg
   static const String imagesBrandLoyaltyRafiki = "assets/images/brandLoyaltyRafiki.svg";
 
+  /// Assets for imagesCashier
+  /// assets/images/cashier.svg
+  static const String imagesCashier = "assets/images/cashier.svg";
+
   /// Assets for imagesDefaultStoreCoverImage
   /// assets/images/defaultStoreCoverImage.svg
   static const String imagesDefaultStoreCoverImage = "assets/images/defaultStoreCoverImage.svg";
@@ -32,6 +48,10 @@ class Assets {
   /// Assets for imagesDefaultStoreImage
   /// assets/images/defaultStoreImage.svg
   static const String imagesDefaultStoreImage = "assets/images/defaultStoreImage.svg";
+
+  /// Assets for imagesDollarSign
+  /// assets/images/dollarSign.svg
+  static const String imagesDollarSign = "assets/images/dollarSign.svg";
 
   /// Assets for imagesEmailOutlined
   /// assets/images/emailOutlined.svg
@@ -81,6 +101,10 @@ class Assets {
   /// assets/images/logo.svg
   static const String imagesLogo = "assets/images/logo.svg";
 
+  /// Assets for imagesManager
+  /// assets/images/manager.svg
+  static const String imagesManager = "assets/images/manager.svg";
+
   /// Assets for imagesMenu
   /// assets/images/menu.svg
   static const String imagesMenu = "assets/images/menu.svg";
@@ -104,6 +128,10 @@ class Assets {
   /// Assets for imagesPhone
   /// assets/images/phone.svg
   static const String imagesPhone = "assets/images/phone.svg";
+
+  /// Assets for imagesQrCodeScan
+  /// assets/images/QrCodeScan.svg
+  static const String imagesQrCodeScan = "assets/images/QrCodeScan.svg";
 
   /// Assets for imagesSearch
   /// assets/images/search.svg

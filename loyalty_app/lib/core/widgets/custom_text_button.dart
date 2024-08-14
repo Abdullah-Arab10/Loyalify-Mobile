@@ -3,7 +3,7 @@ import 'package:loyalty_app/core/resources/app_colors.dart';
 import 'package:loyalty_app/core/resources/app_styles.dart';
 
 class CustomTextButton extends StatelessWidget {
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final String text;
 
   const CustomTextButton({

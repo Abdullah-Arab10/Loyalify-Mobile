@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/core/utils/size_config.dart';
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
+import 'package:loyalty_app/Features/store_manager/presentation/manager/add_cashier_cubit/add_cashier_cubit.dart';
 
 final dPassValid = RegExp(r'\d');
 final sPassValid = RegExp(r'\W');
@@ -76,3 +77,22 @@ SnackBar customSnackBar({
         contentType: contentType,
       ),
     );
+
+void cashierValidation(AddCashierState state, bool isnameOfCashierValid,
+    bool isEmailOfCashierValid, bool isPasswordOfCashierValid) {
+  if (state is NameOfCashierIsValid) {
+    isnameOfCashierValid = true;
+  } else if (state is NameOfCashierIsInValid) {
+    isnameOfCashierValid = false;
+  }
+  if (state is EmailOfCashierIsValid) {
+    isEmailOfCashierValid = true;
+  } else if (state is EmailOfCashierIsInValid) {
+    isEmailOfCashierValid = false;
+  }
+  if (state is PasswordOfCashierIsValid) {
+    isPasswordOfCashierValid = true;
+  } else if (state is PasswordOfCashierIsInValid) {
+    isPasswordOfCashierValid = false;
+  }
+}

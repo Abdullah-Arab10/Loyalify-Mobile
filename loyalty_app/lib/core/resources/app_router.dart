@@ -14,6 +14,9 @@ import 'package:loyalty_app/Features/offer_details/data/repos/offer_details_repo
 import 'package:loyalty_app/Features/offer_details/presentation/manager/fetch_offer_details_cubit/fetch_offer_details_cubit.dart';
 import 'package:loyalty_app/Features/offer_details/presentation/views/offer_details_view.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/on_boarding_view.dart';
+import 'package:loyalty_app/Features/store_manager/presentation/views/cashier_view.dart';
+import 'package:loyalty_app/Features/store_manager/presentation/views/store_manager_view.dart';
+import 'package:loyalty_app/Features/store_manager/presentation/views/add_cashier_view.dart';
 import 'package:loyalty_app/core/utils/service_locator.dart';
 
 abstract class AppRouter {
@@ -24,16 +27,19 @@ abstract class AppRouter {
   static const kSearchView = '/searchView';
   static const kMerchantcDetailsView = '/merchantcDetailsView';
   static const kOfferDetailsView = '/offerDetailsView';
+  static const kStoreManagerView = '/storeManagerView';
+  static const kCashierView = '/cashierView';
+  static const kAddCashierView = '/AddCashierView';
 
   static final router = GoRouter(
     routes: [
       GoRoute(
         path: '/',
         builder: (context, state) {
-          initMerchantsModule();
-          initStoreDetailsModule();
-          initOffersModule();
-          return const HomeLayoutView();
+          // initMerchantsModule();
+          // initStoreDetailsModule();
+          // initOffersModule();
+          return const StoreManagerView();
           // initStoreDetailsModule();
           // return const MerchantsDetailsView();
           // initOffersModule();
@@ -102,6 +108,18 @@ abstract class AppRouter {
               ),
             );
           }),
+      GoRoute(
+        path: kStoreManagerView,
+        builder: (context, state) => const StoreManagerView(),
+      ),
+      GoRoute(
+        path: kCashierView,
+        builder: (context, state) => const CashierView(),
+      ),
+      GoRoute(
+        path: kAddCashierView,
+        builder: (context, state) => const AddCashierView(),
+      )
     ],
   );
 }

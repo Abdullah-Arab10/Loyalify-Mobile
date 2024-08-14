@@ -7,9 +7,11 @@ import 'package:loyalty_app/Features/home_layout/presentation/manager/merchants_
 import 'package:loyalty_app/Features/home_layout/presentation/manager/merchants_cubit/merchants_store_cubit/merchants_store_cubit.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/manager/merchants_cubit/search_cubit/search_cubit.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/manager/offers_cubit/offers_cubit.dart';
+import 'package:loyalty_app/core/manager/eye_visibility_cubit/eye_visibility_cubit.dart';
 import 'package:loyalty_app/core/resources/app_router.dart';
 import 'package:loyalty_app/core/resources/theme_manager.dart';
 import 'package:loyalty_app/core/utils/service_locator.dart';
+//import 'package:device_preview/device_preview.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,6 +31,9 @@ class Loyalify extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (context) => EyeVisibilityCubit(),
+        ),
         BlocProvider(
           create: (context) => MerchantsCubit(),
         ),
