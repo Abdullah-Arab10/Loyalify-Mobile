@@ -8,15 +8,15 @@ class ButtonsSection extends StatelessWidget {
   const ButtonsSection({
     super.key,
     required this.buttonText,
-    required this.bottomCenterText,
+    this.bottomCenterText,
     this.onPressed,
-    required this.textButtonOnPressed,
+    this.textButtonOnPressed,
   });
 
   final String buttonText;
-  final String bottomCenterText;
+  final String? bottomCenterText;
   final VoidCallback? onPressed;
-  final VoidCallback textButtonOnPressed;
+  final VoidCallback? textButtonOnPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +32,15 @@ class ButtonsSection extends StatelessWidget {
           ),
         ),
         SizedBox(height: MediaQuery.of(context).size.height / AppPadding.p22),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: CustomTextButton(
-            onPressed: textButtonOnPressed,
-            text: bottomCenterText,
-          ),
-        ),
+        textButtonOnPressed != null
+            ? Align(
+                alignment: Alignment.bottomCenter,
+                child: CustomTextButton(
+                  onPressed: textButtonOnPressed,
+                  text: bottomCenterText!,
+                ),
+              )
+            : const SizedBox(),
       ],
     );
   }

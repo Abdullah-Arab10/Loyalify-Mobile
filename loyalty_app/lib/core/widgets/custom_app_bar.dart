@@ -7,13 +7,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key,
     required this.backgroundColor,
-    required this.svgPicture,
+    this.svgPicture,
     this.onTap,
     this.isTitle,
     this.isActions,
     this.title,
     this.icon,
     this.currentIndex = -1,
+    this.actionsOnTap,
   });
 
   final bool? isTitle;
@@ -21,9 +22,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
   final String? icon;
   final Color backgroundColor;
-  final CustomIcon svgPicture;
+  final CustomIcon? svgPicture;
   final GestureTapCallback? onTap;
   final int currentIndex;
+  final GestureTapCallback? actionsOnTap;
 
   @override
   Size get preferredSize => const Size.fromHeight(60.0);
@@ -34,34 +36,39 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       scrolledUnderElevation: 0.0,
       elevation: 0,
       backgroundColor: backgroundColor,
-      leading: InkWell(
-        onTap: onTap,
-        child: Center(
-          child: svgPicture,
-        ),
-      ),
+      leading: svgPicture != null
+          ? InkWell(
+              onTap: onTap,
+              child: Center(
+                child: svgPicture,
+              ),
+            )
+          : null,
       title: isTitle != null
           ? Align(
-            alignment: Alignment.center,
-            child: Text(
-              title!,
-              style: currentIndex == 0
-                  ? AppStyles.styleBold29(context).copyWith(
-                      color: AppColors.white,
-                    )
-                  : AppStyles.styleBold29(context),
-            ),
-          )
+              alignment: Alignment.center,
+              child: Text(
+                title!,
+                style: currentIndex == 0
+                    ? AppStyles.styleBold29(context).copyWith(
+                        color: AppColors.white,
+                      )
+                    : AppStyles.styleBold29(context),
+              ),
+            )
           : null,
       actions: isActions != null
           ? [
-              CustomIcon(
-                image: icon!,
-                color: currentIndex == 0 ? AppColors.white : AppColors.black,
-                padding: 12.0,
+              GestureDetector(
+                onTap: actionsOnTap,
+                child: CustomIcon(
+                  image: icon!,
+                  color: currentIndex == 0 ? AppColors.white : AppColors.black,
+                  padding: 12.0,
+                ),
               )
             ]
-          : null,
+          : [SizedBox(width: MediaQuery.sizeOf(context).width / 10,)],
     );
   }
 }
