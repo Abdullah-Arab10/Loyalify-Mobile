@@ -47,7 +47,7 @@ class ListOfOffers extends StatelessWidget {
               storeName: offers[index].storeName,
               onTap: () => GoRouter.of(context).push(
                 AppRouter.kOfferDetailsView,
-                extra: <dynamic>[1, offers[index].id],
+                extra: offers[index].id ?? '',
               ),
             );
           } else {

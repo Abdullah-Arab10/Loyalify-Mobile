@@ -9,23 +9,42 @@ class AddCashierCubit extends Cubit<AddCashierState> {
 
   static AddCashierCubit get(context) => BlocProvider.of(context);
 
-  var cashierObject = CashierObject("", "", "");
+  var cashierObject = CashierObject("", "", "", "");
 
-  setNameOfCashier(String nameOfCashier) {
-    if (_isNameOfCashierValid(nameOfCashier)) {
-      cashierObject = cashierObject.copyWith(nameOfCashier: nameOfCashier);
+  setFirstNameOfCashier(String firstNameOfCashier) {
+    if (_isFirstNameOfCashierValid(firstNameOfCashier)) {
+      cashierObject = cashierObject.copyWith(firstNameOfCashier: firstNameOfCashier);
     } else {
-      cashierObject = cashierObject.copyWith(nameOfCashier: "");
+      cashierObject = cashierObject.copyWith(firstNameOfCashier: "");
     }
     _areAllInputsValid();
   }
 
-  bool _isNameOfCashierValid(String nameOfCashier) {
-    if (nameOfCashier.isNotEmpty) {
-      emit(NameOfCashierIsValid());
+  bool _isFirstNameOfCashierValid(String firstNameOfCashier) {
+    if (firstNameOfCashier.isNotEmpty) {
+      emit(FirstNameOfCashierIsValid());
       return true;
     } else {
-      emit(NameOfCashierIsInValid());
+      emit(FirstNameOfCashierIsInValid());
+      return false;
+    }
+  }
+
+    setLastNameOfCashier(String lastNameOfCashier) {
+    if (_isLastNameOfCashierValid(lastNameOfCashier)) {
+      cashierObject = cashierObject.copyWith(lastNameOfCashier: lastNameOfCashier);
+    } else {
+      cashierObject = cashierObject.copyWith(lastNameOfCashier: "");
+    }
+    _areAllInputsValid();
+  }
+
+  bool _isLastNameOfCashierValid(String lastNameOfCashier) {
+    if (lastNameOfCashier.isNotEmpty) {
+      emit(LastNameOfCashierIsValid());
+      return true;
+    } else {
+      emit(LastNameOfCashierIsInValid());
       return false;
     }
   }
@@ -75,7 +94,7 @@ class AddCashierCubit extends Cubit<AddCashierState> {
   }
 
   void _areAllInputsValid() {
-    if (cashierObject.nameOfCashier.isNotEmpty &&
+    if (cashierObject.firstNameOfCashier.isNotEmpty &&
         cashierObject.emailOfCashier.isNotEmpty &&
         cashierObject.passwordOfCashier.isNotEmpty) {
       emit(AllDataIsValid());
@@ -83,7 +102,7 @@ class AddCashierCubit extends Cubit<AddCashierState> {
   }
 
   clearcashierObject() {
-    cashierObject = cashierObject.copyWith(nameOfCashier: "");
+    cashierObject = cashierObject.copyWith(firstNameOfCashier: "");
     cashierObject = cashierObject.copyWith(emailOfCashier: "");
     cashierObject = cashierObject.copyWith(passwordOfCashier: "");
     emit(AllDataIsInValid());

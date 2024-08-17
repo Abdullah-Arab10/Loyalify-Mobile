@@ -6,7 +6,7 @@ class Item extends Equatable {
 	final String? offerImage;
 	final String? storeName;
 	final String? storeImage;
-	final int? pointAmount;
+	final double? pointAmount;
 
 	const Item({
 		this.id, 
@@ -23,7 +23,7 @@ class Item extends Equatable {
 				offerImage: json['offerImage'] as String?,
 				storeName: json['storeName'] as String?,
 				storeImage: json['storeImage'] as String?,
-				pointAmount: json['pointAmount'] as int?,
+				pointAmount: json['pointAmount'] as double?,
 			);
 
 	Map<String, dynamic> toJson() => {

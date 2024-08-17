@@ -7,6 +7,9 @@ import 'package:loyalty_app/Features/home_layout/presentation/manager/merchants_
 import 'package:loyalty_app/Features/home_layout/presentation/manager/merchants_cubit/merchants_store_cubit/merchants_store_cubit.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/manager/merchants_cubit/search_cubit/search_cubit.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/manager/offers_cubit/offers_cubit.dart';
+import 'package:loyalty_app/Features/store_manager/data/repos/store_manager_repos_impl.dart';
+import 'package:loyalty_app/Features/store_manager/presentation/manager/store_manager_cubit/store_manager_cubit.dart';
+import 'package:loyalty_app/Features/store_manager/presentation/manager/process_on_points_cubit/process_on_points_cubit.dart';
 import 'package:loyalty_app/core/manager/eye_visibility_cubit/eye_visibility_cubit.dart';
 import 'package:loyalty_app/core/resources/app_router.dart';
 import 'package:loyalty_app/core/resources/theme_manager.dart';
@@ -50,8 +53,15 @@ class Loyalify extends StatelessWidget {
           create: (context) => SearchCubit(getIt.get<MerchantsReposImpl>()),
         ),
         BlocProvider(
-            create: (context) => OffersCubit(getIt.get<OfferRepoImpl>())
-              ..fetchAllOffersUser()),
+            create: (context) =>
+                OffersCubit(getIt.get<OfferRepoImpl>())..fetchAllOffersUser()),
+        BlocProvider(
+          create: (context) => StoreManagerCubit(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              ProcessOnPointsCubit(getIt.get<StoreManagerReposImpl>()),
+        ),
       ],
       child: MaterialApp.router(
         // locale: DevicePreview.locale(context),

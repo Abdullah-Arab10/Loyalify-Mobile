@@ -3,5 +3,5 @@ import 'package:loyalty_app/Features/offer_details/data/models/offer_details_mod
 import 'package:loyalty_app/core/errors/failures.dart';
 
 abstract class OfferDetailsRepo{
-  Future<Either<Failure, OfferDetailsModel>> fetchOfferDetails({required int userId, required String offerId});
+  Future<Either<Failure, OfferDetailsModel>> fetchOfferDetails({required String userId, required String offerId});
 }

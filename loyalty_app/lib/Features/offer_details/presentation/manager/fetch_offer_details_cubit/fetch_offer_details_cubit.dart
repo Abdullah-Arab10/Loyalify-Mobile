@@ -14,7 +14,7 @@ class FetchOfferDetailsCubit extends Cubit<FetchOfferDetailsState> {
   OfferDetailsModel? offerDetailsModel;
 
   Future<void> fetchOfferDetails(
-      {required int userId, required String offerId}) async {
+      {required String userId, required String offerId}) async {
     emit(FetchOfferDetailsLoading());
     var result = await offerDetailsRepo.fetchOfferDetails(
         userId: userId, offerId: offerId);

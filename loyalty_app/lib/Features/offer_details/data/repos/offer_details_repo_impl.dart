@@ -11,9 +11,9 @@ class OfferDetailsRepoImpl implements OfferDetailsRepo {
 
   @override
   Future<Either<Failure, OfferDetailsModel>> fetchOfferDetails(
-      {required int userId, required String offerId}) async {
+      {required String userId, required String offerId}) async {
     try {
-      var data = await apiService.get(endPoint: '/Offer/GetOfferDetails?UserId=eaa20e56-593a-49c2-ed7a-08dcb55dce7b&OfferId=$offerId');
+      var data = await apiService.get(endPoint: '/Offer/GetOfferDetails?UserId=4aaac0e9-b189-4219-bd7d-08dcbe350f93&OfferId=$offerId');
 
       OfferDetailsModel offerDetails = OfferDetailsModel.fromJson(data);
 

@@ -35,6 +35,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       scrolledUnderElevation: 0.0,
       elevation: 0,
+      centerTitle: true,
       backgroundColor: backgroundColor,
       leading: svgPicture != null
           ? InkWell(
@@ -68,7 +69,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               )
             ]
-          : [SizedBox(width: MediaQuery.sizeOf(context).width / 10,)],
+          : null,
     );
   }
 }

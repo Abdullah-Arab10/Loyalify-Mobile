@@ -4,7 +4,7 @@ class Items extends Equatable {
 	final String? name;
 	final String? description;
 	final String? image;
-	final int? pointAmount;
+	final double? pointAmount;
 	final String? createdAt;
 	final String? deadline;
 	final double? userPoints;
@@ -23,7 +23,7 @@ class Items extends Equatable {
 				name: json['name'] as String?,
 				description: json['description'] as String?,
 				image: json['image'] as String?,
-				pointAmount: json['pointAmount'] as int?,
+				pointAmount: json['pointAmount'] as double?,
 				createdAt: json['createdAt'] as String?,
 				deadline: json['deadline'] as String?,
 				userPoints: json['userPoints'] as double?,

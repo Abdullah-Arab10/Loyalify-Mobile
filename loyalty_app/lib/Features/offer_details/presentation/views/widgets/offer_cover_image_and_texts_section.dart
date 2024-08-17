@@ -15,7 +15,7 @@ class OfferCoverImageAndTextsSection extends StatelessWidget {
 
   final String? coverImage;
   final String? offerName;
-  final int? pointAmount;
+  final double? pointAmount;
   final double? userPoints;
 
   @override
