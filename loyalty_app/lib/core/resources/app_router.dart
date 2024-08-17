@@ -14,7 +14,9 @@ import 'package:loyalty_app/Features/offer_details/data/repos/offer_details_repo
 import 'package:loyalty_app/Features/offer_details/presentation/manager/fetch_offer_details_cubit/fetch_offer_details_cubit.dart';
 import 'package:loyalty_app/Features/offer_details/presentation/views/offer_details_view.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/on_boarding_view.dart';
+import 'package:loyalty_app/Features/splash/presentation/views/splash_view.dart';
 import 'package:loyalty_app/Features/store_manager/presentation/views/cashier_view.dart';
+import 'package:loyalty_app/Features/store_manager/presentation/views/scan_code_view.dart';
 import 'package:loyalty_app/Features/store_manager/presentation/views/store_manager_view.dart';
 import 'package:loyalty_app/Features/store_manager/presentation/views/add_cashier_view.dart';
 import 'package:loyalty_app/core/utils/service_locator.dart';
@@ -29,7 +31,8 @@ abstract class AppRouter {
   static const kOfferDetailsView = '/offerDetailsView';
   static const kStoreManagerView = '/storeManagerView';
   static const kCashierView = '/cashierView';
-  static const kAddCashierView = '/AddCashierView';
+  static const kAddCashierView = '/addCashierView';
+  static const kScanCodeView = '/scanCodeView';
 
   static final router = GoRouter(
     routes: [
@@ -37,9 +40,8 @@ abstract class AppRouter {
         path: '/',
         builder: (context, state) {
           // initMerchantsModule();
-          // initStoreDetailsModule();
           // initOffersModule();
-          return const StoreManagerView();
+          return const SplashView();
           // initStoreDetailsModule();
           // return const MerchantsDetailsView();
           // initOffersModule();
@@ -62,6 +64,7 @@ abstract class AppRouter {
         path: kHomeLayoutView,
         builder: (context, state) {
           initMerchantsModule();
+          initOffersModule();
           return const HomeLayoutView();
         },
       ),
@@ -97,14 +100,12 @@ abstract class AppRouter {
       GoRoute(
           path: kOfferDetailsView,
           builder: (context, state) {
-            final List<dynamic> ids = state.extra as List<dynamic>;
             initOffersDetailsModule();
             return BlocProvider(
               create: (context) =>
                   FetchOfferDetailsCubit(getIt.get<OfferDetailsRepoImpl>()),
               child: OfferDetailsView(
-                userId: ids.elementAt(0),
-                offerId: ids.elementAt(1),
+                offerId: state.extra as String,
               ),
             );
           }),
@@ -119,7 +120,15 @@ abstract class AppRouter {
       GoRoute(
         path: kAddCashierView,
         builder: (context, state) => const AddCashierView(),
-      )
+      ),
+      GoRoute(
+          path: kScanCodeView,
+          builder: (context, state) {
+            initTakeOfferModule();
+            return ScanCodeView(
+              takeOrAdd: state.extra as bool,
+            );
+          })
     ],
   );
 }

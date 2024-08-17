@@ -27,7 +27,7 @@ class OffersItem extends StatelessWidget {
   final String? coverImage;
   final String? storeImage;
   final String? offerName;
-  final int? pointsAmount;
+  final double? pointsAmount;
   final String? storeName;
   final GestureTapCallback onTap;
 

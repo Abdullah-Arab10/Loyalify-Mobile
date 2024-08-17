@@ -136,7 +136,8 @@ abstract class _StoreManagerObject implements StoreManagerObject {
 
 /// @nodoc
 mixin _$CashierObject {
-  String get nameOfCashier => throw _privateConstructorUsedError;
+  String get lastNameOfCashier => throw _privateConstructorUsedError;
+  String get firstNameOfCashier => throw _privateConstructorUsedError;
   String get emailOfCashier => throw _privateConstructorUsedError;
   String get passwordOfCashier => throw _privateConstructorUsedError;
 
@@ -152,7 +153,10 @@ abstract class $CashierObjectCopyWith<$Res> {
       _$CashierObjectCopyWithImpl<$Res, CashierObject>;
   @useResult
   $Res call(
-      {String nameOfCashier, String emailOfCashier, String passwordOfCashier});
+      {String lastNameOfCashier,
+      String firstNameOfCashier,
+      String emailOfCashier,
+      String passwordOfCashier});
 }
 
 /// @nodoc
@@ -168,14 +172,19 @@ class _$CashierObjectCopyWithImpl<$Res, $Val extends CashierObject>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? nameOfCashier = null,
+    Object? lastNameOfCashier = null,
+    Object? firstNameOfCashier = null,
     Object? emailOfCashier = null,
     Object? passwordOfCashier = null,
   }) {
     return _then(_value.copyWith(
-      nameOfCashier: null == nameOfCashier
-          ? _value.nameOfCashier
-          : nameOfCashier // ignore: cast_nullable_to_non_nullable
+      lastNameOfCashier: null == lastNameOfCashier
+          ? _value.lastNameOfCashier
+          : lastNameOfCashier // ignore: cast_nullable_to_non_nullable
+              as String,
+      firstNameOfCashier: null == firstNameOfCashier
+          ? _value.firstNameOfCashier
+          : firstNameOfCashier // ignore: cast_nullable_to_non_nullable
               as String,
       emailOfCashier: null == emailOfCashier
           ? _value.emailOfCashier
@@ -198,7 +207,10 @@ abstract class _$$CashierObjectImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String nameOfCashier, String emailOfCashier, String passwordOfCashier});
+      {String lastNameOfCashier,
+      String firstNameOfCashier,
+      String emailOfCashier,
+      String passwordOfCashier});
 }
 
 /// @nodoc
@@ -212,14 +224,19 @@ class __$$CashierObjectImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? nameOfCashier = null,
+    Object? lastNameOfCashier = null,
+    Object? firstNameOfCashier = null,
     Object? emailOfCashier = null,
     Object? passwordOfCashier = null,
   }) {
     return _then(_$CashierObjectImpl(
-      null == nameOfCashier
-          ? _value.nameOfCashier
-          : nameOfCashier // ignore: cast_nullable_to_non_nullable
+      null == lastNameOfCashier
+          ? _value.lastNameOfCashier
+          : lastNameOfCashier // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == firstNameOfCashier
+          ? _value.firstNameOfCashier
+          : firstNameOfCashier // ignore: cast_nullable_to_non_nullable
               as String,
       null == emailOfCashier
           ? _value.emailOfCashier
@@ -236,11 +253,13 @@ class __$$CashierObjectImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CashierObjectImpl implements _CashierObject {
-  _$CashierObjectImpl(
-      this.nameOfCashier, this.emailOfCashier, this.passwordOfCashier);
+  _$CashierObjectImpl(this.lastNameOfCashier, this.firstNameOfCashier,
+      this.emailOfCashier, this.passwordOfCashier);
 
   @override
-  final String nameOfCashier;
+  final String lastNameOfCashier;
+  @override
+  final String firstNameOfCashier;
   @override
   final String emailOfCashier;
   @override
@@ -248,7 +267,7 @@ class _$CashierObjectImpl implements _CashierObject {
 
   @override
   String toString() {
-    return 'CashierObject(nameOfCashier: $nameOfCashier, emailOfCashier: $emailOfCashier, passwordOfCashier: $passwordOfCashier)';
+    return 'CashierObject(lastNameOfCashier: $lastNameOfCashier, firstNameOfCashier: $firstNameOfCashier, emailOfCashier: $emailOfCashier, passwordOfCashier: $passwordOfCashier)';
   }
 
   @override
@@ -256,8 +275,10 @@ class _$CashierObjectImpl implements _CashierObject {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CashierObjectImpl &&
-            (identical(other.nameOfCashier, nameOfCashier) ||
-                other.nameOfCashier == nameOfCashier) &&
+            (identical(other.lastNameOfCashier, lastNameOfCashier) ||
+                other.lastNameOfCashier == lastNameOfCashier) &&
+            (identical(other.firstNameOfCashier, firstNameOfCashier) ||
+                other.firstNameOfCashier == firstNameOfCashier) &&
             (identical(other.emailOfCashier, emailOfCashier) ||
                 other.emailOfCashier == emailOfCashier) &&
             (identical(other.passwordOfCashier, passwordOfCashier) ||
@@ -265,8 +286,8 @@ class _$CashierObjectImpl implements _CashierObject {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, nameOfCashier, emailOfCashier, passwordOfCashier);
+  int get hashCode => Object.hash(runtimeType, lastNameOfCashier,
+      firstNameOfCashier, emailOfCashier, passwordOfCashier);
 
   @JsonKey(ignore: true)
   @override
@@ -277,12 +298,15 @@ class _$CashierObjectImpl implements _CashierObject {
 
 abstract class _CashierObject implements CashierObject {
   factory _CashierObject(
-      final String nameOfCashier,
+      final String lastNameOfCashier,
+      final String firstNameOfCashier,
       final String emailOfCashier,
       final String passwordOfCashier) = _$CashierObjectImpl;
 
   @override
-  String get nameOfCashier;
+  String get lastNameOfCashier;
+  @override
+  String get firstNameOfCashier;
   @override
   String get emailOfCashier;
   @override

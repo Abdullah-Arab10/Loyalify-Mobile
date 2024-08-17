@@ -8,6 +8,6 @@ class StoreManagerObject with _$StoreManagerObject {
 
 @freezed
 class CashierObject with _$CashierObject {
-  factory CashierObject(String nameOfCashier, String emailOfCashier,
+  factory CashierObject(String lastNameOfCashier, String firstNameOfCashier, String emailOfCashier,
       String passwordOfCashier) = _CashierObject;
 }

@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class QRCode extends StatelessWidget {
-  const QRCode({super.key, required this.offerId});
+  const QRCode({super.key, required this.offerId, required this.userId});
 
   final String offerId;
+  final String userId;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class QRCode extends StatelessWidget {
           Expanded(
             child: Center(
               child: QrImageView(
-                data: 'eaa20e56-593a-49c2-ed7a-08dcb55dce7b|$offerId',
+                data: '$userId|$offerId',
                 version: QrVersions.auto,
                 size: 200.0,
               ),

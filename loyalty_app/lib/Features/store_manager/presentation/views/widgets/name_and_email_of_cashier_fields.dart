@@ -19,17 +19,22 @@ class NameAndEmailOfCashierFields extends StatefulWidget {
 
 class _NameAndEmailOfCashierFieldsState
     extends State<NameAndEmailOfCashierFields> {
-  late TextEditingController _nameOfCashierController;
+  late TextEditingController _firstNameOfCashierController;
+
+  late TextEditingController _lastNameOfCashierController;
 
   late TextEditingController _emailOfCashierController;
 
   bool isEmailOfCashierValid = true;
 
-  bool isnameOfCashierValid = true;
+  bool isFirstNameOfCashierValid = true;
+
+  bool isLastameOfCashierValid = true;
 
   @override
   void initState() {
-    _nameOfCashierController = TextEditingController();
+    _firstNameOfCashierController = TextEditingController();
+    _lastNameOfCashierController = TextEditingController();
     _emailOfCashierController = TextEditingController();
     super.initState();
   }
@@ -38,12 +43,15 @@ class _NameAndEmailOfCashierFieldsState
   Widget build(BuildContext context) {
     return BlocConsumer<AddCashierCubit, AddCashierState>(
       listener: (context, state) {
-        if (state is NameOfCashierIsValid) {
-          isnameOfCashierValid = true;
-        } else if (state is NameOfCashierIsInValid) {
-          isnameOfCashierValid = false;
-        }
-        if (state is EmailOfCashierIsValid) {
+        if (state is FirstNameOfCashierIsValid) {
+          isFirstNameOfCashierValid = true;
+        } else if (state is FirstNameOfCashierIsInValid) {
+          isFirstNameOfCashierValid = false;
+        } else if (state is LastNameOfCashierIsValid) {
+          isFirstNameOfCashierValid = true;
+        } else if (state is LastNameOfCashierIsInValid) {
+          isFirstNameOfCashierValid = false;
+        } else if (state is EmailOfCashierIsValid) {
           isEmailOfCashierValid = true;
         } else if (state is EmailOfCashierIsInValid) {
           isEmailOfCashierValid = false;
@@ -54,14 +62,28 @@ class _NameAndEmailOfCashierFieldsState
           children: [
             CustomTextFieldWidget(
               textFieldModel: TextFieldModel(
-                controller: _nameOfCashierController,
-                label: 'Name Of Cashier',
+                controller: _firstNameOfCashierController,
+                label: 'First Name Of Cashier',
                 onChanged: (value) =>
-                    AddCashierCubit.get(context).setNameOfCashier(value),
-                error: (isnameOfCashierValid)
+                    AddCashierCubit.get(context).setFirstNameOfCashier(value),
+                error: (isFirstNameOfCashierValid)
                     ? null
-                    : 'Name Of Cashier must not be empty',
-                prefixIcon: Assets.imagesAccount,
+                    : 'First Name Of Cashier must not be empty',
+                prefixIcon: Assets.imagesFirst,
+              ),
+            ),
+            SizedBox(
+                height: MediaQuery.of(context).size.height / AppPadding.p33),
+            CustomTextFieldWidget(
+              textFieldModel: TextFieldModel(
+                controller: _lastNameOfCashierController,
+                label: 'Last Name Of Cashier',
+                onChanged: (value) =>
+                    AddCashierCubit.get(context).setLastNameOfCashier(value),
+                error: (isFirstNameOfCashierValid)
+                    ? null
+                    : 'Last Name Of Cashier must not be empty',
+                prefixIcon: Assets.imagesLast,
               ),
             ),
             SizedBox(
@@ -84,7 +106,8 @@ class _NameAndEmailOfCashierFieldsState
 
   @override
   void dispose() {
-    _nameOfCashierController.dispose();
+    _firstNameOfCashierController.dispose();
+    _lastNameOfCashierController.dispose();
     _emailOfCashierController.dispose();
     super.dispose();
   }

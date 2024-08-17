@@ -25,11 +25,11 @@ class AuthRepoImpl implements AuthRepo {
     } catch (e) {
       if (e is DioException) {
         return left(
-          ServerFailure.fromDioError(e),
+          AuthServerFailure.fromDioError(e),
         );
       }
       return left(
-        ServerFailure(
+        AuthServerFailure(
           e.toString(),
         ),
       );
@@ -55,11 +55,11 @@ class AuthRepoImpl implements AuthRepo {
     } catch (e) {
       if (e is DioException) {
         return left(
-          ServerFailure.fromDioError(e),
+          AuthServerFailure.fromDioError(e),
         );
       }
       return left(
-        ServerFailure(
+        AuthServerFailure(
           e.toString(),
         ),
       );

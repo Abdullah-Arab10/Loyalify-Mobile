@@ -9,9 +9,11 @@ import 'package:loyalty_app/core/widgets/custom_no_data_or_failure.dart';
 import 'package:loyalty_app/core/widgets/shimmer_list.dart';
 
 class OfferDetailsViewBody extends StatelessWidget {
-  const OfferDetailsViewBody({super.key, required this.offerId});
+  const OfferDetailsViewBody(
+      {super.key, required this.offerId, required this.userId});
 
   final String offerId;
+  final String userId;
 
   @override
   Widget build(BuildContext context) {
@@ -48,15 +50,14 @@ class OfferDetailsViewBody extends StatelessWidget {
                     state is FetchOfferDetailsSuccess
                         ? SliverFillRemaining(
                             hasScrollBody: false,
-                            child: Expanded(
-                              child: OfferDescriptionAndButtonSection(
-                                description: FetchOfferDetailsCubit.get(context)
-                                        .offerDetailsModel
-                                        ?.items
-                                        ?.description ??
-                                    '',
-                                    offerId: offerId,
-                              ),
+                            child: OfferDescriptionAndButtonSection(
+                              description: FetchOfferDetailsCubit.get(context)
+                                      .offerDetailsModel
+                                      ?.items
+                                      ?.description ??
+                                  '',
+                              offerId: offerId,
+                              userId: userId,
                             ),
                           )
                         : state is FetchOfferDetailsLoading

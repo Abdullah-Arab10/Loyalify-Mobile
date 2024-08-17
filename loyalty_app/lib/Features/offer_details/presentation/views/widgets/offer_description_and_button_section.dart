@@ -8,15 +8,17 @@ class OfferDescriptionAndButtonSection extends StatelessWidget {
   const OfferDescriptionAndButtonSection({
     super.key,
     required this.description,
-    required this.offerId,
+    required this.offerId, required this.userId,
   });
 
   final String description;
+  final String userId;
   final String offerId;
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           description,
@@ -47,7 +49,7 @@ class OfferDescriptionAndButtonSection extends StatelessWidget {
                         return Container(
                           padding: const EdgeInsets.all(16.0),
                           height: MediaQuery.of(context).size.height * 0.5,
-                          child: QRCode(offerId: offerId,),
+                          child: QRCode(offerId: offerId, userId: userId,),
                         );
                       },
                     );

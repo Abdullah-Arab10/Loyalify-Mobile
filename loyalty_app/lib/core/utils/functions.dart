@@ -78,21 +78,3 @@ SnackBar customSnackBar({
       ),
     );
 
-void cashierValidation(AddCashierState state, bool isnameOfCashierValid,
-    bool isEmailOfCashierValid, bool isPasswordOfCashierValid) {
-  if (state is NameOfCashierIsValid) {
-    isnameOfCashierValid = true;
-  } else if (state is NameOfCashierIsInValid) {
-    isnameOfCashierValid = false;
-  }
-  if (state is EmailOfCashierIsValid) {
-    isEmailOfCashierValid = true;
-  } else if (state is EmailOfCashierIsInValid) {
-    isEmailOfCashierValid = false;
-  }
-  if (state is PasswordOfCashierIsValid) {
-    isPasswordOfCashierValid = true;
-  } else if (state is PasswordOfCashierIsInValid) {
-    isPasswordOfCashierValid = false;
-  }
-}

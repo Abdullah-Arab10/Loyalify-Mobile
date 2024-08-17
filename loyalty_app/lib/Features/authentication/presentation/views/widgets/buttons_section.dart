@@ -21,6 +21,7 @@ class ButtonsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(
           width: double.infinity,
@@ -31,7 +32,10 @@ class ButtonsSection extends StatelessWidget {
             onPressed: onPressed,
           ),
         ),
-        SizedBox(height: MediaQuery.of(context).size.height / AppPadding.p22),
+        textButtonOnPressed != null
+            ? SizedBox(
+                height: MediaQuery.of(context).size.height / AppPadding.p22)
+            : const SizedBox(),
         textButtonOnPressed != null
             ? Align(
                 alignment: Alignment.bottomCenter,

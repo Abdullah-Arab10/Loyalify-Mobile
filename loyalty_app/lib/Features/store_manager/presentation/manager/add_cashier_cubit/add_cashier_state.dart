@@ -16,9 +16,13 @@ final class CashierAddedFailure extends AddCashierState {
   CashierAddedFailure(this.errMessage);
 }
 
-final class NameOfCashierIsValid extends AddCashierState {}
+final class FirstNameOfCashierIsValid extends AddCashierState {}
 
-final class NameOfCashierIsInValid extends AddCashierState {}
+final class FirstNameOfCashierIsInValid extends AddCashierState {}
+
+final class LastNameOfCashierIsValid extends AddCashierState {}
+
+final class LastNameOfCashierIsInValid extends AddCashierState {}
 
 final class EmailOfCashierIsValid extends AddCashierState {}
 

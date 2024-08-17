@@ -12,32 +12,22 @@ class StoreManagerView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => StoreManagerCubit(),
+    return Scaffold(
+      backgroundColor: AppColors.white,
+      appBar: CustomAppBar(
+        backgroundColor: /*state is AuthLoadingState
+                  ? const Color(0xffE2E2E2)
+                  :*/
+            AppColors.white,
+        svgPicture: CustomIcon(
+          image: Assets.imagesAdministrator,
+          color: AppColors.kPrimaryColor,
+          padding: 12.0,
         ),
-      ],
-      child: Scaffold(
-        backgroundColor: AppColors.white,
-        appBar: CustomAppBar(
-          backgroundColor: /*state is AuthLoadingState
-                    ? const Color(0xffE2E2E2)
-                    :*/
-              AppColors.white,
-          svgPicture: CustomIcon(
-            image: Assets.imagesAdministrator,
-            color: AppColors.kPrimaryColor,
-            padding: 12.0,
-          ),
-          isTitle: true,
-          title: 'Store Manager',
-          isActions: true,
-          icon: Assets.imagesQrCodeScan,
-          actionsOnTap: (){},
-        ),
-        body: const StoreManagerViewBody(),
+        isTitle: true,
+        title: 'Store Manager',
       ),
+      body: const StoreManagerViewBody(),
     );
   }
 }

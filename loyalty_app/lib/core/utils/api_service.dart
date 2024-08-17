@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 class ApiService {
-  static const baseUrl = 'http://192.168.1.4:5067';
+  static const baseUrl = 'http://192.168.1.5:5067';
   final Dio _dio;
 
   ApiService(this._dio);
@@ -16,6 +16,13 @@ class ApiService {
 
   Future<Map<String, dynamic>> get({required String endPoint}) async {
     var response = await _dio.get('$baseUrl$endPoint');
+    return response.data;
+  }
+
+  Future<Map<String, dynamic>> postType2({
+    required String endPoint,
+  }) async {
+    var response = await _dio.post('$baseUrl$endPoint');
     return response.data;
   }
 }
