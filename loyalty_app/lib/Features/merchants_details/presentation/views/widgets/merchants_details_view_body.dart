@@ -57,6 +57,7 @@ class MerchantsDetailsViewBody extends StatelessWidget {
                                       )
                                     : const SliverToBoxAdapter(
                                         child: ShimmerList(
+                                        physics: NeverScrollableScrollPhysics(),
                                         itemCount: 6,
                                         isAspectRatio: true,
                                         aspectRatio: 1.8 / 1,

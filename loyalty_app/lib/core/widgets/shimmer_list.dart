@@ -15,7 +15,9 @@ class ShimmerList extends StatelessWidget {
       this.leftMargin = 0.0,
       this.rightMargin,
       this.bottomMargin = 0.0,
-      required this.itemBorderRadius});
+      required this.itemBorderRadius,
+      this.shrinkWrap,
+      required this.physics});
 
   final Axis? scrollDirection;
   final int itemCount;
@@ -27,6 +29,8 @@ class ShimmerList extends StatelessWidget {
   final double? aspectRatio;
   final double? height;
   final double itemBorderRadius;
+  final bool? shrinkWrap;
+  final ScrollPhysics? physics;
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +38,8 @@ class ShimmerList extends StatelessWidget {
       baseColor: AppColors.white,
       highlightColor: AppColors.sonicSilver,
       child: ListView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: shrinkWrap ?? true,
+        physics: physics,
         scrollDirection: scrollDirection ?? Axis.vertical,
         itemCount: itemCount,
         itemBuilder: (context, index) {
@@ -67,5 +71,3 @@ class ShimmerList extends StatelessWidget {
     );
   }
 }
-
-

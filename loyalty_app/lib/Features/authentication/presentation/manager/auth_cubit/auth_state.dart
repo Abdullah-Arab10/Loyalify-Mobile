@@ -13,3 +13,13 @@ final class AuthFailureState extends AuthState {
 
   AuthFailureState(this.message);
 }
+
+final class AddDeviceTokenLoadingState extends AuthState {}
+
+final class AddDeviceTokenSuccessState extends AuthState {}
+
+final class AddDeviceTokenFailureState extends AuthState {
+  final String message;
+
+  AddDeviceTokenFailureState(this.message);
+}

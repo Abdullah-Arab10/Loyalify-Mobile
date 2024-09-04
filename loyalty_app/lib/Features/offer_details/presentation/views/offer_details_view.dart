@@ -22,18 +22,17 @@ class OfferDetailsView extends StatefulWidget {
 }
 
 class _OfferDetailsViewState extends State<OfferDetailsView> {
-
   final AppPreferences appPreferences = getIt.get<AppPreferences>();
-  
+
   String userId = '';
 
   @override
   void initState() {
     appPreferences.getToken().then((value) {
       userId = JwtDecoder.decode(value)['sub'];
+      BlocProvider.of<FetchOfferDetailsCubit>(context)
+          .fetchOfferDetails(userId: userId, offerId: widget.offerId);
     });
-    BlocProvider.of<FetchOfferDetailsCubit>(context)
-        .fetchOfferDetails(userId: userId, offerId: widget.offerId);
     super.initState();
   }
 
@@ -56,7 +55,7 @@ class _OfferDetailsViewState extends State<OfferDetailsView> {
       ),
       body: OfferDetailsViewBody(
         offerId: widget.offerId,
-        userId:  userId,
+        userId: userId,
       ),
     );
   }

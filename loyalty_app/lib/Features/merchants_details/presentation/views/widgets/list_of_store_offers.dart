@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/offer_widgets/offers_item.dart';
 import 'package:loyalty_app/Features/merchants_details/presentation/manager/fetch_store_offers_cubit/fetch_store_offers_cubit.dart';
+import 'package:loyalty_app/core/resources/app_router.dart';
 
 class ListOfStoreOffers extends StatelessWidget {
   const ListOfStoreOffers({
@@ -35,7 +37,10 @@ class ListOfStoreOffers extends StatelessWidget {
         offerName: state.storeOffers.items[index].offerName,
         pointsAmount: state.storeOffers.items[index].pointAmount,
         storeName: state.storeOffers.items[index].storeName,
-        onTap: () {},
+        onTap: () => GoRouter.of(context).push(
+                AppRouter.kOfferDetailsView,
+                extra: state.storeOffers.items[index].id ?? '',
+              ),
       ),
     );
   }

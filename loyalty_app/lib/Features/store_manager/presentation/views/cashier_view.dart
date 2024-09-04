@@ -6,11 +6,20 @@ import 'package:loyalty_app/Features/store_manager/presentation/views/widgets/ca
 import 'package:loyalty_app/core/resources/app_colors.dart';
 import 'package:loyalty_app/core/resources/app_router.dart';
 import 'package:loyalty_app/core/utils/app_images.dart';
+import 'package:loyalty_app/core/utils/app_prefs.dart';
+import 'package:loyalty_app/core/utils/service_locator.dart';
 import 'package:loyalty_app/core/widgets/custom_app_bar.dart';
 import 'package:loyalty_app/core/widgets/custom_icon.dart';
 
-class CashierView extends StatelessWidget {
+class CashierView extends StatefulWidget {
   const CashierView({super.key});
+
+  @override
+  State<CashierView> createState() => _CashierViewState();
+}
+
+class _CashierViewState extends State<CashierView> {
+  final AppPreferences appPreferences = getIt.get<AppPreferences>();
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +37,11 @@ class CashierView extends StatelessWidget {
         ),
         isTitle: true,
         title: 'Cashier',
+        icon: Assets.imagesLogout,
+        actionsOnTap: () {
+          appPreferences.logout();
+          GoRouter.of(context).go(AppRouter.kOnboardingView);
+        },
       ),
       body: const CashierViewBody(),
     );

@@ -26,6 +26,7 @@ class DescriptionSection extends StatelessWidget {
                 ? CustomNoDataOrFailure(
                     text: state.errMessage, image: Assets.imagesFailure)
                 : const ShimmerList(
+                    physics: NeverScrollableScrollPhysics(),
                     itemCount: 20,
                     bottomMargin: 50,
                     itemBorderRadius: 30,
