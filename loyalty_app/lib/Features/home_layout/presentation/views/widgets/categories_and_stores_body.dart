@@ -21,33 +21,38 @@ class CategoriesAndStoresBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MerchantsStoreCubit, MerchantsStoreState>(
       builder: (context, state) {
-        return CustomScrollView(slivers: [
-          SliverToBoxAdapter(
-              child: FieldAndListOfFilteringItemSection(
-            searchController: _searchController,
-            onFieldSubmitted: onFieldSubmitted,
-            fetchOrSearch: true,
-          )),
-          SliverPadding(
-              padding: const EdgeInsetsDirectional.only(
-                  start: 16, end: 16, bottom: 16),
-              sliver: state is FetchStoresSuccess
-                  ? state.stores.stores.isNotEmpty
-                      ? CustomSliverGrid(state: state)
-                      : const SliverToBoxAdapter(
-                          child: CustomNoDataOrFailure(
-                              text: 'There is no store at the moment',
-                              image: Assets.imagesNoDataCuate),
-                        )
-                  : state is FetchStoresFailure
-                      ? SliverToBoxAdapter(
-                          child: CustomNoDataOrFailure(
-                              text: state.errMessage,
-                              image: Assets.imagesFailure),
-                        )
-                      : const SliverToBoxAdapter(
-                          child: ShimmerGrid(crossAxisCount: 2))),
-        ]);
+        return RefreshIndicator(
+          onRefresh: () async{
+            MerchantsStoreCubit.get(context).fetchStores(categoryId: 0);
+          },
+          child: CustomScrollView(slivers: [
+            SliverToBoxAdapter(
+                child: FieldAndListOfFilteringItemSection(
+              searchController: _searchController,
+              onFieldSubmitted: onFieldSubmitted,
+              fetchOrSearch: true,
+            )),
+            SliverPadding(
+                padding: const EdgeInsetsDirectional.only(
+                    start: 16, end: 16, bottom: 16),
+                sliver: state is FetchStoresSuccess
+                    ? state.stores.stores.isNotEmpty
+                        ? CustomSliverGrid(state: state)
+                        : const SliverToBoxAdapter(
+                            child: CustomNoDataOrFailure(
+                                text: 'There is no store at the moment',
+                                image: Assets.imagesNoDataCuate),
+                          )
+                    : state is FetchStoresFailure
+                        ? SliverToBoxAdapter(
+                            child: CustomNoDataOrFailure(
+                                text: state.errMessage,
+                                image: Assets.imagesFailure),
+                          )
+                        : const SliverToBoxAdapter(
+                            child: ShimmerGrid(crossAxisCount: 2))),
+          ]),
+        );
       },
     );
   }

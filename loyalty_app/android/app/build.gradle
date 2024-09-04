@@ -23,6 +23,8 @@ if (flutterVersionName == null) {
     flutterVersionName = "1.0"
 }
 
+apply plugin: 'com.google.gms.google-services'
+
 android {
     ndkVersion "25.1.8937393"
     namespace = "com.loyalty.app.loyalty_app"

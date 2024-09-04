@@ -41,6 +41,8 @@ abstract class AppRouter {
         builder: (context, state) {
           // initMerchantsModule();
           // initOffersModule();
+          // initProcessOnPointsModule();
+          // initHomeModule();
           return const SplashView();
           // initStoreDetailsModule();
           // return const MerchantsDetailsView();
@@ -65,6 +67,7 @@ abstract class AppRouter {
         builder: (context, state) {
           initMerchantsModule();
           initOffersModule();
+          initHomeModule();
           return const HomeLayoutView();
         },
       ),
@@ -124,7 +127,7 @@ abstract class AppRouter {
       GoRoute(
           path: kScanCodeView,
           builder: (context, state) {
-            initTakeOfferModule();
+            initProcessOnPointsModule();
             return ScanCodeView(
               takeOrAdd: state.extra as bool,
             );

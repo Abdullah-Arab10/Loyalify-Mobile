@@ -101,6 +101,10 @@ class Assets {
   /// assets/images/logo.svg
   static const String imagesLogo = "assets/images/logo.svg";
 
+  /// Assets for imagesLogout
+  /// assets/images/logout.svg
+  static const String imagesLogout = "assets/images/logout.svg";
+
   /// Assets for imagesManager
   /// assets/images/manager.svg
   static const String imagesManager = "assets/images/manager.svg";

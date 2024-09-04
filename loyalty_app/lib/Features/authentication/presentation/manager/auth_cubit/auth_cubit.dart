@@ -32,6 +32,7 @@ class AuthCubit extends Cubit<AuthState> {
     }, (data) {
       isLoading = false;
       _appPreferences.setToken(data.token!);
+
       emit(AuthSuccessState());
     });
   }
@@ -53,5 +54,10 @@ class AuthCubit extends Cubit<AuthState> {
       isLoading = false;
       emit(AuthSuccessState());
     });
+  }
+
+  Future<void> addDeviceToken(String id, String deviceToken) async {
+    var result = await authRepo.addDeviceToken(id, deviceToken);
+    result.fold((failure) {}, (data) {});
   }
 }

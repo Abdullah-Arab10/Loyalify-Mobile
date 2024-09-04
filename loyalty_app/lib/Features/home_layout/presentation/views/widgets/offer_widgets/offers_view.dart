@@ -41,6 +41,7 @@ class _OffersViewState extends State<OffersView> {
       builder: (context, state) {
         if (state is FetchOffersLoading && state.isFirstFetch) {
           return const ShimmerList(
+            physics: NeverScrollableScrollPhysics(),
             itemCount: 6,
             isAspectRatio: true,
             topMargin: 24,
@@ -52,18 +53,23 @@ class _OffersViewState extends State<OffersView> {
           return CustomNoDataOrFailure(
               text: state.errMessage, image: Assets.imagesFailure);
         } else {
-          return Padding(
-              padding: const EdgeInsetsDirectional.only(bottom: 24),
-              child: ListOfOffers(
-                topMargin: 24,
-                leftMargin: 24,
-                rightMargin: 24,
-                bottomMargin: 0,
-                isLogo: true,
-                offers: OffersCubit.get(context).offers,
-                isLoading: OffersCubit.get(context).isLoading,
-                scrollController: _scrollController,
-              ));
+          return RefreshIndicator(
+            onRefresh: () async{
+              OffersCubit.get(context).fetchAllOffersUser();
+            },
+            child: Padding(
+                padding: const EdgeInsetsDirectional.only(bottom: 24),
+                child: ListOfOffers(
+                  topMargin: 24,
+                  leftMargin: 24,
+                  rightMargin: 24,
+                  bottomMargin: 0,
+                  isLogo: true,
+                  offers: OffersCubit.get(context).offers,
+                  isLoading: OffersCubit.get(context).isLoading,
+                  scrollController: _scrollController,
+                )),
+          );
         }
       },
     );

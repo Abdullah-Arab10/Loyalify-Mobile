@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:loyalty_app/Features/authentication/data/repos/auth_repo_impl.dart';
+import 'package:loyalty_app/Features/home_layout/data/repos/home_repo/home_repo_impl.dart';
 import 'package:loyalty_app/Features/home_layout/data/repos/merchants_repos/merchants_repos_impl.dart';
 import 'package:loyalty_app/Features/home_layout/data/repos/offers_repo/offer_repo_impl.dart';
 import 'package:loyalty_app/Features/merchants_details/data/repos/store_details_repo_impl.dart';
@@ -62,9 +63,16 @@ initOffersDetailsModule() {
   }
 }
 
-initTakeOfferModule() {
+initProcessOnPointsModule() {
   if (!GetIt.I.isRegistered<StoreManagerReposImpl>()) {
     getIt.registerSingleton<StoreManagerReposImpl>(
         StoreManagerReposImpl(getIt.get<ApiService>()));
+  }
+}
+
+initHomeModule() {
+  if (!GetIt.I.isRegistered<HomeRepoImpl>()) {
+    getIt.registerSingleton<HomeRepoImpl>(
+        HomeRepoImpl(getIt.get<ApiService>()));
   }
 }

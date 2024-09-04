@@ -65,4 +65,29 @@ class AuthRepoImpl implements AuthRepo {
       );
     }
   }
+
+  @override
+  Future<Either<Failure, RegisterModel>> addDeviceToken(
+      String id, String deviceToken) async {
+    try {
+      var result = await apiService.post(
+          endPoint: '/AddDeviceToken',
+          data: {"id": id, "deviceToken": deviceToken});
+
+      final value = RegisterModel.fromJson(result);
+
+      return right(value);
+    } catch (e) {
+      if (e is DioException) {
+        return left(
+          AuthServerFailure.fromDioError(e),
+        );
+      }
+      return left(
+        AuthServerFailure(
+          e.toString(),
+        ),
+      );
+    }
+  }
 }

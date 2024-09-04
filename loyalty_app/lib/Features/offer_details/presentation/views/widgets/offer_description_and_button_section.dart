@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:loyalty_app/Features/offer_details/presentation/views/widgets/qr_code.dart';
 import 'package:loyalty_app/core/resources/app_colors.dart';
 import 'package:loyalty_app/core/resources/app_styles.dart';
+import 'package:loyalty_app/core/utils/app_prefs.dart';
+import 'package:loyalty_app/core/utils/service_locator.dart';
 import 'package:loyalty_app/core/widgets/custom_button.dart';
 
-class OfferDescriptionAndButtonSection extends StatelessWidget {
+class OfferDescriptionAndButtonSection extends StatefulWidget {
   const OfferDescriptionAndButtonSection({
     super.key,
     required this.description,
@@ -16,12 +19,30 @@ class OfferDescriptionAndButtonSection extends StatelessWidget {
   final String offerId;
 
   @override
+  State<OfferDescriptionAndButtonSection> createState() => _OfferDescriptionAndButtonSectionState();
+}
+
+class _OfferDescriptionAndButtonSectionState extends State<OfferDescriptionAndButtonSection> {
+  
+  final AppPreferences appPreferences = getIt.get<AppPreferences>();
+  
+   String id = '';
+
+  @override
+  void initState() {
+    appPreferences.getToken().then((value){
+      id = JwtDecoder.decode(value)['sub'];
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          description,
+          widget.description,
           style: AppStyles.styleSemiBold18(context).copyWith(
             color: AppColors.sonicSilver,
           ),
@@ -49,7 +70,7 @@ class OfferDescriptionAndButtonSection extends StatelessWidget {
                         return Container(
                           padding: const EdgeInsets.all(16.0),
                           height: MediaQuery.of(context).size.height * 0.5,
-                          child: QRCode(offerId: offerId, userId: userId,),
+                          child: QRCode(offerId: widget.offerId, userId: id,),
                         );
                       },
                     );

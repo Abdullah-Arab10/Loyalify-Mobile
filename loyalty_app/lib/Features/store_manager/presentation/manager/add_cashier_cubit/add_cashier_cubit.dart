@@ -1,19 +1,46 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loyalty_app/Features/store_manager/data/repos/store_manager_repos.dart';
 import 'package:loyalty_app/Features/store_manager/presentation/freezed/freezed_store_manager_data_classes.dart';
 import 'package:loyalty_app/core/utils/functions.dart';
 part 'add_cashier_state.dart';
 
 class AddCashierCubit extends Cubit<AddCashierState> {
-  AddCashierCubit() : super(AddCashierInitialState());
+  AddCashierCubit(this.storeManagerRepos) : super(AddCashierInitialState());
 
   static AddCashierCubit get(context) => BlocProvider.of(context);
 
   var cashierObject = CashierObject("", "", "", "");
 
+  final StoreManagerRepos storeManagerRepos;
+
+  bool isLoading = false;
+
+  Future<void> addCashier(
+    String storeManagerId,
+  ) async {
+    isLoading = true;
+    emit(CashierAddedLoading());
+    var result = await storeManagerRepos.addCashier(
+        storeManagerId,
+        cashierObject.firstNameOfCashier,
+        cashierObject.lastNameOfCashier,
+        cashierObject.emailOfCashier,
+        cashierObject.passwordOfCashier);
+    result.fold((failure) {
+      isLoading = false;
+      emit(CashierAddedFailure(failure.errMessage));
+    }, (data) {
+      isLoading = false;
+
+      emit(CashierAddedSuccess());
+    });
+  }
+
   setFirstNameOfCashier(String firstNameOfCashier) {
     if (_isFirstNameOfCashierValid(firstNameOfCashier)) {
-      cashierObject = cashierObject.copyWith(firstNameOfCashier: firstNameOfCashier);
+      cashierObject =
+          cashierObject.copyWith(firstNameOfCashier: firstNameOfCashier);
     } else {
       cashierObject = cashierObject.copyWith(firstNameOfCashier: "");
     }
@@ -30,9 +57,10 @@ class AddCashierCubit extends Cubit<AddCashierState> {
     }
   }
 
-    setLastNameOfCashier(String lastNameOfCashier) {
+  setLastNameOfCashier(String lastNameOfCashier) {
     if (_isLastNameOfCashierValid(lastNameOfCashier)) {
-      cashierObject = cashierObject.copyWith(lastNameOfCashier: lastNameOfCashier);
+      cashierObject =
+          cashierObject.copyWith(lastNameOfCashier: lastNameOfCashier);
     } else {
       cashierObject = cashierObject.copyWith(lastNameOfCashier: "");
     }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/widgets/custom_circular_indicator.dart';
 import 'package:loyalty_app/Features/splash/presentation/views/widgets/logo_and_sliding_text.dart';
 import 'package:loyalty_app/core/resources/app_router.dart';
@@ -73,7 +74,15 @@ class _SplashViewbodyState extends State<SplashViewbody>
           if (isUserLoggedIn)
             {
               // navigate to main screen
-              GoRouter.of(context).go(AppRouter.kHomeLayoutView),
+              _appPreferences.getToken().then((value) {
+                if (JwtDecoder.decode(value)['role'] == 'StoreManager') {
+                  GoRouter.of(context).go(AppRouter.kStoreManagerView);
+                } else if (JwtDecoder.decode(value)['role'] == 'Cashier') {
+                  GoRouter.of(context).go(AppRouter.kAddCashierView);
+                } else {
+                  GoRouter.of(context).go(AppRouter.kHomeLayoutView);
+                }
+              }),
             }
           else
             {

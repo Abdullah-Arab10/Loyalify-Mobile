@@ -64,7 +64,7 @@ class OffersItem extends StatelessWidget {
               ),
               OfferTextsSection(
                 offerName: offerName ?? '',
-                text1: '$pointsAmount',
+                text1: '${pointsAmount ?? 0}',
                 text2: storeName ?? '',
               ),
               const SizedBox(

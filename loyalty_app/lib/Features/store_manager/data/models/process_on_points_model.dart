@@ -1,8 +1,10 @@
-class ProcessOnPointsModel {
-  int? status;
-  String? message;
+import 'package:equatable/equatable.dart';
 
-  ProcessOnPointsModel({this.status, this.message});
+class ProcessOnPointsModel extends Equatable{
+  final int? status;
+  final String? message;
+
+  const ProcessOnPointsModel({this.status, this.message});
 
   factory ProcessOnPointsModel.fromJson(Map<String, dynamic> json) {
     return ProcessOnPointsModel(
@@ -15,4 +17,7 @@ class ProcessOnPointsModel {
         'status': status,
         'message': message,
       };
+
+  @override
+  List<Object?> get props => [status, message];
 }

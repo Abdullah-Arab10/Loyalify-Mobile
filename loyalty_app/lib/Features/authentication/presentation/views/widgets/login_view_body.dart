@@ -37,10 +37,17 @@ class LoginViewBody extends StatelessWidget {
           _appPreferences.setUserLoggedIn();
           _appPreferences.getToken().then(
             (value) {
+              String id = JwtDecoder.decode(value)['sub'];
+              _appPreferences.getDeviceToken().then((value){
+                print("Tooooooookeeeeeeen: $value");
+                AuthCubit.get(context).addDeviceToken(id, value);
+              });
               if (JwtDecoder.decode(value)['role'] == 'StoreManager') {
                 GoRouter.of(context).go(AppRouter.kStoreManagerView);
               } else if (JwtDecoder.decode(value)['role'] == 'User') {
                 GoRouter.of(context).go(AppRouter.kHomeLayoutView);
+              }else{
+                GoRouter.of(context).go(AppRouter.kCashierView);
               }
             },
           );

@@ -1,11 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:loyalty_app/Features/home_layout/presentation/views/widgets/home_widgets/action_item.dart';
 import 'package:loyalty_app/Features/offer_details/presentation/views/widgets/qr_code.dart';
+import 'package:loyalty_app/core/resources/app_router.dart';
 import 'package:loyalty_app/core/utils/app_prefs.dart';
 import 'package:loyalty_app/core/utils/service_locator.dart';
 
-class ActionRow extends StatelessWidget {
+class ActionRow extends StatefulWidget {
   const ActionRow({super.key});
+
+  @override
+  State<ActionRow> createState() => _ActionRowState();
+}
+
+class _ActionRowState extends State<ActionRow> {
+  
+  final AppPreferences appPreferences = getIt.get<AppPreferences>();
+  String userId = '';
+
+  @override
+  void initState() {
+    appPreferences.getToken().then((value){
+      userId = JwtDecoder.decode(value)['sub'];
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,15 +36,12 @@ class ActionRow extends StatelessWidget {
         InkWell(
           onTap: () {
             appPreferences.logout();
+            GoRouter.of(context).go(AppRouter.kOnboardingView);
           },
           child: const ActionItem(
-            icon: Icons.receipt,
-            label: 'Receipt Photo',
+            icon: Icons.logout_rounded,
+            label: 'Log Out',
           ),
-        ),
-        const ActionItem(
-          icon: Icons.assignment,
-          label: 'Survey',
         ),
         InkWell(
           onTap: () {
@@ -37,7 +54,7 @@ class ActionRow extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * 0.5,
                   child: QRCode(
                     offerId: '',
-                    userId: '4aaac0e9-b189-4219-bd7d-08dcbe350f93',
+                    userId: userId,
                   ),
                 );
               },

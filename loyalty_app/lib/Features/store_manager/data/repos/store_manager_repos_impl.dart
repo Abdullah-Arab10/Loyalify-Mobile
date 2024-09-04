@@ -16,7 +16,7 @@ class StoreManagerReposImpl implements StoreManagerRepos {
     try {
       var result = await apiService.postType2(
           endPoint:
-              '/Offer/TakeOffer?UserId=4aaac0e9-b189-4219-bd7d-08dcbe350f93&OfferId=$offerId');
+              '/Offer/TakeOffer?UserId=$userId&OfferId=$offerId');
 
       final value = ProcessOnPointsModel.fromJson(result);
 
@@ -42,11 +42,46 @@ class StoreManagerReposImpl implements StoreManagerRepos {
       var result = await apiService.post(
         endPoint: '/Points/AddPoints',
         data: {
-          'userId' : '4aaac0e9-b189-4219-bd7d-08dcbe350f93' /*userId*/,
-          'storeManagerId' : storeManagerId,
-          'bill' : bill
+          'userId': userId /*userId*/,
+          'storeManagerId': storeManagerId,
+          'bill': bill
         },
       );
+
+      final value = ProcessOnPointsModel.fromJson(result);
+
+      return right(value);
+    } catch (e) {
+      if (e is DioException) {
+        return left(
+          AuthServerFailure.fromDioError(e),
+        );
+      }
+      return left(
+        AuthServerFailure(
+          e.toString(),
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, ProcessOnPointsModel>> addCashier(
+      String storeManagerId,
+      String firstName,
+      String lastName,
+      String email,
+      String password) async {
+    try {
+      var result = await apiService.post(
+          endPoint:
+              '/Auth/RegisterACashier/$storeManagerId',
+          data: {
+            'firstName': firstName,
+            'lastName': lastName,
+            'email': email,
+            'password': password
+          });
 
       final value = ProcessOnPointsModel.fromJson(result);
 

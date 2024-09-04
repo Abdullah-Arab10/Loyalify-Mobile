@@ -5,7 +5,9 @@ import 'package:loyalty_app/core/utils/app_images.dart';
 import 'package:loyalty_app/core/widgets/custom_icon.dart';
 
 class PointsRow extends StatelessWidget {
-  const PointsRow({super.key});
+  const PointsRow({super.key, required this.points});
+
+  final double points;
 
   @override
   Widget build(BuildContext context) {
@@ -41,23 +43,12 @@ class PointsRow extends StatelessWidget {
                   ),
                 ),
               ),
-              Row(
-                children: [
-                  FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Text(
-                      '249,560',
-                      style: AppStyles.styleBold29(context),
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Text(
-                    '(\$249.56)',
-                    style: AppStyles.styleSemiBold16(context).copyWith(
-                      color: AppColors.sonicSilver,
-                    ),
-                  ),
-                ],
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  '$points',
+                  style: AppStyles.styleBold29(context),
+                ),
               ),
             ],
           ),

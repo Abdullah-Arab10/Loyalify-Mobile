@@ -7,6 +7,8 @@ const String prefsKeyIsUserLoggedIn = "PREFS_KEY_IS_USER_LOGGED_IN";
 
 const String tOKEN = "TOKEN";
 
+const String dEVICEToken = "DEVICETOKEN";
+
 class AppPreferences {
   final SharedPreferences _sharedPreferences;
   AppPreferences(this._sharedPreferences);
@@ -71,6 +73,14 @@ class AppPreferences {
 
   Future<String> getToken() async {
     return _sharedPreferences.getString(tOKEN) ?? '';
+  }
+  
+  Future<void> setDeviceToken(String deviceToken) async {
+    _sharedPreferences.setString(dEVICEToken, deviceToken);
+  }
+  
+  Future<String> getDeviceToken() async {
+    return _sharedPreferences.getString(dEVICEToken) ?? '';
   }
 
   Future<void> logout() async {
