@@ -75,13 +75,13 @@ class AppPreferences {
     return _sharedPreferences.getString(tOKEN) ?? '';
   }
   
-  Future<void> setDeviceToken(String deviceToken) async {
-    _sharedPreferences.setString(dEVICEToken, deviceToken);
-  }
+  // Future<void> setDeviceToken(String deviceToken) async {
+  //   _sharedPreferences.setString(dEVICEToken, deviceToken);
+  // }
   
-  Future<String> getDeviceToken() async {
-    return _sharedPreferences.getString(dEVICEToken) ?? '';
-  }
+  // Future<String> getDeviceToken() async {
+  //   return _sharedPreferences.getString(dEVICEToken) ?? '';
+  // }
 
   Future<void> logout() async {
     // _sharedPreferences.remove(prefsKeyIsUserLoggedIn);
