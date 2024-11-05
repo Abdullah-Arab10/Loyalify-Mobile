@@ -25,9 +25,9 @@ import 'package:loyalty_app/core/widgets/firebase_notifications.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
   await setupServiceLocator();
-  await FireBaseNotifications().initNotifications();
+  // await FireBaseNotifications().initNotifications();
   runApp(const Loyalify());
   // runApp(DevicePreview(
   //   enabled: true,
